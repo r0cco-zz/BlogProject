@@ -1,0 +1,10 @@
+﻿@model TinyMCE_demo.Models.Input
+<script src="/Scripts/tinymce/tinymce.min.js"></script>
+<script src="/Scripts/app/tinyMCEExample.js"></script>
+
+@using (Html.BeginForm("DemoResult", "Home", FormMethod.Post))
+{
+@Html.TextAreaFor(m => m.InputContent, new { id="TinyMCEDemo" })
+
+<button class="btn btn-sm btn-primary">Button</button>
+}
