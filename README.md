@@ -1,2 +1,2 @@
 # BlogProject
-Capstone Blog Project for Team **
+Capstone Blog Project for Team Dapper Dogs
