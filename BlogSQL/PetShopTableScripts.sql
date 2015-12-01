@@ -33,28 +33,15 @@ create table Tags (
 )
 go
 
-create table Roles (
-	RoleID int identity (1, 1) primary key not null,
-	UserID int foreign key references Users (UserID) not null,
-	RoleValue int
-)
-go
+
 
 create table StaticPages (
 	StaticPageID int identity (1, 1) primary key not null,
 	StaticPageTitle nvarchar(50),
-	StaticPageContent nvarchar(2000)
+	StaticPageContent nvarchar(max)
 )
 go
 
-create table Users (
-	UserID int identity (1, 1) primary key not null,
-	UserName nvarchar(50),
-	FirstName nvarchar(20),
-	LastName nvarchar(20),
-	UserPassword nvarchar(20)
-)
-go
 
 create table PostsTags (
 	PostID int foreign key references Posts (PostID) not null,
@@ -67,7 +54,7 @@ create procedure [dbo].[AddNewPost](
 	@CategoryID int,
 	@PostTitle nvarchar(100),
 	@PostDate date,
-	@PostContent nvarchar(2000),
+	@PostContent nvarchar(max),
 	@Author nvarchar(50),
 	@PostStatus int,
 	@PostID int output
@@ -78,6 +65,79 @@ begin
 	values (@CategoryID, @PostTitle, @PostDate, @PostContent, @Author, @PostStatus)
 
 	set @PostID = SCOPE_IDENTITY();
+end
+
+go
+
+create procedure [dbo].[AddNewTag]( 
+@TagName nvarchar(50)
+)
+as
+begin
+insert into Tags (TagName)
+values (@TagName)
+
+end
+
+go
+
+create procedure [dbo].[AddNewStaticPage](
+@StaticPageTitle nvarchar(50),
+@StaticPageContent nvarchar (max)
+)
+as
+begin
+insert into StaticPages (StaticPageTitle, StaticPageContent)
+values(@StaticPageTitle, @StaticPageContent)
+
+end
+
+go
+
+create procedure [dbo].[GetAllPostsOrderedByDate] 
+as
+begin
+select *
+from Posts
+order by PostDate
+end
+
+go
+
+create procedure [dbo].[GetPostbyDate] (@postdate date)
+as
+begin
+select *
+from Posts where posts.PostDate = @postdate
+end
+
+go
+
+create procedure [dbo].[GetPostsByCategory] (@categoryID int)
+as
+begin
+select *
+from posts where posts.CategoryID = @categoryID 
+end
+
+go
+
+create procedure [dbo].[GetPostsByTag] (@tagId int)
+as
+begin
+select *
+from Posts 
+join PostsTags on PostsTags.PostID = Posts.PostID
+join tags on tags.TagID = @tagId
+end
+
+go
+
+create procedure [dbo].[addnewpoststags] (@tagid int, @postsid int)
+as
+begin
+insert into PostsTags (PostID, TagID)
+values (@postsid, @tagid)
 end
 
 go
