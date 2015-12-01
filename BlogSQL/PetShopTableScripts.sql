@@ -1,13 +1,19 @@
 use master
 go
 
-drop database PetShopBlog
-go
+--drop database PetShopBlog
+--go
 
 create database PetShopBlog
 go
 
 use PetShopBlog
+go
+
+create table Categories (
+	CategoryID int identity (1, 1) primary key not null,
+	CategoryName nvarchar(50)
+)
 go
 
 create table Posts (
@@ -18,12 +24,6 @@ create table Posts (
 	PostContent nvarchar(2000),
 	Author nvarchar(50),
 	PostStatus int
-)
-go
-
-create table Categories (
-	CategoryID int identity (1, 1) primary key not null,
-	CategoryName nvarchar(50)
 )
 go
 
@@ -48,6 +48,34 @@ create table PostsTags (
 	TagID int foreign key references Tags (TagID) not null,
 	constraint pk_PostsTags primary key (PostID, TagID)
 )
+go
+begin
+	insert into Categories
+	values ('Pet Health'),('Pet Wellness'),('Pet Products'),('Pet Fun'),('Getting to Know Your Pet')
+
+	insert into Posts
+	values (1,'SampleTitle1','2015-12-01','<p>Lorem ipsum dolor sit amet smooshy</p><p>Feeder bird seed barky lazy cat wag tail catch bedding</p><p>Food dog house. String fur stripes house train kitty string. Fluffy leash walk nap pet purr dragging run feathers.</p>','Author',1),
+	(2,'SampleTitle2','2015-11-25','<p>Lorem ipsum dolor sit amet cage kibble speak.</p><p>Lick throw pet gate fluffy groom polydactyl</p><p>Kisses. Behavior dragging</p><p>Wag tail drool nap aquatic whiskers grooming run fast fluffy field purr Buddy bed swimming Mittens Buddy bird food throw pet supplies. Pet Supplies shake Snowball aquarium food roll over dragging stripes. Food stripes fur feeder wagging carrier leash. Ball dog house twine wag tail parakeet nest biscuit walk stripes Rover slobbery fish feeder yawn.</p>','Author',1),
+	(3,'SampleTitle3','2015-11-20','<h5>Lorem</h5><p>Ipsum dolor sit amet finch kitten leash vaccination.</p>','Author',1)
+
+	insert into Tags
+	values ('Dogs'),('Cats'),('Ferrets'),('Food'),('Toys'),('Health'),('Fun'),('Knowledge'),('Happy'),('Smiley'),('Turtles'),('Snakes')
+
+	insert into StaticPages
+	values ('Title1','<p>Lorem ipsum dolor sit amet fleas purr pet food water dog mouse. Meow groom run purr speak collar throw dog swimming smooshy puppy carrier commands bark chirp carrier roll over chirp lick smooshy.</p>'),
+	('Title2','<p>Lorem ipsum dolor sit amet furry meow foot speak biscuit feathers stay field water dog groom chew mittens harness bed. Fleas whiskers shake grooming gimme five run turtle furry. Bark barky Spike sit cage litter box dog treats tuxedo grooming warm furry. House Train bird food cat Buddy small animals litter box pet gate.</p>')
+
+	insert into PostsTags
+	values (1,1),
+	(1,4),
+	(1,5),
+	(2,2),
+	(2,3),
+	(2,5),
+	(2,10),
+	(3,4)
+
+end
 go
 
 create procedure [dbo].[AddNewPost](
