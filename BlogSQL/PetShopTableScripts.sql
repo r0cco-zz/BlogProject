@@ -99,7 +99,8 @@ as
 begin
 select *
 from Posts
-order by PostDate
+where PostStatus = 1
+order by PostDate 
 end
 
 go
@@ -108,7 +109,7 @@ create procedure [dbo].[GetPostbyDate] (@postdate date)
 as
 begin
 select *
-from Posts where posts.PostDate = @postdate
+from Posts where posts.PostDate = @postdate and posts.PostStatus = 1
 end
 
 go
@@ -117,7 +118,7 @@ create procedure [dbo].[GetPostsByCategory] (@categoryID int)
 as
 begin
 select *
-from posts where posts.CategoryID = @categoryID 
+from posts where posts.CategoryID = @categoryID and posts.PostStatus = 1
 end
 
 go
@@ -129,6 +130,7 @@ select *
 from Posts 
 join PostsTags on PostsTags.PostID = Posts.PostID
 join tags on tags.TagID = @tagId
+where PostStatus =1
 end
 
 go
@@ -138,6 +140,46 @@ as
 begin
 insert into PostsTags (PostID, TagID)
 values (@postsid, @tagid)
+end
+
+go
+
+create procedure [dbo].[GetAllTags] 
+as
+begin
+select *
+from Tags
+end
+
+go
+
+create procedure [dbo].[updatePostContent] (@postid int, @postcontent nvarchar(max))
+as
+begin
+update Posts
+set posts.PostContent = @postcontent
+where posts.PostID = @postid
+end
+
+go
+
+
+create procedure [dbo].[updatePostStatus] (@postid int)
+as
+begin
+update posts
+set posts.PostStatus = 1
+where posts.PostID = @postid
+end
+
+go
+
+create procedure [dbo].[softdeletepost] (@postId int)
+as
+begin
+update posts
+set posts.PostStatus = 2
+where posts.PostID = @postId
 end
 
 go
