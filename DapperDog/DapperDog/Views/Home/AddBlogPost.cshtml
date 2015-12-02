@@ -1,0 +1,50 @@
+﻿@model DapperDog.Models.AddBlogPostViewModel
+
+@{
+    ViewBag.Title = "AddBlogPost";
+}
+
+<h2>AddBlogPost</h2>
+
+@using (Html.BeginForm("AddBlogPost", "Home", FormMethod.Post))
+{
+    <div>
+        <label for="AddBlogPostTitle">Title</label>
+        <input name="AddBlogPostTitle" id="AddBlogPostTitle" type="text"/>
+    </div>
+    <div class="dropdown">
+        <label>Category</label>
+        <select class="form-control" title="Category">
+            @foreach (var category in Model.Categories)
+            {
+                <option value="@category.Value">@category.Text</option>
+            }
+        </select>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <textarea id="TinyMCEBox"></textarea>
+        </div>
+    </div>
+    <div>
+        <label for="myTags">Tags</label>
+        <ul id="myTags">
+            <!-- Existing list items will be pre-added to the tags -->
+            <li>Tag1</li>
+            <li>Tag2</li>
+        </ul>
+    </div>
+    <div>
+        <button class="btn btn-primary">Submit</button>
+    </div>
+}
+
+@section scripts {
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/app/tinyMCEBox.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/tag-it.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css">
+    <link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/app/tag-It.js"></script>
+}
