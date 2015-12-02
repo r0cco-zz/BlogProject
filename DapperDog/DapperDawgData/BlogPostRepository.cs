@@ -50,8 +50,14 @@ namespace DapperDawgData
             p.Add("postId", id);
 
             var tags = _cn.Query<Tag>("GetAllTagsOnAPostByPostID", p, commandType: CommandType.StoredProcedure).ToList();
+<<<<<<< HEAD
 
             return tags;
+=======
+
+            return tags;
+
+>>>>>>> 53da4775128d4304896822da882907a92601cf67
         }
 
         public List<Category> GetAllCategories()
@@ -77,16 +83,23 @@ namespace DapperDawgData
         public void AddNewBlogPost(BlogPost newBlogPost)
         {
             var p = new DynamicParameters();
-            p.Add("categoryID", newBlogPost.CategoryID);
+            p.Add("CategoryID", newBlogPost.CategoryID);
             p.Add("PostTitle", newBlogPost.PostTitle);
-            p.Add("PostDate", newBlogPost.PostDate);
+            p.Add("PostDate", newBlogPost.PostDate, dbType:DbType.Date, direction:ParameterDirection.Input);
             p.Add("PostContent", newBlogPost.PostContent);
             p.Add("Author", newBlogPost.Author);
             p.Add("PostStatus", newBlogPost.PostStatus);
+<<<<<<< HEAD
             p.Add("postId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             _cn.Execute("AddNewPost", p, commandType: CommandType.StoredProcedure);
             int newPostId = p.Get<int>("TagId");
+=======
+            p.Add("PostID", p, dbType:DbType.Int32, direction:ParameterDirection.Output);
+
+            _cn.Execute("AddNewPost", p, commandType: CommandType.StoredProcedure);
+            int newPostID = p.Get<int>("PostID");
+>>>>>>> 53da4775128d4304896822da882907a92601cf67
         }
 
         public void AddNewPostTag(int PostId, int TagId)
@@ -102,7 +115,11 @@ namespace DapperDawgData
         {
             var p = new DynamicParameters();
             p.Add("TagName", TagName);
+<<<<<<< HEAD
             //p.Add("tagId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+=======
+            p.Add("TagId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+>>>>>>> 53da4775128d4304896822da882907a92601cf67
 
             _cn.Execute("AddNewTag", p, commandType: CommandType.StoredProcedure);
             return p.Get<int>("TagId");
