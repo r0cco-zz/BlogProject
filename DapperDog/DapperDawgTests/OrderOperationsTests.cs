@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DapperDawgBll;
+using DapperDawgData;
 using DapperDawgData.Config;
 using DapperDawgModels;
 using NUnit.Framework;
@@ -17,40 +18,75 @@ namespace DapperDawgTests
 
         private SqlConnection _cn;
 
-        [OneTimeSetUp]
+        [TestFixtureSetUp]
         public void Setup()
         {
             _cn = new SqlConnection(Settings.ConnectionString);
+            _cn.Open();
+        }
+
+        [TestFixtureTearDown]
+        public void TearDown()
+        {
+            _cn.Dispose();
         }
 
         [Test]
-        public void AddnewBlogPostWithNewTag_ShouldReturnNewTagId()
+        public void AddnewBlogPost_ShouldReturnNewPostId()
         {
-            int expected = 0;
-            int newTagId = 0;
+            int expected;
+      
+        
 
             BlogPost newBlogPost = new BlogPost()
             {
                 CategoryID = 2,
                 CategoryName = "Pet Health",
                 PostTitle = "Teeth",
-                PostDate = DateTime.Now,
+                PostDate = DateTime.Parse("3-12-2015"),
                 PostContent = "teeth",
                 Author = "Joe Schmoe",
                 PostStatus = 0,
                 Tags = new List<Tag>
                 {
-                    new Tag {TagName = "teeth"}
+                    new Tag {TagID = 1, TagName = "Dogs"}
                 }
-            };
 
-            expected = RetrieveLastTagId() + 1;
+            };
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "select max(PostID) from posts";
+            cmd.Connection = _cn;
+
+            expected = int.Parse(cmd.ExecuteScalar().ToString()) + 1;
 
             BlogPostOperations bpo = new BlogPostOperations();
             bpo.AddNewBlogPost(newBlogPost);
 
-            newTagId = RetrieveLastTagId();
-            Assert.AreEqual(expected, newTagId);
+            Assert.AreEqual(expected, newBlogPost.PostID);
+        }
+
+        [Test]
+        public void CheckNewTagID()
+        {
+            BlogPostRepository repo = new BlogPostRepository();
+            int expected = RetrieveLastTagId() + 1;
+            int id = repo.AddNewTag("loopy");
+            Assert.AreEqual(expected, id);
+        }
+
+        [Test]
+        public void CheckGetAllCategories()
+        {
+            BlogPostRepository repo = new BlogPostRepository();
+            int expected = 0;
+            int result = 0;
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "select max(categoryid) from categories";
+            cmd.Connection = _cn;
+            expected = int.Parse(cmd.ExecuteScalar().ToString());
+            result = repo.GetAllCategories().Count;
+            Assert.AreEqual(expected,result);
+
         }
 
         public int RetrieveLastTagId()
@@ -62,5 +98,7 @@ namespace DapperDawgTests
             int id = int.Parse(cmd.ExecuteScalar().ToString());
             return id;
         }
+
+       
     }
 }

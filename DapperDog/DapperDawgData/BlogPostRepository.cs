@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,7 +72,6 @@ namespace DapperDawgData
             var catname =
                 _cn.Query<string>("GetCategoryByPostID", p, commandType: CommandType.StoredProcedure)
                     .FirstOrDefault();
-
             return catname;
         }
 

@@ -32,7 +32,7 @@ namespace DapperDog.Controllers
             blogPost.Author = "Author";
             blogPost.PostStatus = 1;
             ops.AddNewBlogPost(blogPost);
-            //var tags = Request.Form("TagsToAdd");
+            var tags = Request.Form("myTags li");
 
             return RedirectToAction("Index");
         }

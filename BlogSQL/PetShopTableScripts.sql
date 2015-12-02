@@ -104,7 +104,8 @@ as
 begin
 insert into Tags (TagName)
 values (@TagName)
-set @TagID = SCOPE_IDENTITY()
+
+set @TagID = SCOPE_IDENTITY();
 end
 
 go

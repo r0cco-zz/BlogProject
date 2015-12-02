@@ -36,7 +36,6 @@ namespace DapperDawgBll
             }
             return posts;
         }
-
         public List<Category> GetAllCategories()
         {
             return _repo.GetAllCategories();
