@@ -23,6 +23,7 @@ namespace DapperDawgBll
 
             foreach (var post in posts)
             {
+                post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
                 post.Tags = new List<Tag>();
                 var tagList = _repo.GetTagsByPostID(post.PostID);
                 if (tagList != null)

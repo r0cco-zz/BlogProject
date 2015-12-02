@@ -1,8 +1,8 @@
 use master
 go
 
---drop database PetShopBlog
---go
+drop database PetShopBlog
+go
 
 create database PetShopBlog
 go
@@ -128,7 +128,7 @@ begin
 select *
 from Posts
 where PostStatus = 1
-order by PostDate 
+order by PostDate desc
 end
 
 go
@@ -211,3 +211,31 @@ where posts.PostID = @postId
 end
 
 go
+
+create procedure [dbo].[GetPostByID] (@postId int)
+as
+begin
+select * from Posts p
+where p.PostID = @postId
+end
+
+go
+
+create procedure [dbo].[GetAllTagsOnAPostByPostID] (@postId int)
+as
+begin
+select t.TagID, t.TagName
+from Tags t
+	inner join PostsTags pt on t.TagID = pt.TagID
+where pt.PostID = 2
+end
+
+go
+
+create procedure [dbo].[GetCategoryByPostID] (@postId int)
+as
+begin
+select c.CategoryName from Categories c
+	inner join Posts p on p.CategoryID = c.CategoryID
+where p.PostID = @postId
+end

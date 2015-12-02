@@ -10,6 +10,7 @@ namespace DapperDawgModels
     {
         public int PostID { get; set; }
         public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
         public string PostTitle { get; set; }
         public DateTime PostDate { get; set; }
         public string PostContent { get; set; }

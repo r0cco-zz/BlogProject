@@ -56,6 +56,21 @@ namespace DapperDawgData
 
                 return tags;
             }
+        }
+
+        public string GetCategoryByPostID(int id)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("postId", id);
+
+                var catname =
+                    cn.Query<string>("GetCategoryByPostID", p, commandType: CommandType.StoredProcedure)
+                        .FirstOrDefault();
+
+                return catname;
+            }
         }   
     }
 }
