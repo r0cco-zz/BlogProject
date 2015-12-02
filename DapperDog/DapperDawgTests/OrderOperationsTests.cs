@@ -17,10 +17,17 @@ namespace DapperDawgTests
 
         private SqlConnection _cn;
 
-        [OneTimeSetUp]
+        [TestFixtureSetUp]
         public void Setup()
         {
             _cn = new SqlConnection(Settings.ConnectionString);
+            _cn.Open();
+        }
+
+        [TestFixtureTearDown]
+        public void TearDown()
+        {
+            _cn.Dispose();
         }
 
         [Test]
