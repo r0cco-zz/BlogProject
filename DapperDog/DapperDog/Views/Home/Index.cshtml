@@ -12,6 +12,7 @@
             <p>@post.PostDate.ToShortDateString()</p>
             <p>@post.CategoryName</p>
             <p>@post.Author</p>
+
             @Html.Raw(post.PostContent)
             foreach (var tag in post.Tags)
              {
