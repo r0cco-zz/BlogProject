@@ -31,41 +31,37 @@ namespace DapperDawgTests
             _cn.Dispose();
         }
 
-        //[Test]
-        //public void AddnewBlogPost_ShouldReturnNewPostId()
-        //{
-        //    BlogPostRepository repo = new BlogPostRepository();
-        //    int expected = 0;
-        //    int newPostId = 0;
+        [Test]
+        public void AddnewBlogPost_ShouldReturnNewPostId()
+        {
+            int expected;
 
-        //    BlogPost newBlogPost = new BlogPost()
-        //    {
-        //        CategoryID = 2,
-        //        CategoryName = "Pet Health",
-        //        PostTitle = "Teeth",
-        //        PostDate = DateTime.Parse("3-12-2015"),
-        //        PostContent = "teeth",
-        //        Author = "Joe Schmoe",
-        //        PostStatus = 0,
-        //        Tags = new List<Tag>
-        //        {
-        //            new Tag {TagID = 1, TagName = "Dogs"}
-        //        }
-                
-        //    };
-        //    SqlCommand cmd = new SqlCommand();
-        //    cmd.CommandText = "select max(PostID) from posts";
-        //    cmd.Connection = _cn;
+            BlogPost newBlogPost = new BlogPost()
+            {
+                CategoryID = 2,
+                CategoryName = "Pet Health",
+                PostTitle = "Teeth",
+                PostDate = DateTime.Parse("3-12-2015"),
+                PostContent = "teeth",
+                Author = "Joe Schmoe",
+                PostStatus = 0,
+                Tags = new List<Tag>
+                {
+                    new Tag {TagID = 1, TagName = "Dogs"}
+                }
 
-        //    expected = int.Parse(cmd.ExecuteScalar().ToString()) + 1;
+            };
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "select max(PostID) from posts";
+            cmd.Connection = _cn;
 
-        //    BlogPostOperations bpo = new BlogPostOperations();
-        //    bpo.AddNewBlogPost(newBlogPost);
+            expected = int.Parse(cmd.ExecuteScalar().ToString()) + 1;
 
-        //    newPostId = int.Parse(cmd.ExecuteScalar().ToString());
+            BlogPostOperations bpo = new BlogPostOperations();
+            bpo.AddNewBlogPost(newBlogPost);
 
-        //    Assert.AreEqual(expected, newPostId);
-        //}
+            Assert.AreEqual(expected, newBlogPost.PostID);
+        }
 
         [Test]
         public void CheckNewTagID()
