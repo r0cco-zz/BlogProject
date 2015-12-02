@@ -12,7 +12,7 @@
             <p>@post.PostDate</p>
             <p>@post.CategoryName</p>
             <p>@post.Author</p>
-            <p>@post.PostContent</p>
+            @Html.Raw(@post.PostContent)
             foreach (var tag in post.Tags)
              {
                  <p>#@tag.TagName</p>
