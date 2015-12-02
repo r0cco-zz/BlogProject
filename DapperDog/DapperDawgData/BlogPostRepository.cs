@@ -53,7 +53,6 @@ namespace DapperDawgData
             var tags = _cn.Query<Tag>("GetAllTagsOnAPostByPostID", p, commandType: CommandType.StoredProcedure).ToList();
 
             return tags;
-
         }
 
         public List<Category> GetAllCategories()
@@ -104,7 +103,11 @@ namespace DapperDawgData
         {
             var p = new DynamicParameters();
             p.Add("TagName", TagName);
+
+            //p.Add("tagId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
             p.Add("TagId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
 
             _cn.Execute("AddNewTag", p, commandType: CommandType.StoredProcedure);
             return p.Get<int>("TagId");

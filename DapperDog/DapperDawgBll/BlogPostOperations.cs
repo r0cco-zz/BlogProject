@@ -47,7 +47,6 @@ namespace DapperDawgBll
         {
             _repo.AddNewBlogPost(newBlogPost);
             //var tagList = _repo.GetAllTags();
-
             //foreach (var tag in newBlogPost.Tags)
             //{
             //    if (tagList.Contains(tag))
@@ -60,6 +59,7 @@ namespace DapperDawgBll
             //        _repo.AddNewPostTag(newBlogPost.PostID, tagId);
             //    }   
             //}
+
         }
     }
 }

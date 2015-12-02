@@ -35,6 +35,8 @@ namespace DapperDawgTests
         public void AddnewBlogPost_ShouldReturnNewPostId()
         {
             int expected;
+      
+        
 
             BlogPost newBlogPost = new BlogPost()
             {
@@ -84,6 +86,7 @@ namespace DapperDawgTests
             expected = int.Parse(cmd.ExecuteScalar().ToString());
             result = repo.GetAllCategories().Count;
             Assert.AreEqual(expected,result);
+
         }
 
         public int RetrieveLastTagId()
@@ -95,5 +98,7 @@ namespace DapperDawgTests
             int id = int.Parse(cmd.ExecuteScalar().ToString());
             return id;
         }
+
+       
     }
 }
