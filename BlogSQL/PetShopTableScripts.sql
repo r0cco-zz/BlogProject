@@ -98,12 +98,15 @@ end
 go
 
 create procedure [dbo].[AddNewTag]( 
-@TagName nvarchar(50)
+@TagName nvarchar(50),
+@TagID int output
 )
 as
 begin
 insert into Tags (TagName)
 values (@TagName)
+
+set @TagID = SCOPE_IDENTITY();
 
 end
 
