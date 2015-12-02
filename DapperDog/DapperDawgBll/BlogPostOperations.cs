@@ -47,22 +47,6 @@ namespace DapperDawgBll
         {
             _repo.AddNewBlogPost(newBlogPost);
             //var tagList = _repo.GetAllTags();
-
-
-            foreach (var tag in newBlogPost.Tags)
-            {
-                if (tagList.Contains(tag))
-                {
-                    _repo.AddNewPostTag(newBlogPost.PostID, tag.TagID);
-                }
-                else
-                {
-                  int tagId =  _repo.AddNewTag(tag.TagName);
-                    _repo.AddNewPostTag(newBlogPost.PostID, tagId);
-                }   
-            }
-
-=======
             //foreach (var tag in newBlogPost.Tags)
             //{
             //    if (tagList.Contains(tag))
@@ -75,7 +59,7 @@ namespace DapperDawgBll
             //        _repo.AddNewPostTag(newBlogPost.PostID, tagId);
             //    }   
             //}
->>>>>>> 53da4775128d4304896822da882907a92601cf67
+
         }
     }
 }
