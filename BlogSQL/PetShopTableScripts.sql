@@ -56,7 +56,7 @@ begin
 	insert into Posts
 	values (1,'SampleTitle1','2015-12-01','<p>Lorem ipsum dolor sit amet smooshy</p><p>Feeder bird seed barky lazy cat wag tail catch bedding</p><p>Food dog house. String fur stripes house train kitty string. Fluffy leash walk nap pet purr dragging run feathers.</p>','Author',1),
 	(2,'SampleTitle2','2015-11-25','<p>Lorem ipsum dolor sit amet cage kibble speak.</p><p>Lick throw pet gate fluffy groom polydactyl</p><p>Kisses. Behavior dragging</p><p>Wag tail drool nap aquatic whiskers grooming run fast fluffy field purr Buddy bed swimming Mittens Buddy bird food throw pet supplies. Pet Supplies shake Snowball aquarium food roll over dragging stripes. Food stripes fur feeder wagging carrier leash. Ball dog house twine wag tail parakeet nest biscuit walk stripes Rover slobbery fish feeder yawn.</p>','Author',1),
-	(3,'SampleTitle3','2015-11-20','<h5>Lorem</h5><p>Ipsum dolor sit amet finch kitten leash vaccination.</p>','Author',1)
+	(3,'SampleTitle3','2015-11-20','<h2>Lorem</h2><p>Ipsum dolor sit amet finch kitten leash vaccination.</p>','Author',1)
 
 	insert into Tags
 	values ('Dogs'),('Cats'),('Ferrets'),('Food'),('Toys'),('Health'),('Fun'),('Knowledge'),('Happy'),('Smiley'),('Turtles'),('Snakes')
