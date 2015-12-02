@@ -35,6 +35,25 @@ namespace DapperDawgBll
                 }
             }
             return posts;
-        } 
+        }
+
+        public void AddNewBlogPost(BlogPost newBlogPost)
+        {
+            _repo.AddNewBlogPost(newBlogPost);
+            var tagList = _repo.GetAllTags();
+
+            foreach (var tag in newBlogPost.Tags)
+            {
+                if (tagList.Contains(tag))
+                {
+                    _repo.AddNewPostTag(newBlogPost.PostID, tag.TagID);
+                }
+                else
+                {
+                  int tagId =  _repo.AddNewTag(tag.TagName);
+                    _repo.AddNewPostTag(newBlogPost.PostID, tagId);
+                }   
+            }
+        }
     }
 }

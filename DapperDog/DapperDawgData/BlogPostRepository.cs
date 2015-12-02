@@ -13,64 +13,88 @@ namespace DapperDawgData
 {
     public class BlogPostRepository
     {
+        private SqlConnection _cn;
+
+        public BlogPostRepository()
+        {
+            _cn = new SqlConnection(Settings.ConnectionString);
+        } 
+
         public List<BlogPost> GetAllBlogPosts()
         {
-            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
-            {
-                var blogPosts = cn.Query<BlogPost>("GetAllPostsOrderedByDate", commandType: CommandType.StoredProcedure).ToList();
+                var blogPosts = _cn.Query<BlogPost>("GetAllPostsOrderedByDate", commandType: CommandType.StoredProcedure).ToList();
 
                 return blogPosts;
             }
-        }
-
+        
         public BlogPost GetBlogPostByID(int id)
         {
-            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
-            {
                 var p = new DynamicParameters();
                 p.Add("postId", id);
 
-                var post = cn.Query<BlogPost>("GetPostByID", p, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                var post = _cn.Query<BlogPost>("GetPostByID", p, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return post;
             }
-        }
-
+        
         public List<Tag> GetAllTags()
         {
-            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
-            {
-                var tags = cn.Query<Tag>("GetAllTags", commandType: CommandType.StoredProcedure).ToList();
+                var tags = _cn.Query<Tag>("GetAllTags", commandType: CommandType.StoredProcedure).ToList();
 
                 return tags;
             }
-        }
-
+        
         public List<Tag> GetTagsByPostID(int id)
         {
-            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
-            {
                 var p = new DynamicParameters();
                 p.Add("postId", id);
 
-                var tags = cn.Query<Tag>("GetAllTagsOnAPostByPostID", p, commandType: CommandType.StoredProcedure).ToList();
+                var tags = _cn.Query<Tag>("GetAllTagsOnAPostByPostID", p, commandType: CommandType.StoredProcedure).ToList();
 
                 return tags;
             }
-        }
-
+        
         public string GetCategoryByPostID(int id)
         {
-            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
-            {
                 var p = new DynamicParameters();
                 p.Add("postId", id);
 
                 var catname =
-                    cn.Query<string>("GetCategoryByPostID", p, commandType: CommandType.StoredProcedure)
+                    _cn.Query<string>("GetCategoryByPostID", p, commandType: CommandType.StoredProcedure)
                         .FirstOrDefault();
 
                 return catname;
             }
-        }   
+        
+        public void AddNewBlogPost(BlogPost newBlogPost)
+        {
+            var p = new DynamicParameters();
+            p.Add("categoryID", newBlogPost.CategoryID);
+            p.Add("PostTitle", newBlogPost.PostTitle);
+            p.Add("PostDate", newBlogPost.PostDate);
+            p.Add("PostContent", newBlogPost.PostContent);
+            p.Add("Author", newBlogPost.Author);
+            p.Add("PostStatus", newBlogPost.PostStatus);
+
+            _cn.Execute("AddNewPost", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public void AddNewPostTag(int PostId, int TagId)
+        {
+            var p = new DynamicParameters();
+            p.Add("PostId", PostId);
+            p.Add("TagId", TagId);
+
+            _cn.Execute("AddNewPostsTags", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public int AddNewTag(string TagName)
+        {
+            var p = new DynamicParameters();
+            p.Add("TagName", TagName);
+            p.Add("tagId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            _cn.Execute("AddNewTag", p, commandType: CommandType.StoredProcedure);
+            return p.Get<int>("TagId");
+            }
     }
 }

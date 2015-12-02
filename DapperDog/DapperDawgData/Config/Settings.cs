@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DapperDawgData.Config
 {
-    class Settings
+    public class Settings
     {
         private static string _connectionString;
 
