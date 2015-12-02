@@ -44,20 +44,23 @@ namespace DapperDawgBll
 
         public void AddNewBlogPost(BlogPost newBlogPost)
         {
-            _repo.AddNewBlogPost(newBlogPost);
+            var postId = _repo.AddNewBlogPost(newBlogPost);
             var tagList = _repo.GetAllTags();
 
             foreach (var tag in newBlogPost.Tags)
             {
-                if (tagList.Contains(tag))
+                foreach (var tag2 in tagList)
                 {
-                    _repo.AddNewPostTag(newBlogPost.PostID, tag.TagID);
+                    if (tag2.TagName == tag.TagName)
+                    {
+                        // Tag already exists, needs to be added to cross table
+                        _repo.AddNewPostTag(tag2.TagID, postId);
+                        break;
+                    }
                 }
-                else
-                {
-                  int tagId =  _repo.AddNewTag(tag.TagName);
-                    _repo.AddNewPostTag(newBlogPost.PostID, tagId);
-                }   
+                // Tag does not exist, needs to be added to tag table, then cross table
+                var tagId = _repo.AddNewTag(tag.TagName);
+                _repo.AddNewPostTag(tagId, newBlogPost.PostID);
             }
         }
     }

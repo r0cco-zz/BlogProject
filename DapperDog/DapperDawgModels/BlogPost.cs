@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace DapperDawgModels
 {
@@ -13,6 +14,7 @@ namespace DapperDawgModels
         public string CategoryName { get; set; }
         public string PostTitle { get; set; }
         public DateTime PostDate { get; set; }
+        [AllowHtml]
         public string PostContent { get; set; }
         public string Author { get; set; }
         public int PostStatus { get; set; }

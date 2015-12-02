@@ -91,20 +91,20 @@ create procedure [dbo].[AddNewPost](
 begin
 	insert into Posts (CategoryID, PostTitle, PostDate, PostContent, Author, PostStatus)
 	values (@CategoryID, @PostTitle, @PostDate, @PostContent, @Author, @PostStatus)
-
-	set @PostID = SCOPE_IDENTITY();
+set @PostID = SCOPE_IDENTITY()
 end
 
 go
 
 create procedure [dbo].[AddNewTag]( 
-@TagName nvarchar(50)
+@TagName nvarchar(50),
+@TagID int output
 )
 as
 begin
 insert into Tags (TagName)
 values (@TagName)
-
+set @TagID = SCOPE_IDENTITY()
 end
 
 go

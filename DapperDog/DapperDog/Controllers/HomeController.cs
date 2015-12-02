@@ -28,8 +28,11 @@ namespace DapperDog.Controllers
         public ActionResult PostToRepo(BlogPost blogPost)
         {
             var ops = new BlogPostOperations();
+            blogPost.PostDate = DateTime.Now;
+            blogPost.Author = "Author";
+            blogPost.PostStatus = 1;
             ops.AddNewBlogPost(blogPost);
-            var tags = Request.Form("TagsToAdd");
+            //var tags = Request.Form("TagsToAdd");
 
             return RedirectToAction("Index");
         }
