@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogPostOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DapperDawgData\DapperDawgData.csproj">
+      <Project>{970b86cf-c679-49ee-8be1-73ebc8a66d73}</Project>
+      <Name>DapperDawgData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DapperDawgModels\DapperDawgModels.csproj">
+      <Project>{0fefc0e0-5ece-468f-a765-b8a075cdd612}</Project>
+      <Name>DapperDawgModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

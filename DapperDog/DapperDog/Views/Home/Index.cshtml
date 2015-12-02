@@ -1,6 +1,25 @@
-﻿@{
+﻿@model List<DapperDawgModels.BlogPost>
+
+@{
     ViewBag.Title = "Home Page";
 }
+
+<div class="row">
+    <div class="form-group">
+        @foreach (var post in Model)
+        {
+            <h2>@post.PostTitle</h2>
+            <p>@post.PostDate</p>
+            <p>@post.CategoryID</p>
+            <p>@post.Author</p>
+            <p>@post.PostContent</p>
+            foreach (var tag in post.Tags)
+             {
+                 <p>#@tag.TagName</p>
+             }
+        }
+    </div>
+</div>
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>

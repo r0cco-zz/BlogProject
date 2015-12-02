@@ -423,6 +423,16 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DapperDawgBll\DapperDawgBll.csproj">
+      <Project>{dec4a333-1707-4bd4-8963-3cbe316ddb64}</Project>
+      <Name>DapperDawgBll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DapperDawgModels\DapperDawgModels.csproj">
+      <Project>{0fefc0e0-5ece-468f-a765-b8a075cdd612}</Project>
+      <Name>DapperDawgModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -441,7 +451,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55746</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55746/</IISUrl>
+          <IISUrl>http://localhost:5676/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
