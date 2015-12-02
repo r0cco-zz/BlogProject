@@ -227,7 +227,7 @@ begin
 select t.TagID, t.TagName
 from Tags t
 	inner join PostsTags pt on t.TagID = pt.TagID
-where pt.PostID = 2
+where pt.PostID = @postId
 end
 
 go

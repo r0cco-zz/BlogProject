@@ -58,6 +58,14 @@ namespace DapperDawgData
             }
         }
 
+        public List<Category> GetAllCategories()
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                return cn.Query<Category>("SELECT c.CategoryID, c.CategoryName FROM Categories c").ToList();
+            }
+        } 
+
         public string GetCategoryByPostID(int id)
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
