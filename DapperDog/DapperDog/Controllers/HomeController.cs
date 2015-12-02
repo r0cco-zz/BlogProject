@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DapperDawgBll;
+using DapperDawgModels;
 using DapperDog.Models;
 
 namespace DapperDog.Controllers
@@ -22,6 +23,15 @@ namespace DapperDog.Controllers
             var ops = new BlogPostOperations();
             var vm = new AddBlogPostViewModel(ops.GetAllCategories());
             return View(vm);
+        }
+
+        public ActionResult PostToRepo(BlogPost blogPost)
+        {
+            var ops = new BlogPostOperations();
+            ops.AddNewBlogPost(blogPost);
+            var tags = Request.Form("TagsToAdd");
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()

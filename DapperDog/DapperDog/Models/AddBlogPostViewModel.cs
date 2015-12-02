@@ -17,10 +17,12 @@ namespace DapperDog.Models
 
             foreach (var category in categoryList)
             {
-                var selectcategory = new SelectListItem();
+                var selectcategory = new SelectListItem
+                {
+                    Text = category.CategoryName,
+                    Value = category.CategoryID.ToString()
+                };
 
-                selectcategory.Text = category.CategoryName;
-                selectcategory.Value = category.CategoryID.ToString();
 
                 Categories.Add(selectcategory);
             }

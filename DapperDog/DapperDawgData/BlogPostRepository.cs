@@ -18,42 +18,42 @@ namespace DapperDawgData
         public BlogPostRepository()
         {
             _cn = new SqlConnection(Settings.ConnectionString);
-        } 
+        }
 
         public List<BlogPost> GetAllBlogPosts()
         {
-                var blogPosts = _cn.Query<BlogPost>("GetAllPostsOrderedByDate", commandType: CommandType.StoredProcedure).ToList();
+            var blogPosts =
+                _cn.Query<BlogPost>("GetAllPostsOrderedByDate", commandType: CommandType.StoredProcedure).ToList();
 
-                return blogPosts;
-            }
-        
+            return blogPosts;
+        }
+
         public BlogPost GetBlogPostByID(int id)
         {
-                var p = new DynamicParameters();
-                p.Add("postId", id);
+            var p = new DynamicParameters();
+            p.Add("postId", id);
 
-                var post = _cn.Query<BlogPost>("GetPostByID", p, commandType: CommandType.StoredProcedure).FirstOrDefault();
-                return post;
-            }
-        
+            var post = _cn.Query<BlogPost>("GetPostByID", p, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            return post;
+        }
+
         public List<Tag> GetAllTags()
         {
-                var tags = _cn.Query<Tag>("GetAllTags", commandType: CommandType.StoredProcedure).ToList();
+            var tags = _cn.Query<Tag>("GetAllTags", commandType: CommandType.StoredProcedure).ToList();
 
-                return tags;
-            }
-        
+            return tags;
+        }
+
         public List<Tag> GetTagsByPostID(int id)
         {
-                var p = new DynamicParameters();
-                p.Add("postId", id);
+            var p = new DynamicParameters();
+            p.Add("postId", id);
 
-                var tags = _cn.Query<Tag>("GetAllTagsOnAPostByPostID", p, commandType: CommandType.StoredProcedure).ToList();
+            var tags = _cn.Query<Tag>("GetAllTagsOnAPostByPostID", p, commandType: CommandType.StoredProcedure).ToList();
 
-                return tags;
-            }
-<<<<<<< HEAD
+            return tags;
         }
+
 
         public List<Category> GetAllCategories()
         {
@@ -61,23 +61,20 @@ namespace DapperDawgData
             {
                 return cn.Query<Category>("SELECT c.CategoryID, c.CategoryName FROM Categories c").ToList();
             }
-        } 
+        }
 
-=======
-        
->>>>>>> b2eb7013662190b01ca7de8123e95cfb2ff3cadd
         public string GetCategoryByPostID(int id)
         {
-                var p = new DynamicParameters();
-                p.Add("postId", id);
+            var p = new DynamicParameters();
+            p.Add("postId", id);
 
-                var catname =
-                    _cn.Query<string>("GetCategoryByPostID", p, commandType: CommandType.StoredProcedure)
-                        .FirstOrDefault();
+            var catname =
+                _cn.Query<string>("GetCategoryByPostID", p, commandType: CommandType.StoredProcedure)
+                    .FirstOrDefault();
 
-                return catname;
-            }
-        
+            return catname;
+        }
+
         public void AddNewBlogPost(BlogPost newBlogPost)
         {
             var p = new DynamicParameters();
@@ -108,6 +105,6 @@ namespace DapperDawgData
 
             _cn.Execute("AddNewTag", p, commandType: CommandType.StoredProcedure);
             return p.Get<int>("TagId");
-            }
+        }
     }
 }

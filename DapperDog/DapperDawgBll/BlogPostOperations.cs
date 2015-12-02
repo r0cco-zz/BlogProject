@@ -37,11 +37,11 @@ namespace DapperDawgBll
             return posts;
         }
 
-<<<<<<< HEAD
         public List<Category> GetAllCategories()
         {
             return _repo.GetAllCategories();
-=======
+        }
+
         public void AddNewBlogPost(BlogPost newBlogPost)
         {
             _repo.AddNewBlogPost(newBlogPost);
@@ -59,7 +59,6 @@ namespace DapperDawgBll
                     _repo.AddNewPostTag(newBlogPost.PostID, tagId);
                 }   
             }
->>>>>>> b2eb7013662190b01ca7de8123e95cfb2ff3cadd
         }
     }
 }
