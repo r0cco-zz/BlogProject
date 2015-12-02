@@ -31,7 +31,6 @@ namespace DapperDawgTests
             _cn.Dispose();
         }
 
-<<<<<<< HEAD
         [Test]
         public void AddnewBlogPostWithNewTag_ShouldReturnNewTagId()
         {
@@ -60,7 +59,8 @@ namespace DapperDawgTests
 
             //newTagId = RetrieveLastTagId();
             Assert.AreEqual(1, 1);
-=======
+        }
+
         //[Test]
         //public void AddnewBlogPost_ShouldReturnNewPostId()
         //{
@@ -118,7 +118,7 @@ namespace DapperDawgTests
             expected = int.Parse(cmd.ExecuteScalar().ToString());
             result = repo.GetAllCategories().Count;
             Assert.AreEqual(expected,result);
->>>>>>> 53da4775128d4304896822da882907a92601cf67
+
         }
 
         public int RetrieveLastTagId()

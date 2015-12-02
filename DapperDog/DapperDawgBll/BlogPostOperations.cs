@@ -48,7 +48,7 @@ namespace DapperDawgBll
             _repo.AddNewBlogPost(newBlogPost);
             //var tagList = _repo.GetAllTags();
 
-<<<<<<< HEAD
+
             foreach (var tag in newBlogPost.Tags)
             {
                 if (tagList.Contains(tag))
