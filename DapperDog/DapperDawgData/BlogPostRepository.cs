@@ -122,7 +122,7 @@ namespace DapperDawgData
         public int AddNewTag(string TagName)
         {
             var p = new DynamicParameters();
-            p.Add("TagName", TagName);
+            p.Add("TagName", TagName.ToLower());
             p.Add("TagId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             _cn.Execute("AddNewTag", p, commandType: CommandType.StoredProcedure);

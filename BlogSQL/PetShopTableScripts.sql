@@ -59,7 +59,7 @@ begin
 	(3,'SampleTitle3','2015-11-20','<h2>Lorem</h2><p>Ipsum dolor sit amet finch kitten leash vaccination.</p>','Author',1)
 
 	insert into Tags
-	values ('Dogs'),('Cats'),('Ferrets'),('Food'),('Toys'),('Health'),('Fun'),('Knowledge'),('Happy'),('Smiley'),('Turtles'),('Snakes')
+	values ('dogs'),('cats'),('ferrets'),('food'),('toys'),('health'),('fun'),('knowledge'),('happy'),('smiley'),('turtles'),('snakes')
 
 	insert into StaticPages
 	values ('Title1','<p>Lorem ipsum dolor sit amet fleas purr pet food water dog mouse. Meow groom run purr speak collar throw dog swimming smooshy puppy carrier commands bark chirp carrier roll over chirp lick smooshy.</p>'),

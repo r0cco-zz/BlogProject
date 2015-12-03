@@ -1,3 +1,6 @@
 ﻿$(document).ready(function() {
-    $("#myTags").tagit();
+    $("#myTags").tagit({
+        allowSpaces: true,
+        caseSensitive: false
+    });
 });
