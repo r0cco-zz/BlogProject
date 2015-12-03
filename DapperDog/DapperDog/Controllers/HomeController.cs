@@ -20,7 +20,6 @@ namespace DapperDog.Controllers
         }
 
         [Authorize(Roles="Admin")]
-        [Authorize(Roles = "PR")]
         public ActionResult AddBlogPost()
         {
             var ops = new BlogPostOperations();
