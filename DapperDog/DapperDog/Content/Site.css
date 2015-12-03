@@ -22,3 +22,22 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.column1, .column2 {
+    width: 300px;
+    float: left;
+    margin: 10px;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top {
+    background-color: #000099;
+}
+
+.categories {
+    padding: 10px;
+}
+
+.main h3 {
+    text-align: center;
+    padding: 10px;
+}

@@ -1,24 +1,42 @@
-﻿@model List<DapperDawgModels.BlogPost>
+﻿@using System.Drawing.Drawing2D
+@model List<DapperDawgModels.BlogPost>
 
 @{
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
-    <div class="form-group">
-        @foreach (var post in Model)
-        {
-            <h2>@post.PostTitle</h2>
-            <p>@post.PostDate.ToShortDateString()</p>
-            <p>@post.CategoryName</p>
-            <p>@post.Author</p>
+<div class="container-fluid bg-1 text-center">
+    <h2>Dapper Dawg</h2>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="column1">
+                <div class="form-group">
+                    @foreach (var post in Model)
+                    {
+                        <h2>@post.PostTitle</h2>
+                        <p>@post.PostDate.ToShortDateString()</p>
+                        <p>@post.CategoryName</p>
+                        <p>@post.Author</p>
 
-            @Html.Raw(post.PostContent)
-            foreach (var tag in post.Tags)
-             {
-                 <p>#@tag.TagName</p>
-             }
-        }
+                        @Html.Raw(post.PostContent)
+                        foreach (var tag in post.Tags)
+                        {
+                            <p>#@tag.TagName</p>
+                        }
+                    }
+                </div>
+                </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="column3">
+                <div class="categories">
+                    @Html.ActionLink("Pet Health", "Index", "Home", null, new {style="font-size: 2.2em"})
+                </div>
+
+            </div>
+
+        </div>
     </div>
 </div>
 
