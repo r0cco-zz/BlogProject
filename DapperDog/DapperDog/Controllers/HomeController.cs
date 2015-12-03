@@ -14,13 +14,26 @@ namespace DapperDog.Controllers
     {
         public ActionResult Index()
         {
+            var vm = new HomeIndexViewModel();
             var ops = new BlogPostOperations();
-            var posts = ops.GetBlogPosts();
-            return View(posts);
+            vm.BlogPosts = ops.GetBlogPosts();
+            vm.Categories = ops.GetAllCategories();
+
+            return View(vm);
         }
 
-        [Authorize(Roles="Admin")]
-        [Authorize(Roles = "PR")]
+        public ActionResult ListPostsByCategory(int id)
+        {
+            var ops = new BlogPostOperations();
+            var vm = new HomeIndexViewModel();
+            vm.BlogPosts = ops.GetPostsByCategoryID(id);
+            vm.Categories = ops.GetAllCategories();
+
+            return View("Index", vm);
+        }
+
+        [Authorize(Roles="Admin, PR")]
+        //[Authorize(Roles = "PR")]
         public ActionResult AddBlogPost()
         {
             var ops = new BlogPostOperations();
@@ -28,6 +41,7 @@ namespace DapperDog.Controllers
             return View(vm);  // There is no input for an author. Should we include as an input or use user table?
         }
 
+        [HttpPost]
         public ActionResult PostToRepo(BlogPost blogPost)
         {
             var ops = new BlogPostOperations();
