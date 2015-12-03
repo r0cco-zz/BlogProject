@@ -29,15 +29,54 @@ textarea {
     margin: 10px;
 }
 
+.column1 {
+    width: 500px;
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 5px;
+    margin-left: 20%;
+    column-count: 3;
+    column-span: all;
+   
+}
 .navbar.navbar-inverse.navbar-fixed-top {
     background-color: #000099;
 }
 
 .categories {
     padding: 10px;
+    font-size: 2.0em;
 }
 
 .main h3 {
     text-align: center;
     padding: 10px;
+}
+
+.dropdown {
+    padding: 10px;
+}
+
+.inputboxes {
+    padding: 10px;
+}
+
+.line {
+    font-weight: bold;
+    padding:50px;
+    text-align: center;
+}
+
+#category {
+    padding: 10px;
+}
+
+.tags {
+    font-style: italic;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.blogtitle {
+    text-align: center;
 }
