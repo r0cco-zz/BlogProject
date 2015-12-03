@@ -19,7 +19,7 @@
                         <p>@post.Author</p>
 
                         @Html.Raw(post.PostContent)
-                        foreach (var tag in post.Tags)
+                        foreach (var tag in post.BlogTags)
                         {
                             <p>#@tag.TagName</p>
                         }

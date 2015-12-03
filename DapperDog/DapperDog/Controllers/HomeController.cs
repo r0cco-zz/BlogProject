@@ -23,17 +23,14 @@ namespace DapperDog.Controllers
         {
             var ops = new BlogPostOperations();
             var vm = new AddBlogPostViewModel(ops.GetAllCategories());
-            return View(vm);
+            return View(vm);  // There is no input for an author. Should we include as an input or us user table?
         }
 
         public ActionResult PostToRepo(BlogPost blogPost)
         {
             var ops = new BlogPostOperations();
-            blogPost.PostDate = DateTime.Now;
-            blogPost.Author = "Author";
-            blogPost.PostStatus = 1;
-            ops.AddNewBlogPost(blogPost);
-            //var tags = Request.Form("myTags li");
+
+            ops.AddNewBlogPost(blogPost);  
 
             return RedirectToAction("Index");
         }

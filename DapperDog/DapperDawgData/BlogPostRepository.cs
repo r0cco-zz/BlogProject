@@ -90,13 +90,13 @@ namespace DapperDawgData
             return p.Get<int>("PostID");
         }
 
-        public void AddNewPostTag(int PostId, int TagId)
+        public void AddNewPostTag(int TagId, int PostId)
         {
             var p = new DynamicParameters();
-            p.Add("PostId", PostId);
             p.Add("TagId", TagId);
+            p.Add("PostId", PostId);
 
-            _cn.Execute("AddNewPostsTags", p, commandType: CommandType.StoredProcedure);
+            _cn.Execute("AddNewPostTags", p, commandType: CommandType.StoredProcedure);
         }
 
         public int AddNewTag(string TagName)

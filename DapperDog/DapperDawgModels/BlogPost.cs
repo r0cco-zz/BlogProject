@@ -18,6 +18,7 @@ namespace DapperDawgModels
         public string PostContent { get; set; }
         public string Author { get; set; }
         public int PostStatus { get; set; }
-        public List<Tag> Tags { get; set; } 
+        public List<Tag> BlogTags { get; set; }
+        public List<string> tags { get; set; } 
     }
 }
