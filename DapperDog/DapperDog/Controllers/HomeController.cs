@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using DapperDawgBll;
 using DapperDawgModels;
 using DapperDog.Models;
@@ -18,7 +19,8 @@ namespace DapperDog.Controllers
             return View(posts);
         }
 
-        [Authorize(Roles="Admin, PR")]
+        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "PR")]
         public ActionResult AddBlogPost()
         {
             var ops = new BlogPostOperations();

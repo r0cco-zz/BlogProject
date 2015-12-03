@@ -29,6 +29,26 @@ namespace DapperDawgData
             return blogPosts;
         }
 
+        public List<BlogPost> GetBlogPostsByTag(int tagID)
+        {
+            var p = new DynamicParameters();
+            p.Add("tagId", tagID);
+            var blogPosts =
+                _cn.Query<BlogPost>("GetPostsByTag", p, commandType: CommandType.StoredProcedure).ToList();
+
+            return blogPosts;
+        }
+
+        public List<BlogPost> GetBlogPostsByCategory(int categoryID)
+        {
+            var p = new DynamicParameters();
+            p.Add("categoryID", categoryID);
+            var blogPosts =
+                _cn.Query<BlogPost>("GetPostsByCategory", p, commandType: CommandType.StoredProcedure).ToList();
+
+            return blogPosts;
+        }
+
         public BlogPost GetBlogPostByID(int id)
         {
             var p = new DynamicParameters();
@@ -108,5 +128,7 @@ namespace DapperDawgData
             _cn.Execute("AddNewTag", p, commandType: CommandType.StoredProcedure);
             return p.Get<int>("TagId");
         }
+
+
     }
 }
