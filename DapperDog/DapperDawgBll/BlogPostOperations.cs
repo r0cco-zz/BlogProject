@@ -66,7 +66,7 @@ namespace DapperDawgBll
                 // Check bool to see if tag exists
                 if (tagExists)
                 {
-                    // Tag exists on table, only need to add it to PostTags tot tie it to a post
+                    // Tag exists on table, only need to add it to PostTags to tie it to a post
                     _repo.AddNewPostTag(tagId, postId);
                 }
                 else
@@ -77,5 +77,26 @@ namespace DapperDawgBll
                 }
             }
         }
+
+        public List<BlogPost> GetPostsByCategoryID(int id)
+        {
+            var posts = _repo.GetBlogPostsByCategory(id);
+
+            foreach (var post in posts)
+            {
+                post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
+                post.BlogTags = new List<Tag>();
+                var tagList = _repo.GetTagsByPostID(post.PostID);
+                if (tagList != null)
+                {
+                    foreach (var tag in tagList)
+                    {
+                        post.BlogTags.Add(tag);
+                    }
+                }
+            }
+
+            return posts;
+        } 
     }
 }
