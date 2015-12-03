@@ -66,7 +66,7 @@ namespace DapperDawgBll
                 // Check bool to see if tag exists
                 if (tagExists)
                 {
-                    // Tag exists on table, only need to add it to PostTags tot tie it to a post
+                    // Tag exists on table, only need to add it to PostTags to tie it to a post
                     _repo.AddNewPostTag(tagId, postId);
                 }
                 else
