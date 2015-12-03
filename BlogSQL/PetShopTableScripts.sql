@@ -164,11 +164,11 @@ end
 
 go
 
-create procedure [dbo].[addnewpoststags] (@tagid int, @postsid int)
+create procedure [dbo].[AddNewPostTags] (@TagId int, @PostId int)
 as
 begin
 insert into PostsTags (PostID, TagID)
-values (@postsid, @tagid)
+values (@postid, @tagid)
 end
 
 go

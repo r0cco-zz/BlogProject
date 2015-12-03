@@ -4,6 +4,8 @@
     ViewBag.Title = "Home Page";
 }
 
+@Html.ActionLink("Add Blog Post", "AddBlogPost", "Home")
+
 <div class="row">
     <div class="form-group">
         @foreach (var post in Model)
@@ -14,7 +16,7 @@
             <p>@post.Author</p>
 
             @Html.Raw(post.PostContent)
-            foreach (var tag in post.Tags)
+            foreach (var tag in post.BlogTags)
              {
                  <p>#@tag.TagName</p>
              }

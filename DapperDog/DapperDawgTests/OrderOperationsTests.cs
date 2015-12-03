@@ -47,7 +47,7 @@ namespace DapperDawgTests
                 PostContent = "teeth",
                 Author = "Joe Schmoe",
                 PostStatus = 0,
-                Tags = new List<Tag>
+                BlogTags = new List<Tag>
                 {
                     new Tag {TagID = 1, TagName = "Dogs"}
                 }
