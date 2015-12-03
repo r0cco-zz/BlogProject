@@ -14,8 +14,9 @@
                     @foreach (var post in Model)
                     {
                         <h2>@post.PostTitle</h2>
-                        <p>@post.PostDate.ToShortDateString()</p>
-                        <p>@post.CategoryName</p>
+                        
+                            <p>@post.PostDate.ToShortDateString()</p>
+                            <p>@post.CategoryName</p>
                         <p>@post.Author</p>
 
                         @Html.Raw(post.PostContent)
