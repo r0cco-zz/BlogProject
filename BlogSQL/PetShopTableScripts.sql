@@ -21,7 +21,7 @@ create table Posts (
 	CategoryID int foreign key references Categories (CategoryID) not null,
 	PostTitle nvarchar(100),
 	PostDate date,
-	PostContent nvarchar(2000),
+	PostContent text,
 	Author nvarchar(50),
 	PostStatus int
 )
@@ -38,7 +38,7 @@ go
 create table StaticPages (
 	StaticPageID int identity (1, 1) primary key not null,
 	StaticPageTitle nvarchar(50),
-	StaticPageContent nvarchar(max)
+	StaticPageContent text
 )
 go
 
@@ -55,15 +55,16 @@ begin
 
 	insert into Posts
 	values
-	(5,'Blog Post Title','2015-12-03','<p>Lorem ipsum dolor sit amet paws drool play slobber bird food. Window kisses purr kitty wag tail stick window catch water birds play dead feathers running chow field fur aquarium feathers. Feathers pet gate scratcher furry kitten food cockatiel cage vaccination ball tooth toys Mittens walk run fast pet supplies bird food finch throw.</p> <p>Cat picture!!</p> <p><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/139.jpg" alt="" /></p>','George Washington',1), 
-	(3,'A Title Will Go Here','2015-12-02','<p>Lorem ipsum dolor sit amet tuxedo fluffy. Aquarium meow <strong>pet supplies vitamins</strong> bird seed feeder. Chew park lazy cat run fast stay strin<em>g chew vitamins toy turtle slo</em>bber cat park left paw pet <strong>supplies ferret nest w</strong>indow. <em>Maine Coon Cat lazy cat licks bark leash pet food dog house mouse speak hamster wagging aquarium</em> kitty throw kitten dragging Scooby snacks pet supplies.</p> <ul> <li>Feeder Snowball cage kibble crate</li> <li>cage fetch Mittens pet food kitty. Crate</li> <li>fleas bird food cat grooming crate lazy cat</li> <li>string biscuit toy meow ferret roll over Mittens string play dead</li> <li>canary lazy dog parakeet. Teeth groom roll over park kitten litter dragging speak groom bedding tongue.</li> </ul> <p>Cat picture incoming!!</p> <p><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/287.jpg" alt="" /></p> <p>Some more text</p>','Benjamin Franklin',1),
-	(1,'SampleTitle1','2015-12-01','<p>Lorem ipsum dolor sit amet smooshy</p><p>Feeder bird seed barky lazy cat wag tail catch bedding</p><p>Food dog house. String fur stripes house train kitty string. Fluffy leash walk nap pet purr dragging run feathers.</p>','Author',1),
-	(2,'SampleTitle2','2015-11-25','<p>Lorem ipsum dolor sit amet cage kibble speak.</p><p>Lick throw pet gate fluffy groom polydactyl</p><p>Kisses. Behavior dragging</p><p>Wag tail drool nap aquatic whiskers grooming run fast fluffy field purr Buddy bed swimming Mittens Buddy bird food throw pet supplies. Pet Supplies shake Snowball aquarium food roll over dragging stripes. Food stripes fur feeder wagging carrier leash. Ball dog house twine wag tail parakeet nest biscuit walk stripes Rover slobbery fish feeder yawn.</p>','Author',1),
-	(2,'Another Title','2015-11-24','<p>Lorem ipsum dolor sit amet mouse parrot id tag walk hamster bird food house train swimming ball bed tabby lazy dog tigger. Tigger yawn roll over Rover play head chew yawn cage running.</p> <p>Here is a picture of a kitten:</p> <p><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg" alt="" /></p>','Author',1),
-	(3,'SampleTitle3','2015-11-20','<h2>Lorem</h2><p>Ipsum dolor sit amet finch kitten leash vaccination.</p>','Author',1),
+	(2,'Yet another Blog Post Title','2015-11-01','<p>Lorem ipsum dolor sit amet paws drool play slobber bird food. Window kisses purr kitty wag tail stick window catch water birds play dead feathers running chow field fur aquarium feathers. Feathers pet gate scratcher furry kitten food cockatiel cage vaccination ball tooth toys Mittens walk run fast pet supplies bird food finch throw.</p> <p>Cat picture!!</p> <p><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/139.jpg" alt="" /></p>','Nikola Tesla',1),
 	(4,'SampleTitle4','2015-11-14','<p>Lorem ipsum dolor sit amet window leash polydactyl groom walk dog running turtle dog house walk bed. Nap heel chow park polydactyl meow lazy dog litter box fish. Slobber Tigger Fido harness house train window furry harness catch dog left paw fetch twine lazy cat walk Scooby snacks critters. Parrot right paw Spike sit field canary litter harness chew Tigger slobbery dog house food. Fido ball Scooby snacks foot good boy field Spike polydactyl roll over bed dragging cage ferret Scooby snacks play wag tail. Puppy gimme five litter field sit stick toy Scooby snacks commands.</p> <p>Toy pet food foot bird seed field drool chirp house train treats commands. Hamster Tigger cat stay dog house tooth carrier nest aquarium park nap stripes park string running pet Rover good boy. Hamster play groom pet catch Rover wag tail toy bird food. Aquatic left paw dinnertime vaccine brush cat furry whiskers brush walk wet nose gimme five run. Cage Tigger harness pet polydactyl fur bird behavior stay ferret left paw cage birds feathers brush paws roll over. Parrot roll over parakeet Spike meow brush ID tag bed lazy cat. Litter twine kisses purr cat vaccine pet cage tail furry harness house train dog.</p>','Author',1),
-	(2,'Yet another Blog Post Title','2015-11-01','<p>Lorem ipsum dolor sit amet paws drool play slobber bird food. Window kisses purr kitty wag tail stick window catch water birds play dead feathers running chow field fur aquarium feathers. Feathers pet gate scratcher furry kitten food cockatiel cage vaccination ball tooth toys Mittens walk run fast pet supplies bird food finch throw.</p> <p>Cat picture!!</p> <p><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/139.jpg" alt="" /></p>','Nikola Tesla',1)
-
+	(3,'SampleTitle3','2015-11-20','<h2>Lorem</h2><p>Ipsum dolor sit amet finch kitten leash vaccination.</p>','Author',1),
+	(2,'Another Title','2015-11-24','<p>Lorem ipsum dolor sit amet mouse parrot id tag walk hamster bird food house train swimming ball bed tabby lazy dog tigger. Tigger yawn roll over Rover play head chew yawn cage running.</p> <p>Here is a picture of a kitten:</p> <p><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg" alt="" /></p>','Author',1),
+	(2,'SampleTitle2','2015-11-25','<p>Lorem ipsum dolor sit amet cage kibble speak.</p><p>Lick throw pet gate fluffy groom polydactyl</p><p>Kisses. Behavior dragging</p><p>Wag tail drool nap aquatic whiskers grooming run fast fluffy field purr Buddy bed swimming Mittens Buddy bird food throw pet supplies. Pet Supplies shake Snowball aquarium food roll over dragging stripes. Food stripes fur feeder wagging carrier leash. Ball dog house twine wag tail parakeet nest biscuit walk stripes Rover slobbery fish feeder yawn.</p>','Author',1),
+	(1,'SampleTitle1','2015-12-01','<p>Lorem ipsum dolor sit amet smooshy</p><p>Feeder bird seed barky lazy cat wag tail catch bedding</p><p>Food dog house. String fur stripes house train kitty string. Fluffy leash walk nap pet purr dragging run feathers.</p>','Author',1),
+	(3,'A Title Will Go Here','2015-12-02','<p>Lorem ipsum dolor sit amet tuxedo fluffy. Aquarium meow <strong>pet supplies vitamins</strong> bird seed feeder. Chew park lazy cat run fast stay strin<em>g chew vitamins toy turtle slo</em>bber cat park left paw pet <strong>supplies ferret nest w</strong>indow. <em>Maine Coon Cat lazy cat licks bark leash pet food dog house mouse speak hamster wagging aquarium</em> kitty throw kitten dragging Scooby snacks pet supplies.</p> <ul> <li>Feeder Snowball cage kibble crate</li> <li>cage fetch Mittens pet food kitty. Crate</li> <li>fleas bird food cat grooming crate lazy cat</li> <li>string biscuit toy meow ferret roll over Mittens string play dead</li> <li>canary lazy dog parakeet. Teeth groom roll over park kitten litter dragging speak groom bedding tongue.</li> </ul> <p>Cat picture incoming!!</p> <p><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/287.jpg" alt="" /></p> <p>Some more text</p>','Benjamin Franklin',1),
+	(5,'Blog Post Title','2015-12-03','<p>Lorem ipsum dolor sit amet paws drool play slobber bird food. Window kisses purr kitty wag tail stick window catch water birds play dead feathers running chow field fur aquarium feathers. Feathers pet gate scratcher furry kitten food cockatiel cage vaccination ball tooth toys Mittens walk run fast pet supplies bird food finch throw.</p> <p>Cat picture!!</p> <p><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/139.jpg" alt="" /></p>','George Washington',1), 	
+	(4,'Title to a Blog Post','2015-12-04','<p>Lorem ipsum dolor sit amet id tag run leash hamster kitten drool fido finch wet nose right paw kibble parrot. Tongue small animals window dog house kisses wet nose bird seed whiskers purr parrot run fast head kitten fur head bird food collar shake. Fish furry cat pet warm pet gate hamster run fast fish food fetch teeth fur Fido fleas chow foot running collar. String kitten Spike licks ball crate barky drool teeth cage fetch bird seed water food tail meow walk tuxedo. Feathers walk mouse litter box throw lick good boy lazy cat feathers small animals brush tongue Fido. Tigger barky canary chow behavior nap turtle lick aquatic kitten meow bird food polydactyl food harness chow. Shake Rover meow window lazy cat kisses Fido left paw lol catz. Chow biscuit lick toys bird seed pet supplies tuxedo running. Left Paw tongue pet kitty fluffy puppy running play dead hamster toys fleas lazy cat chirp twine finch.</p> <p style="text-align: center;"><img src="https://pbs.twimg.com/profile_images/2958684193/a96fd97460f8e9cef36c37e42504320f.jpeg" alt="" /></p> <p>Speak polydactyl behavior fluffy parakeet dog. Run canary wagging water dog foot toys fetch litter box vaccination. Kitten foot house train window dinnertime catch string cockatiel kitty polydactyl turtle bedding Spike maine coon cat wag tail play dead dog house. Food foot Tigger bark food lick Tigger tongue pet food nap good boy toys aquarium wag tail. Tongue polydactyl throw shake toys aquatic wag tail cage dog house Mittens dinnertime bark scratch small animals tail kisses. Bird Seed toy cockatiel vitamins chew tooth bed shake run play dead harness chew vaccine parrot slobbery.</p> <p>Carrier teeth dog house drool ID tag lazy dog meow barky Buddy. Play groom bird seed tongue heel sit dragging furry kisses catch. Barky feeder pet groom paws fleas stripes collar tabby. Kitten canary Fido tuxedo throw cage lick stay meow field lazy dog groom crate kitty. Dinnertime cage pet supplies cockatiel chow parrot purr commands cage shake. Small Animals carrier litter slobbery aquarium house train speak.</p>','Author',1)
+		
 	insert into Tags
 	values ('dogs'),('cats'),('ferrets'),('food'),('toys'),('health'),('fun'),('knowledge'),('happy'),('smiley'),('turtles'),('snakes')
 
@@ -93,7 +94,11 @@ begin
 	(7,12),
 	(8,1),
 	(8,4),
-	(8,8)
+	(8,8),
+	(9,4),
+	(9,5),
+	(9,9),
+	(9,10)
 
 end
 go
@@ -102,7 +107,7 @@ create procedure [dbo].[AddNewPost](
 	@CategoryID int,
 	@PostTitle nvarchar(100),
 	@PostDate date,
-	@PostContent nvarchar(max),
+	@PostContent text,
 	@Author nvarchar(50),
 	@PostStatus int,
 	@PostID int output
@@ -132,7 +137,7 @@ go
 
 create procedure [dbo].[AddNewStaticPage](
 @StaticPageTitle nvarchar(50),
-@StaticPageContent nvarchar (max)
+@StaticPageContent text
 )
 as
 begin
@@ -202,7 +207,7 @@ end
 
 go
 
-create procedure [dbo].[updatePostContent] (@postid int, @postcontent nvarchar(max))
+create procedure [dbo].[updatePostContent] (@postid int, @postcontent text)
 as
 begin
 update Posts
