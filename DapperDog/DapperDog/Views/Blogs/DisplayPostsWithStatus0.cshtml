@@ -1,13 +1,18 @@
-﻿@using System.Drawing.Drawing2D
-@using System.Web.UI.WebControls
-@model DapperDog.Models.HomeIndexViewModel
+﻿@model DapperDog.Models.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "DisplayPostsWithStatus0";
+}
+
+<h2>DisplayPostsWithStatus0</h2>
+
 
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div class="container-fluid bg-1 text-center">
-    <h2>Welcome to our Blog!</h2>
+    <h2>Authorize Posts</h2>
     <div class="row">
         <div class="col-sm-8">
             <div class="column1">
@@ -15,17 +20,17 @@
                     @foreach (var post in Model.BlogPosts)
                     {
                         <div id="blog">
-                            <h2 class="blogtitle">@Html.ActionLink(post.PostTitle, "ListSinglePost", new {id = post.PostID})</h2>
+                            <h2 class="blogtitle">@post.PostTitle</h2>
                             <span class="line" id="date">@post.PostDate.ToShortDateString()</span>
-                            <span class="line" id ="category">@post.CategoryName</span>
+                            <span class="line" id="category">@post.CategoryName</span>
                             <span class="line" id="author">@post.Author</span>
 
-                        
+
                             @Html.Raw(post.PostContent)
                             @foreach (var tag in post.BlogTags)
                             {
 
-                                <span class="tags">@Html.ActionLink("#" + tag.TagName, "ListPostsByTag", new {id = tag.TagID})</span>
+                                <span class="tags">@tag.TagName</span>
                             }
                         </div>
                     }
@@ -39,9 +44,8 @@
                 <div class="categories">
                     @foreach (var category in Model.Categories)
                     {
-                        @Html.ActionLink(category.CategoryName, "ListPostsByCategory", new {id = category.CategoryID}, new {@class = "alink"})
-                        ;
-                        <br/>
+                        @Html.ActionLink(category.CategoryName, "ListPostsByCategory", "Home", new { id = category.CategoryID }, new { @class = "alink" })
+                        <br />
                     }
                 </div>
                 <div class="StaticPages">

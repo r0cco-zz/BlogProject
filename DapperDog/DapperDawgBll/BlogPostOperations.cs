@@ -37,6 +37,26 @@ namespace DapperDawgBll
             return posts;
         }
 
+        public List<BlogPost> GetPostsWithStatus0()
+        {
+            var posts = _repo.GetBlogPostsByPR();
+
+            foreach (var post in posts)
+            {
+                post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
+                post.BlogTags = new List<Tag>();
+                var tagList = _repo.GetTagsByPostID(post.PostID);
+                if (tagList != null)
+                {
+                    foreach (var tag in tagList)
+                    {
+                        post.BlogTags.Add(tag);
+                    }
+                }
+            }
+            return posts;
+        }
+
         public List<Category> GetAllCategories()
         {
             return _repo.GetAllCategories();
@@ -50,8 +70,46 @@ namespace DapperDawgBll
         public void AddNewBlogPost(BlogPost newBlogPost)
         {
             newBlogPost.PostDate = DateTime.Now;
-            newBlogPost.Author = "Author";
             newBlogPost.PostStatus = 1;
+            var postId = _repo.AddNewBlogPost(newBlogPost);
+            var tagList = _repo.GetAllTags();
+            var tagExists = false;
+            var tagId = 0;
+
+            if (newBlogPost.tags != null)
+            {
+                foreach (var tag in newBlogPost.tags)
+                {
+                    foreach (var tag2 in tagList)
+                    {
+                        if (tag2.TagName == tag)
+                        {
+                            // Tag already exists, bool set to true
+                            tagExists = true;
+                            tagId = tag2.TagID;
+                            break;
+                        }
+                    }
+                    // Check bool to see if tag exists
+                    if (tagExists)
+                    {
+                        // Tag exists on table, only need to add it to PostTags to tie it to a post
+                        _repo.AddNewPostTag(tagId, postId);
+                    }
+                    else
+                    {
+                        // Tag doesn't exist on table, needs to be created, then tied to a post on PostTags table
+                        tagId = _repo.AddNewTag(tag);
+                        _repo.AddNewPostTag(tagId, postId);
+                    }
+                }
+            }
+        }
+
+        public void PRAddNewBlogPost(BlogPost newBlogPost)
+        {
+            newBlogPost.PostDate = DateTime.Now;
+            newBlogPost.PostStatus = 0;
             var postId = _repo.AddNewBlogPost(newBlogPost);
             var tagList = _repo.GetAllTags();
             var tagExists = false;

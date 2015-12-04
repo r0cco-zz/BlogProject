@@ -17,29 +17,40 @@ namespace DapperDog.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "PR")]
+        [Authorize(Roles = "Admin,PR")]
+        //[Authorize(Roles = "PR")]
         public ActionResult AddBlogPost()
         {
             var ops = new BlogPostOperations();
             var vm = new AddBlogPostViewModel(ops.GetAllCategories());
-            return View(vm); // There is no input for an author. Should we include as an input or use user table?
+            return View(vm); // Author is currently being populated as the user identity username
         }
 
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "PR")]
+        [Authorize(Roles = "Admin,PR")]
+        //[Authorize(Roles = "PR")]
         [HttpPost]
         public ActionResult AddBlogPost(BlogPost blogPost)
         {
             var ops = new BlogPostOperations();
+            if (User.IsInRole("Admin"))
+            {
+                // Admin add post, post goes to table with status of 1
+                ops.AddNewBlogPost(blogPost);
+                return RedirectToAction("Index", "Home");
+            }
+            if (User.IsInRole("PR"))
+            {
+                // PR add post, post goes to table with status of 0
+                ops.PRAddNewBlogPost(blogPost);
+                return RedirectToAction("Index", "Home");
+            }
 
-            ops.AddNewBlogPost(blogPost);
-
+            // somehow a non-authenticated add. nothing goes to data. (necessary?)
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "PR")]
+        [Authorize(Roles = "Admin,PR")]
+        //[Authorize(Roles = "PR")]
         public ActionResult AddStaticPages()
         {
             var ops = new BlogPostOperations();
@@ -48,8 +59,8 @@ namespace DapperDog.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "PR")]
+        [Authorize(Roles = "Admin,PR")]
+        //[Authorize(Roles = "PR")]
         [HttpPost]
         public ActionResult AddStaticPages(StaticPage newStaticPage)
         {
@@ -57,6 +68,17 @@ namespace DapperDog.Controllers
             repo.AddNewStaticPage(newStaticPage);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult DisplayPostsWithStatus0()
+        {
+            var ops = new BlogPostOperations();
+            var vm = new HomeIndexViewModel();
+            vm.BlogPosts = ops.GetPostsWithStatus0();
+            vm.Categories = ops.GetAllCategories();
+
+            return View(vm);
         }
     }
 }

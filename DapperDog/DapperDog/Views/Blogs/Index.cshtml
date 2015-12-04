@@ -11,6 +11,10 @@
         <br/>
         @Html.ActionLink("Add New Static Page", "AddStaticPages", "/Blogs/AddStaticPages", new {@class="btn btn-primary"})
         <br/>
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("View Unapproved Posts", "DisplayPostsWithStatus0", null, new { @class="btn btn-primary"} )
+        }
 
     </div>
 </div>
