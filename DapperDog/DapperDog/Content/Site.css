@@ -8,8 +8,8 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    background-image: url('Images/pawprint.png');
-    background-repeat: no-repeat;
+    background-image: url('Images/pawprint2.png');
+    /*background-repeat: no-repeat;*/
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -80,6 +80,7 @@ textarea {
     font-style: italic;
     font-weight: bold;
     padding: 15px;
+    text-align: center;
 }
 
 .blogtitle {
@@ -89,4 +90,12 @@ textarea {
 
 #footer {
     clear: both;
+}
+
+#blog {
+    background-color: rgb(135, 172, 189);
+    border-style: groove;
+    border-width: 10px;
+    border-color: rgb(15, 26, 103);
+    padding: 15px;
 }

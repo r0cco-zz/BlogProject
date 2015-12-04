@@ -4,7 +4,7 @@
     ViewBag.Title = "AddBlogPost";
 }
 
-<h2>AddBlogPost</h2>
+<h2>Add Blog Post</h2>
 
 <form class="form-horizontal" action="/Home/PostToRepo" method="POST">
     <fieldset>
@@ -22,7 +22,7 @@
                 @Html.DropDownList("CategoryID", Model.Categories, "(select)", new {@class = "form-control input-sm", @id = "inputCategoryID", @name = "Categories"})
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="blog">
             <textarea id="TinyMCEBox" name="PostContent"></textarea>
         </div>
         <div>
