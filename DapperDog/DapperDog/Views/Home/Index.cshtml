@@ -7,19 +7,13 @@
 }
 
 <div class="container-fluid bg-1 text-center">
-    <h2>Dapper Dawg</h2>
+    <h2>Welcome to our Blog!</h2>
     <div class="row">
         <div class="col-sm-8">
             <div class="column1">
-                <div class="form-group">
+                <div class="form-group" id="blog">
                     @foreach (var post in Model.BlogPosts)
                     {
-                        <h2>@post.PostTitle</h2>
-                        
-                            <p>@post.PostDate.ToShortDateString()</p>
-                            <p>@post.CategoryName</p>
-                        <p>@post.Author</p>
-
                         <h2 class="blogtitle">@post.PostTitle</h2>
                         <span class="line" id="date">@post.PostDate.ToShortDateString()</span>
                         <span class= "line" id ="category">@post.CategoryName</span>
@@ -30,8 +24,8 @@
                         {
                             <span class="tags">#@tag.TagName</span>
                             }
-                            
-                    }
+
+                            }
                 </div>
                 </div>
         </div>

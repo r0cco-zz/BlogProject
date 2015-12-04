@@ -36,10 +36,16 @@ namespace DapperDawgBll
             }
             return posts;
         }
+
         public List<Category> GetAllCategories()
         {
             return _repo.GetAllCategories();
         }
+
+        public List<Tag> GetAllTags()
+        {
+            return _repo.GetAllTags();
+        } 
 
         public void AddNewBlogPost(BlogPost newBlogPost)
         {
