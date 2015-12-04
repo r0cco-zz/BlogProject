@@ -163,6 +163,14 @@ end
 
 go
 
+create procedure [dbo].[GetAllStaticPages]
+as
+begin
+select * from StaticPages
+end
+
+go
+
 create procedure [dbo].[GetAllPostsOrderedByDate] 
 as
 begin
@@ -260,6 +268,14 @@ as
 begin
 select * from Posts p
 where p.PostID = @postId
+end
+
+go
+
+create procedure [dbo].[GetStaticPageByID] (@StaticPageID int)
+as
+begin
+select * from StaticPages where StaticPageID = @StaticPageID
 end
 
 go

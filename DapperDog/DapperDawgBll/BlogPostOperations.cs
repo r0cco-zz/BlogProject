@@ -62,6 +62,16 @@ namespace DapperDawgBll
             return _repo.GetAllCategories();
         }
 
+        public List<StaticPage> GetAllStaticPages()
+        {
+            return _repo.GetAllStaticPages();
+        }
+
+        public StaticPage GetStaticPageByID(int id)
+        {
+            return _repo.GetStaticPageByID(id);
+        }
+
         public List<Tag> GetAllTags()
         {
             return _repo.GetAllTags();

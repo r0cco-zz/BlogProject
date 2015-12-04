@@ -40,12 +40,14 @@
                     @foreach (var category in Model.Categories)
                     {
                         @Html.ActionLink(category.CategoryName, "ListPostsByCategory", new {id = category.CategoryID}, new {@class = "alink"})
-                        ;
                         <br/>
                     }
                 </div>
                 <div class="StaticPages">
-
+                    @foreach (var page in Model.StaticPages)
+                    {
+                        @Html.ActionLink(page.StaticPageTitle, "DisplayStaticPage", new {id = page.StaticPageID}, new {@class="alink"})
+                    }
                 </div>
             </div>
 
