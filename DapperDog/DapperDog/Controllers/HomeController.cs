@@ -14,8 +14,8 @@ namespace DapperDog.Controllers
     {
         public ActionResult Index()
         {
-            var vm = new HomeIndexViewModel();
             var ops = new BlogPostOperations();
+            var vm = new HomeIndexViewModel();
             vm.BlogPosts = ops.GetBlogPosts();
             vm.Categories = ops.GetAllCategories();
 
@@ -32,9 +32,20 @@ namespace DapperDog.Controllers
             return View("Index", vm);
         }
 
+        public ActionResult ListPostsByTag(int id)
+        {
+            var ops = new BlogPostOperations();
+            var vm = new HomeIndexViewModel();
+            vm.BlogPosts = ops.GetPostsByTagID(id);
+            vm.Categories = ops.GetAllCategories();
 
-        [Authorize(Roles = "Admin")]
+            return View("Index", vm);
+        }
+
+
+        //[Authorize(Roles = "Admin")]
         //[Authorize(Roles = "PR")]
+        [Authorize(Roles = "Admin,PR")]
         public ActionResult AddBlogPost()
         {
             var ops = new BlogPostOperations();

@@ -103,6 +103,27 @@ namespace DapperDawgBll
             }
 
             return posts;
+        }
+
+        public List<BlogPost> GetPostsByTagID(int id)
+        {
+            var posts = _repo.GetBlogPostsByTag(id);
+
+            foreach (var post in posts)
+            {
+                post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
+                post.BlogTags = new List<Tag>();
+                var tagList = _repo.GetTagsByPostID(post.PostID);
+                if (tagList != null)
+                {
+                    foreach (var tag in tagList)
+                    {
+                        post.BlogTags.Add(tag);
+                    }
+                }
+            }
+
+            return posts;
         } 
     }
 }
