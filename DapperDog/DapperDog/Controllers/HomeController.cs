@@ -42,7 +42,6 @@ namespace DapperDog.Controllers
             return View(newStaticPage);
         }
 
-
         public ActionResult ListPostsByTag(int id)
         {
             var ops = new BlogPostOperations();
