@@ -57,29 +57,32 @@ namespace DapperDawgBll
             var tagExists = false;
             var tagId = 0;
 
-            foreach (var tag in newBlogPost.tags)
+            if (newBlogPost.tags != null)
             {
-                foreach (var tag2 in tagList)
+                foreach (var tag in newBlogPost.tags)
                 {
-                    if (tag2.TagName == tag)
+                    foreach (var tag2 in tagList)
                     {
-                        // Tag already exists, bool set to true
-                        tagExists = true;
-                        tagId = tag2.TagID;
-                        break;
+                        if (tag2.TagName == tag)
+                        {
+                            // Tag already exists, bool set to true
+                            tagExists = true;
+                            tagId = tag2.TagID;
+                            break;
+                        }
                     }
-                }
-                // Check bool to see if tag exists
-                if (tagExists)
-                {
-                    // Tag exists on table, only need to add it to PostTags to tie it to a post
-                    _repo.AddNewPostTag(tagId, postId);
-                }
-                else
-                {
-                    // Tag doesn't exist on table, needs to be created, then tied to a post on PostTags table
-                    tagId = _repo.AddNewTag(tag);
-                    _repo.AddNewPostTag(tagId, postId);
+                    // Check bool to see if tag exists
+                    if (tagExists)
+                    {
+                        // Tag exists on table, only need to add it to PostTags to tie it to a post
+                        _repo.AddNewPostTag(tagId, postId);
+                    }
+                    else
+                    {
+                        // Tag doesn't exist on table, needs to be created, then tied to a post on PostTags table
+                        tagId = _repo.AddNewTag(tag);
+                        _repo.AddNewPostTag(tagId, postId);
+                    }
                 }
             }
         }
