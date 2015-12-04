@@ -42,8 +42,6 @@ namespace DapperDog.Controllers
         [Authorize(Roles = "PR")]
         public ActionResult AddStaticPages()
         {
-            var ops = new BlogPostOperations();
-            var vm = new HomeIndexViewModel();
             
             return View();
         }
