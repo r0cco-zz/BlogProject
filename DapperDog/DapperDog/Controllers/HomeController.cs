@@ -32,9 +32,6 @@ namespace DapperDog.Controllers
             return View("Index", vm);
         }
 
-<<<<<<< HEAD
-        
-=======
         public ActionResult ListPostsByTag(int id)
         {
             var ops = new BlogPostOperations();
@@ -72,7 +69,6 @@ namespace DapperDog.Controllers
 
             return RedirectToAction("Index");
         }
->>>>>>> 4b3e8c8cff90760e4c53b60f83c6f3f8a45413dd
 
         public ActionResult About()
         {
