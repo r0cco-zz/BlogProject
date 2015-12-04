@@ -42,6 +42,16 @@ namespace DapperDog.Controllers
             return View("Index", vm);
         }
 
+        public ActionResult ListSinglePost(int id)
+        {
+            var ops = new BlogPostOperations();
+            var vm = new HomeIndexViewModel();
+            vm.BlogPosts = ops.GetPostByID(id);
+            vm.Categories = ops.GetAllCategories();
+
+            return View("Index", vm);
+        }
+
         [Authorize(Roles = "Admin,PR")]
         public ActionResult AddBlogPost()
         {
