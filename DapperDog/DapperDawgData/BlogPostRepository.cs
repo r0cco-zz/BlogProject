@@ -92,6 +92,25 @@ namespace DapperDawgData
             }
         }
 
+        public List<StaticPage> GetAllStaticPages()
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                return cn.Query<StaticPage>("GetAllStaticPages", commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public StaticPage GetStaticPageByID(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("StaticPageID", id);
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                return cn.Query<StaticPage>("GetStaticPageByID", p, commandType:CommandType.StoredProcedure).FirstOrDefault();
+            }
+        }
+
         public string GetCategoryByPostID(int id)
         {
             var p = new DynamicParameters();

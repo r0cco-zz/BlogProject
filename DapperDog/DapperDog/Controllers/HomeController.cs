@@ -18,7 +18,7 @@ namespace DapperDog.Controllers
             var vm = new HomeIndexViewModel();
             vm.BlogPosts = ops.GetBlogPosts();
             vm.Categories = ops.GetAllCategories();
-
+            vm.StaticPages = ops.GetAllStaticPages();
             return View(vm);
         }
 
@@ -30,6 +30,16 @@ namespace DapperDog.Controllers
             vm.Categories = ops.GetAllCategories();
 
             return View("Index", vm);
+        }
+
+        public ActionResult DisplayStaticPage(int id)
+        {
+            var ops = new BlogPostOperations();
+            var vm = new HomeIndexViewModel();
+            StaticPage newStaticPage = ops.GetStaticPageByID(id);
+
+            
+            return View(newStaticPage);
         }
 
         public ActionResult ListPostsByTag(int id)
@@ -52,7 +62,9 @@ namespace DapperDog.Controllers
             return View("Index", vm);
         }
 
-       public ActionResult About()
+     
+        public ActionResult About()
+
         {
             //ViewBag.Message = "Your application description page.";
 
