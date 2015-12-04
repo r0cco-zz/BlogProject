@@ -51,6 +51,15 @@ textarea {
     padding: 10px;
     padding-bottom: 30px;
     font-size: 2.0em;
+    background-color: rgb(170,161,177);
+    border-style: groove;
+    border-width: 10px;
+    border-color: rgb(15, 26, 103);
+    border-radius: 15px;
+}
+
+.alink {
+    color:#000099
 }
 
 .main h3 {
@@ -93,9 +102,16 @@ textarea {
 }
 
 #blog {
-    background-color: rgb(135, 172, 189);
+    background-color: rgb(170,161,177);
     border-style: groove;
     border-width: 10px;
     border-color: rgb(15, 26, 103);
+    border-radius: 15px;
     padding: 15px;
+<<<<<<< HEAD
 }
+
+=======
+    margin-bottom: 25px;
+}
+>>>>>>> 6c7e55453b7d1c5b0051576c08bc2c22ae6df6e3

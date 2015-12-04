@@ -42,9 +42,6 @@ namespace DapperDog.Controllers
             return View("Index", vm);
         }
 
-
-        //[Authorize(Roles = "Admin")]
-        //[Authorize(Roles = "PR")]
         [Authorize(Roles = "Admin,PR")]
         public ActionResult AddBlogPost()
         {
