@@ -51,7 +51,7 @@ create table PostsTags (
 go
 begin
 	insert into Categories
-	values ('Pet Health'),('Pet Wellness'),('Pet Products'),('Pet Fun'),('Getting to Know Your Pet')
+	values ('Pet Health'),('Pet Wellness'),('Pet Products'),('Pet Fun'),('Getting to Know Your Pet'),('Specials')
 
 	insert into Posts
 	values
@@ -130,7 +130,17 @@ end
 
 go
 
+create procedure [dbo].[GetPostsByPR]
+as
+begin
+select * from posts
+where PostStatus = 0
+end
+
+go
+
 create procedure [dbo].[AddNewStaticPage](
+@StaticPageID int,
 @StaticPageTitle nvarchar(50),
 @StaticPageContent nvarchar (max)
 )
@@ -138,6 +148,8 @@ as
 begin
 insert into StaticPages (StaticPageTitle, StaticPageContent)
 values(@StaticPageTitle, @StaticPageContent)
+
+set @StaticPageID = SCOPE_IDENTITY();
 
 end
 
