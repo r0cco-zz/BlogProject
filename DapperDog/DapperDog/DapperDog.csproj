@@ -178,7 +178,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BlogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TagController.cs" />
@@ -460,8 +460,9 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
-    <Content Include="Views\Home\AddBlogPost.cshtml" />
-    <Content Include="Views\Admin\AdminIndex.cshtml" />
+    <Content Include="Views\Blogs\AddBlogPost.cshtml" />
+    <Content Include="Views\Blogs\Index.cshtml" />
+    <Content Include="Views\Blogs\AddStaticPages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -478,6 +479,10 @@
     <ProjectReference Include="..\DapperDawgBll\DapperDawgBll.csproj">
       <Project>{dec4a333-1707-4bd4-8963-3cbe316ddb64}</Project>
       <Name>DapperDawgBll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DapperDawgData\DapperDawgData.csproj">
+      <Project>{970B86CF-C679-49EE-8BE1-73EBC8A66D73}</Project>
+      <Name>DapperDawgData</Name>
     </ProjectReference>
     <ProjectReference Include="..\DapperDawgModels\DapperDawgModels.csproj">
       <Project>{0fefc0e0-5ece-468f-a765-b8a075cdd612}</Project>

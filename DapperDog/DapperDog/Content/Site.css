@@ -101,7 +101,7 @@ textarea {
     clear: both;
 }
 
-#blog {
+#blog, #StaticPageContent {
     background-color: rgb(170,161,177);
     border-style: groove;
     border-width: 10px;

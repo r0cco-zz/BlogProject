@@ -32,25 +32,7 @@ namespace DapperDog.Controllers
             return View("Index", vm);
         }
 
-
-        [Authorize(Roles = "Admin")]
-        //[Authorize(Roles = "PR")]
-        public ActionResult AddBlogPost()
-        {
-            var ops = new BlogPostOperations();
-            var vm = new AddBlogPostViewModel(ops.GetAllCategories());
-            return View(vm);  // There is no input for an author. Should we include as an input or use user table?
-        }
-
-        [HttpPost]
-        public ActionResult PostToRepo(BlogPost blogPost)
-        {
-            var ops = new BlogPostOperations();
-
-            ops.AddNewBlogPost(blogPost);  
-
-            return RedirectToAction("Index");
-        }
+        
 
         public ActionResult About()
         {
@@ -65,5 +47,7 @@ namespace DapperDog.Controllers
 
             return View();
         }
+
+       
     }
 }

@@ -9,6 +9,7 @@ namespace DapperDog.Models
     public class HomeIndexViewModel
     {
         public List<BlogPost> BlogPosts { get; set; }
-        public List<Category> Categories { get; set; }  
+        public List<Category> Categories { get; set; } 
+        public List<StaticPage> StaticPages { get; set; }  
     }
 }

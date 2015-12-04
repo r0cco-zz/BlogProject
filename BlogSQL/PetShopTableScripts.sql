@@ -37,6 +37,7 @@ go
 
 create table StaticPages (
 	StaticPageID int identity (1, 1) primary key not null,
+	StaticPageDate date not null,
 	StaticPageTitle nvarchar(50),
 	StaticPageContent nvarchar(max)
 )
@@ -68,8 +69,8 @@ begin
 	values ('dogs'),('cats'),('ferrets'),('food'),('toys'),('health'),('fun'),('knowledge'),('happy'),('smiley'),('turtles'),('snakes')
 
 	insert into StaticPages
-	values ('Title1','<p>Lorem ipsum dolor sit amet fleas purr pet food water dog mouse. Meow groom run purr speak collar throw dog swimming smooshy puppy carrier commands bark chirp carrier roll over chirp lick smooshy.</p>'),
-	('Title2','<p>Lorem ipsum dolor sit amet furry meow foot speak biscuit feathers stay field water dog groom chew mittens harness bed. Fleas whiskers shake grooming gimme five run turtle furry. Bark barky Spike sit cage litter box dog treats tuxedo grooming warm furry. House Train bird food cat Buddy small animals litter box pet gate.</p>')
+	values ('2015-12-01','Title1','<p>Lorem ipsum dolor sit amet fleas purr pet food water dog mouse. Meow groom run purr speak collar throw dog swimming smooshy puppy carrier commands bark chirp carrier roll over chirp lick smooshy.</p>'),
+	('2015-12-02','Title2','<p>Lorem ipsum dolor sit amet furry meow foot speak biscuit feathers stay field water dog groom chew mittens harness bed. Fleas whiskers shake grooming gimme five run turtle furry. Bark barky Spike sit cage litter box dog treats tuxedo grooming warm furry. House Train bird food cat Buddy small animals litter box pet gate.</p>')
 
 	insert into PostsTags
 	values (1,1),
@@ -141,13 +142,14 @@ go
 
 create procedure [dbo].[AddNewStaticPage](
 @StaticPageID int,
+@StaticPageDate date,
 @StaticPageTitle nvarchar(50),
 @StaticPageContent nvarchar (max)
 )
 as
 begin
-insert into StaticPages (StaticPageTitle, StaticPageContent)
-values(@StaticPageTitle, @StaticPageContent)
+insert into StaticPages (StaticPageDate, StaticPageTitle, StaticPageContent)
+values(@StaticPageDate, @StaticPageTitle, @StaticPageContent)
 
 set @StaticPageID = SCOPE_IDENTITY();
 

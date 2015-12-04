@@ -9,6 +9,7 @@ namespace DapperDawgModels
      public class StaticPage
     {
         public int StaticPageID { get; set; }
+        public DateTime StaticPageDate { get; set; }
         public string StaticPageTitle { get; set; }
         public string StaticPageContent { get; set; }
     }

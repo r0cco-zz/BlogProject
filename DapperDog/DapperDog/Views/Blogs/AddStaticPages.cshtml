@@ -1,0 +1,33 @@
+﻿@model DapperDawgModels.StaticPage
+@{
+    ViewBag.Title = "AddStaticPages";
+}
+
+
+
+<div class="row">
+    <h2>AddStaticPages</h2>
+    
+    <form class="form-horizontal" action="@Url.Action("AddStaticPages")" method="POST">
+        <div class="inputboxes">
+            <label for="AddStaticPageTitle">Title</label>
+            <input name="StaticPageTitle" id="AddStaticPageTitle" type="text"/>
+        </div>
+        <div class="form-group" id="StaticPageContent">
+            <textarea id="TinyMCEBox" name="StaticPageContent"></textarea>
+        </div>
+       <div>
+            <button class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/app/tinyMCEBox.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css">
+ }

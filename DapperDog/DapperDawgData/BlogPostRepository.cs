@@ -140,6 +140,7 @@ namespace DapperDawgData
         public void AddNewStaticPage(StaticPage newStaticPage)
         {
             var p = new DynamicParameters();
+            p.Add("StaticPageDate", newStaticPage.StaticPageDate);
             p.Add("StaticPageTitle", newStaticPage.StaticPageTitle);
             p.Add("StaticPageContent", newStaticPage.StaticPageContent);
             p.Add("StaticPageID", dbType: DbType.Int32, direction: ParameterDirection.Output);

@@ -6,20 +6,20 @@
 
 <h2>Add Blog Post</h2>
 
-<form class="form-horizontal" action="/Home/PostToRepo" method="POST">
+<form class="form-horizontal" action="@Url.Action("AddBlogPost")" method="POST">
     <fieldset>
         <div class="inputboxes">
             <label for="AddBlogPostTitle">Title</label>
-            <input name="PostTitle" id="AddBlogPostTitle" type="text"/>
+            <input name="PostTitle" id="AddBlogPostTitle" type="text" />
         </div>
         <div class="inputboxes">
             <label for="AddBlogPostAuthor">Author</label>
-            <input name="Author" id="AddBlogPostAuthor" type ="text"/>
+            <input name="Author" id="AddBlogPostAuthor" type="text" />
         </div>
         <div class="dropdown">
             <label>Category</label>
             <div>
-                @Html.DropDownList("CategoryID", Model.Categories, "(select)", new {@class = "form-control input-sm", @id = "inputCategoryID", @name = "Categories"})
+                @Html.DropDownList("CategoryID", Model.Categories, "(select)", new { @class = "form-control input-sm", @id = "inputCategoryID", @name = "Categories" })
             </div>
         </div>
         <div class="form-group" id="blog">
@@ -27,8 +27,7 @@
         </div>
         <div>
             <label for="myTags">Tags</label>
-            <ul id="myTags" name="TagsToAdd">
-            </ul>
+            <ul id="myTags" name="TagsToAdd"></ul>
         </div>
         <div>
             <button class="btn btn-primary">Submit</button>
