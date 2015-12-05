@@ -259,5 +259,10 @@ namespace DapperDawgBll
                 }
             }
         }
+
+        public void ApprovePost(int postId)
+        {
+            _repo.ApproveBlogPost(postId);
+        }
     }
 }

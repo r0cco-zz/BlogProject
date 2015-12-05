@@ -23,7 +23,7 @@ namespace DapperDog.Controllers
         {
             var ops = new BlogPostOperations();
             var vm = new AddBlogPostViewModel(ops.GetAllCategories());
-            return View(vm); // Author is currently being populated as the user identity username
+            return View(vm); // Author is currently being populated as the user identity email. Switch to username?
         }
 
         [Authorize(Roles = "Admin,PR")]
@@ -78,6 +78,15 @@ namespace DapperDog.Controllers
             vm.StaticPages = ops.GetAllStaticPages();
 
             return View(vm);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ApprovePost(int id)
+        {
+            var ops = new BlogPostOperations();
+            ops.ApprovePost(id);
+
+            return RedirectToAction("DisplayPostsWithStatus0");
         }
 
         [Authorize(Roles = "Admin")]
