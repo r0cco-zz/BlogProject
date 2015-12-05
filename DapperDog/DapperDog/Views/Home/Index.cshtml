@@ -19,13 +19,19 @@
                             <span class="line" id="date">@post.PostDate.ToShortDateString()</span>
                             <span class="line" id ="category">@post.CategoryName</span>
                             <span class="line" id="author">@post.Author</span>
-
+                            
                         
                             @Html.Raw(post.PostContent)
                             @foreach (var tag in post.BlogTags)
                             {
 
                                 <span class="tags">@Html.ActionLink("#" + tag.TagName, "ListPostsByTag", new {id = tag.TagID})</span>
+                            }
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <br/>
+                                @Html.ActionLink("Edit Post", "EditPost", "Blogs", new { id = post.PostID },  new { @class = "btn btn-primary", id = post.PostID })
                             }
                         </div>
                     }

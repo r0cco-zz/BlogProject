@@ -83,13 +83,14 @@ namespace DapperDawgBll
             newBlogPost.PostStatus = 1;
             var postId = _repo.AddNewBlogPost(newBlogPost);
             var tagList = _repo.GetAllTags();
-            var tagExists = false;
-            var tagId = 0;
 
             if (newBlogPost.tags != null)
             {
                 foreach (var tag in newBlogPost.tags)
                 {
+                    var tagExists = false;
+                    var tagId = 0;
+
                     foreach (var tag2 in tagList)
                     {
                         if (tag2.TagName == tag)
@@ -122,13 +123,14 @@ namespace DapperDawgBll
             newBlogPost.PostStatus = 0;
             var postId = _repo.AddNewBlogPost(newBlogPost);
             var tagList = _repo.GetAllTags();
-            var tagExists = false;
-            var tagId = 0;
 
             if (newBlogPost.tags != null)
             {
                 foreach (var tag in newBlogPost.tags)
                 {
+                    var tagExists = false;
+                    var tagId = 0;
+
                     foreach (var tag2 in tagList)
                     {
                         if (tag2.TagName == tag)
@@ -214,6 +216,48 @@ namespace DapperDawgBll
             var postListCarrier = new List<BlogPost>();
             postListCarrier.Add(post);
             return postListCarrier;
-        } 
+        }
+
+        public void EditPost(BlogPost postToEdit)
+        {
+            _repo.EditBlogPost(postToEdit);
+            var tagList = _repo.GetAllTags();
+
+            // dissociate tags from old post (in cross table)
+            _repo.RemovePostFromPostTagsTable(postToEdit.PostID);
+
+            // add new tags to tags table, then set up new poststags table association (just like in add post)
+            if (postToEdit.tags != null)
+            {
+                foreach (var tag in postToEdit.tags)
+                {
+                    var tagExists = false;
+                    var tagId = 0;
+
+                    foreach (var tag2 in tagList)
+                    {
+                        if (tag2.TagName == tag)
+                        {
+                            // Tag already exists, bool set to true
+                            tagExists = true;
+                            tagId = tag2.TagID;
+                            break;
+                        }
+                    }
+                    // Check bool to see if tag exists
+                    if (tagExists)
+                    {
+                        // Tag exists on table, only need to add it to PostTags to tie it to a post
+                        _repo.AddNewPostTag(tagId, postToEdit.PostID);
+                    }
+                    else
+                    {
+                        // Tag doesn't exist on table, needs to be created, then tied to a post on PostTags table
+                        tagId = _repo.AddNewTag(tag);
+                        _repo.AddNewPostTag(tagId, postToEdit.PostID);
+                    }
+                }
+            }
+        }
     }
 }

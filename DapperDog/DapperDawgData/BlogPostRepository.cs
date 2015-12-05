@@ -137,6 +137,30 @@ namespace DapperDawgData
             return p.Get<int>("PostID");
         }
 
+        public void EditBlogPost(BlogPost editedPost)
+        {
+            // Different stored procedures for updating each field. This way it retains the same PostID
+
+            var p = new DynamicParameters();
+            p.Add("postId", editedPost.PostID);
+            p.Add("newCategoryId", editedPost.CategoryID);
+            _cn.Execute("UpdateCategoryID", p, commandType: CommandType.StoredProcedure);
+
+            var p2 = new DynamicParameters();
+            p2.Add("postId", editedPost.PostID);
+            p2.Add("newPostTitle", editedPost.PostTitle);
+            _cn.Execute("UpdatePostTitle", p2, commandType: CommandType.StoredProcedure);
+
+            //p.Add("newPostDate", editedPost.PostDate); no option to edit date yet
+
+            var p3 = new DynamicParameters();
+            p3.Add("postId", editedPost.PostID);
+            p3.Add("newPostContent", editedPost.PostContent);
+            _cn.Execute("UpdatePostContent", p3, commandType: CommandType.StoredProcedure);
+
+            //p.Add("newAuthor", editedPost.Author); no option to change author yet
+        }
+
         public void AddNewPostTag(int TagId, int PostId)
         {
             var p = new DynamicParameters();
@@ -154,6 +178,14 @@ namespace DapperDawgData
 
             _cn.Execute("AddNewTag", p, commandType: CommandType.StoredProcedure);
             return p.Get<int>("TagId");
+        }
+
+        public void RemovePostFromPostTagsTable(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("postId", id);
+
+            _cn.Execute("RemovePostFromPostTagsTable", p, commandType: CommandType.StoredProcedure);
         }
 
         public void AddNewStaticPage(StaticPage newStaticPage)

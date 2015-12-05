@@ -75,8 +75,29 @@ namespace DapperDog.Controllers
             var vm = new HomeIndexViewModel();
             vm.BlogPosts = ops.GetPostsWithStatus0();
             vm.Categories = ops.GetAllCategories();
+            vm.StaticPages = ops.GetAllStaticPages();
 
             return View(vm);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditPost(int id)
+        {
+            var ops = new BlogPostOperations();
+            var vm = new EditPostViewModel(ops.GetAllCategories());
+            vm.BlogPost = ops.GetPostByID(id).FirstOrDefault();
+
+            return View(vm);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult EditPost(BlogPost editedPost)
+        {
+            var ops = new BlogPostOperations();
+            ops.EditPost(editedPost);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

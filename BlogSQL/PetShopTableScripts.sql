@@ -204,7 +204,7 @@ go
 create procedure [dbo].[GetPostsByTag] (@tagId int)
 as
 begin
-select p.PostID, p.CategoryID, p.PostTitle, p.PostDate, p.PostContent, p.Author, p.PostStatus
+select *
 from Posts p
 	inner join PostsTags pt on pt.PostID = p.PostID
 	inner join tags t on pt.TagID = t.TagID
@@ -232,18 +232,67 @@ end
 
 go
 
-create procedure [dbo].[updatePostContent] (@postid int, @postcontent text)
+create procedure [dbo].[UpdateCategoryID] (@postId int, @newCategoryId int)
 as
 begin
 update Posts
-set posts.PostContent = @postcontent
-where posts.PostID = @postid
+set Posts.CategoryID = @newCategoryId
+where Posts.PostID = @postId
+end
+
+go
+
+create procedure [dbo].[UpdatePostTitle] (@postId int, @newPostTitle nvarchar(100))
+as
+begin
+update Posts
+set Posts.PostTitle = @newPostTitle
+where Posts.PostID = @postId
+end
+
+go
+
+create procedure [dbo].[UpdatePostDate] (@postId int, @newPostDate date)
+as
+begin
+update Posts
+set Posts.PostDate = @newPostDate
+where Posts.PostID = @postId
+end
+
+go
+
+create procedure [dbo].[UpdatePostContent] (@postId int, @newPostContent text)
+as
+begin
+update Posts
+set Posts.PostContent = @newPostContent
+where Posts.PostID = @postId
+end
+
+go
+
+create procedure [dbo].[UpdatePostAuthor] (@postId int, @newAuthor nvarchar(50))
+as
+begin
+update Posts
+set Posts.Author = @newAuthor
+where Posts.PostID = @postId
+end
+
+go
+
+create procedure [dbo].[RemovePostFromPostTagsTable] (@postId int)
+as
+begin
+delete from PostsTags
+where PostsTags.PostID = @postId
 end
 
 go
 
 
-create procedure [dbo].[updatePostStatus] (@postid int)
+create procedure [dbo].[SetPostStatusTo1] (@postid int)
 as
 begin
 update posts
@@ -253,7 +302,7 @@ end
 
 go
 
-create procedure [dbo].[softdeletepost] (@postId int)
+create procedure [dbo].[SetPostStatusTo2] (@postId int)
 as
 begin
 update posts
