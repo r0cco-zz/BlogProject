@@ -292,7 +292,7 @@ end
 go
 
 
-create procedure [dbo].[SetPostStatusTo1] (@postid int)
+create procedure [dbo].[SetPostStatusTo1] (@postId int)
 as
 begin
 update posts

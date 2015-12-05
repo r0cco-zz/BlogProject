@@ -188,6 +188,14 @@ namespace DapperDawgData
             _cn.Execute("RemovePostFromPostTagsTable", p, commandType: CommandType.StoredProcedure);
         }
 
+        public void ApproveBlogPost(int postId)
+        {
+            var p = new DynamicParameters();
+            p.Add("postId", postId);
+
+            _cn.Execute("SetPostStatusTo1", p, commandType: CommandType.StoredProcedure);
+        }
+
         public void AddNewStaticPage(StaticPage newStaticPage)
         {
             var p = new DynamicParameters();
