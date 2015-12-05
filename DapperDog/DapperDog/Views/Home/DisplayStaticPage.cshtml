@@ -1,10 +1,15 @@
 ﻿@model DapperDawgModels.StaticPage
 
-    ViewBag.Title = "DisplayStaticPage";
+@{
+ViewBag.Title = "DisplayStaticPage";
 }
 
-<h2>DisplayStaticPage</h2>
+<h2 style="text-align: center">@Model.StaticPageTitle</h2>
 
-<p>@Model.StaticPageTitle</p>
-<p>@Model.StaticPageDate</p>
-<p>@Model.StaticPageContent</p>
+<div class="col-sm-3">
+    <div class="row">
+
+    @Model.StaticPageContent<br/>
+        <p>@Model.StaticPageDate.ToShortDateString()</p>
+        </div>
+</div>

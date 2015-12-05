@@ -15,7 +15,7 @@
                     @foreach (var post in Model.BlogPosts)
                     {
                         <div id="blog">
-                            <h2 class="blogtitle">@Html.ActionLink(post.PostTitle, "ListSinglePost", new {id = post.PostID})</h2>
+                            <h2 class="blogtitle">@Html.ActionLink(post.PostTitle, "ListSinglePost", new {id = post.PostID}, new {@class="alink"})</h2>
                             <span class="line" id="date">@post.PostDate.ToShortDateString()</span>
                             <span class="line" id ="category">@post.CategoryName</span>
                             <span class="line" id="author">@post.Author</span>
@@ -43,8 +43,8 @@
         <div class="col-sm-4">
             <div class="column3">
                 <div class="categories">
-                    @foreach (var category in Model.Categories)
-                    {
+@foreach (var category in Model.Categories)
+{
                         @Html.ActionLink(category.CategoryName, "ListPostsByCategory", new {id = category.CategoryID}, new {@class = "alink"})
                         <br/>
                     }
@@ -53,6 +53,7 @@
                     @foreach (var page in Model.StaticPages)
                     {
                         @Html.ActionLink(page.StaticPageTitle, "DisplayStaticPage", new {id = page.StaticPageID}, new {@class="alink"})
+                        <br/>
                     }
                 </div>
             </div>

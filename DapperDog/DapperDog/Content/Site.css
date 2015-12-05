@@ -47,7 +47,7 @@ textarea {
     background-color: #000099;
 }
 
-.categories {
+.categories, .StaticPages {
     padding: 10px;
     padding-bottom: 30px;
     font-size: 2.0em;
@@ -56,6 +56,8 @@ textarea {
     border-width: 10px;
     border-color: rgb(15, 26, 103);
     border-radius: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .alink {
@@ -94,7 +96,8 @@ textarea {
 
 .blogtitle {
     text-align: center;
-    padding-top: 45px;
+    padding-top: 10px;
+    color: #000099;
 }
 
 #footer {
@@ -108,10 +111,11 @@ textarea {
     border-color: rgb(15, 26, 103);
     border-radius: 15px;
     padding: 15px;
-<<<<<<< HEAD
+    margin-bottom: 20px;
 }
 
-=======
-    margin-bottom: 25px;
+#button {
+    margin-top: 20px;
 }
->>>>>>> 6c7e55453b7d1c5b0051576c08bc2c22ae6df6e3
+
+
