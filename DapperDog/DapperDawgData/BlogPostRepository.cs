@@ -161,6 +161,11 @@ namespace DapperDawgData
 
             //p.Add("newAuthor", editedPost.Author); no option to change author yet
             //p.Add(newIsStickyPost, editedPost.IsStickyPost); no option to edit IsStickyPost yet
+
+            var p5 = new DynamicParameters();
+            p5.Add("postId", editedPost.PostID);
+            p5.Add("newIsStickyPost", editedPost.IsStickyPost);
+            _cn.Execute("UpdateIsStickyPost", p5, commandType: CommandType.StoredProcedure);
         }
 
         public void AddNewPostTag(int TagId, int PostId)

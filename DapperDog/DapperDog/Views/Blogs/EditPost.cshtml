@@ -15,6 +15,11 @@
         <input class="hidden" name="PostID" value="@Model.BlogPost.PostID"/>
         <input class="hidden" name="Author" value="@Model.BlogPost.Author"/>
         <input class="hidden" name="PostDate" value="@Model.BlogPost.PostDate"/>
+        <div class="radiobutton">
+            <label for="Special">Current Special:</label>
+            <input id="Special" type="radio" name="special" />Is Current Special
+            <input id="Special" type="radio" name="special" />Is Not Current Special
+        </div>
         <div class="dropdown">
             <label>Category</label>
             <div>
