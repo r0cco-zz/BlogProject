@@ -6,7 +6,7 @@
 
 <h2>Add Blog Post</h2>
 
-<form class="form-horizontal" action="@Url.Action("AddBlogPost")" method="POST">
+<form class="form-horizontal" action="@Url.Action("AddBlogPost")" method="POST" id="addBlogPostForm">
     <fieldset>
         <div class="inputboxes">
             <label for="AddBlogPostTitle">Title:</label>
@@ -32,7 +32,7 @@
             <ul id="myTags" name="TagsToAdd"></ul>
         </div>
         <div>
-            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Cancel", "Index", "Home", null, new {@class = "btn btn-primary"})
             <button class="btn btn-primary">Submit</button>
         </div>
     </fieldset>
@@ -46,4 +46,6 @@
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css">
     <link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
     <script src="~/Scripts/app/tag-It.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/app/postValidation.js"></script>
 }
