@@ -23,7 +23,7 @@
         <div class="dropdown">
             <label>Category</label>
             <div>
-                @Html.DropDownList("CategoryID", Model.Categories, new { @class = "form-control input-sm", @id = "inputCategoryID", @name = "Categories", @value = Model.BlogPost.CategoryID })
+                @Html.DropDownList("CategoryID", Model.Categories, new {@class = "form-control input-sm", @id = "inputCategoryID", @name = "Categories", @value = Model.BlogPost.CategoryID})
             </div>
         </div>
         <div class="form-group" id="blog">
