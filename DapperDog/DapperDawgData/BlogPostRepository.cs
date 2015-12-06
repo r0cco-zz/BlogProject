@@ -131,6 +131,7 @@ namespace DapperDawgData
             p.Add("PostContent", newBlogPost.PostContent);
             p.Add("Author", newBlogPost.Author);
             p.Add("PostStatus", newBlogPost.PostStatus);
+            p.Add("IsStickyPost", newBlogPost.IsStickyPost);
             p.Add("PostID", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             _cn.Execute("AddNewPost", p, commandType: CommandType.StoredProcedure);
@@ -159,6 +160,7 @@ namespace DapperDawgData
             _cn.Execute("UpdatePostContent", p3, commandType: CommandType.StoredProcedure);
 
             //p.Add("newAuthor", editedPost.Author); no option to change author yet
+            //p.Add(newIsStickyPost, editedPost.IsStickyPost); no option to edit IsStickyPost yet
         }
 
         public void AddNewPostTag(int TagId, int PostId)

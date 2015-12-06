@@ -9,12 +9,17 @@
 <form class="form-horizontal" action="@Url.Action("AddBlogPost")" method="POST">
     <fieldset>
         <div class="inputboxes">
-            <label for="AddBlogPostTitle">Title</label>
+            <label for="AddBlogPostTitle">Title:</label>
             <input name="PostTitle" id="AddBlogPostTitle" type="text"/>
         </div>
-        <input class="hidden" name="Author" value="@User.Identity.Name" />
+        <input class="hidden" name="Author" value="@User.Identity.Name"/>
+        <div class="radiobutton">
+            <label for="Special">Current Special:</label>
+            <input id="Special" type="radio" name="special"/>Is Current Special
+            <input id="Special" type="radio" name="special"/>Is Not Current Special
+        </div>
         <div class="dropdown">
-            <label>Category</label>
+            <label>Category:</label>
             <div>
                 @Html.DropDownList("CategoryID", Model.Categories, new {@class = "form-control input-sm", @id = "inputCategoryID", @name = "Categories"})
             </div>

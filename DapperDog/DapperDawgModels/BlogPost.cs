@@ -16,6 +16,7 @@ namespace DapperDawgModels
         public DateTime PostDate { get; set; }
         [AllowHtml]
         public string PostContent { get; set; }
+        public bool IsStickyPost { get; set; }
         public string Author { get; set; }
         public int PostStatus { get; set; }
         public List<Tag> BlogTags { get; set; }
