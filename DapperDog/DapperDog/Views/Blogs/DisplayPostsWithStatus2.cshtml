@@ -1,0 +1,56 @@
+﻿@model DapperDog.Models.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "DisplayPostsWithStatus2";
+}
+
+<h2>Deleted Posts</h2>
+
+<div class="container-fluid bg-1 text-center">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="column1">
+                <div class="form-group">
+                    @foreach (var post in Model.BlogPosts)
+                    {
+                        <div id="blog">
+                            <h2 class="blogtitle">@post.PostTitle</h2>
+                            <span class="line" id="date">@post.PostDate.ToShortDateString()</span>
+                            <span class="line" id="category">@post.CategoryName</span>
+                            <span class="line" id="author">@post.Author</span>
+
+
+                            @Html.Raw(post.PostContent)
+                            @foreach (var tag in post.BlogTags)
+                            {
+
+                                <span class="tags">#@tag.TagName</span>
+                            }
+                            <br />
+                            @Html.ActionLink("Restore Post", "RestorePost", "Blogs", new { id = post.PostID }, new { @class = "btn btn-primary" })
+                            @*@Html.ActionLink("Edit", "Index", "Home", null, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Delete", "Index", "Home", null, new { @class = "btn btn-primary" })*@
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="column3">
+                <div class="categories">
+                    @foreach (var category in Model.Categories)
+                    {
+                        @Html.ActionLink(category.CategoryName, "ListPostsByCategory", "Home", new { id = category.CategoryID }, new { @class = "alink" })
+                        <br />
+                    }
+                </div>
+                <div class="StaticPages">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
