@@ -240,6 +240,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\datePicker.js" />
+    <Content Include="Scripts\app\dotdotdot.js" />
     <Content Include="Scripts\app\deletePost.js" />
     <Content Include="Scripts\app\manageCategories.js" />
     <Content Include="Scripts\app\postValidation.js" />
@@ -253,6 +254,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.dotdotdot.js" />
+    <Content Include="Scripts\jquery.dotdotdot.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
