@@ -80,13 +80,33 @@ namespace DapperDog.Controllers
             return View(vm);
         }
 
+        [Authorize(Roles="Admin")]
+        public ActionResult DisplayPostsWithStatus2()
+        {
+            var ops = new BlogPostOperations();
+            var vm = new HomeIndexViewModel();
+            vm.BlogPosts = ops.GetPostsWithStatus2();
+            vm.Categories = ops.GetAllCategories();
+            vm.StaticPages = ops.GetAllStaticPages();
+
+            return View(vm);
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult ApprovePost(int id)
         {
             var ops = new BlogPostOperations();
-            ops.ApprovePost(id);
+            ops.SetPostTo1(id);
 
             return RedirectToAction("DisplayPostsWithStatus0");
+        }
+
+        public ActionResult RestorePost(int id)
+        {
+            var ops = new BlogPostOperations();
+            ops.SetPostTo1(id);
+
+            return RedirectToAction("DisplayPostsWithStatus2");
         }
 
         [Authorize(Roles = "Admin")]
@@ -105,6 +125,15 @@ namespace DapperDog.Controllers
         {
             var ops = new BlogPostOperations();
             ops.EditPost(editedPost);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult DeletePost(int id)
+        {
+            var ops = new BlogPostOperations();
+            ops.DeletePost(id);
 
             return RedirectToAction("Index", "Home");
         }
