@@ -239,6 +239,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\datePicker.js" />
     <Content Include="Scripts\app\deletePost.js" />
     <Content Include="Scripts\app\manageCategories.js" />
     <Content Include="Scripts\app\postValidation.js" />

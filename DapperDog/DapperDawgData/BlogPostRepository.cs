@@ -139,6 +139,8 @@ namespace DapperDawgData
             p.Add("Author", newBlogPost.Author);
             p.Add("PostStatus", newBlogPost.PostStatus);
             p.Add("IsStickyPost", newBlogPost.IsStickyPost);
+            p.Add("PublishDate", newBlogPost.PublishDate);
+            p.Add("ExpirationDate", newBlogPost.ExpirationDate);
             p.Add("PostID", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             _cn.Execute("AddNewPost", p, commandType: CommandType.StoredProcedure);
@@ -173,6 +175,16 @@ namespace DapperDawgData
             p5.Add("postId", editedPost.PostID);
             p5.Add("newIsStickyPost", editedPost.IsStickyPost);
             _cn.Execute("UpdateIsStickyPost", p5, commandType: CommandType.StoredProcedure);
+
+            var p6 = new DynamicParameters();
+            p6.Add("postId", editedPost.PostID);
+            p6.Add("newPublishDate", editedPost.PublishDate);
+            _cn.Execute("UpdatePublishDate", p, commandType: CommandType.StoredProcedure);
+
+            var p7 = new DynamicParameters();
+            p7.Add("postId", editedPost.PostID);
+            p7.Add("newExpirationDate", editedPost.ExpirationDate);
+            _cn.Execute("UpdateExpirationDate", p, commandType: CommandType.StoredProcedure);
         }
 
         public void AddNewPostTag(int TagId, int PostId)
