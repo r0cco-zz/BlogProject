@@ -20,11 +20,10 @@
                 @Html.ActionLink("Dapper Dawg", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-
+       
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @Html.Partial("_StaticPagesPartial")
-                   </ul>
+                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

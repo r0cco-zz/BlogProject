@@ -39,7 +39,7 @@ namespace DapperDog.Controllers
             var vm = new HomeIndexViewModel();
             StaticPage newStaticPage = ops.GetStaticPageByID(id);
 
-            
+
             return View(newStaticPage);
         }
 
@@ -65,26 +65,5 @@ namespace DapperDog.Controllers
             return View("Index", vm);
         }
 
-     
-        //public ActionResult About()
-
-        //{
-        //    //ViewBag.Message = "Your application description page.";
-
-        //    return View();
-        //}
-
-        //public ActionResult Contact()
-        //{
-        //    //ViewBag.Message = "Your contact page.";
-
-        //    return View();
-        //}
-
-        //public ActionResult _StaticPagesPartial()
-        //{
-        //    return View();
-        //}
-       
     }
 }

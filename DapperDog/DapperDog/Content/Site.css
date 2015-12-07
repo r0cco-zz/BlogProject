@@ -127,3 +127,7 @@ textarea {
     padding: 10px;
 }
 
+#toseemore {
+    /*color: yellow;*/
+    font-style: oblique;
+}

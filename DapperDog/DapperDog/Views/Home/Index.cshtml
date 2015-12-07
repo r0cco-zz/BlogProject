@@ -21,7 +21,8 @@
                             <span class="line" id="author">@post.Author</span>
                             
                         
-                            @Html.Raw(post.PostContent)
+                            @Html.Raw(post.PostContent.Substring(0, 50) + "...")
+                            <p id ="toseemore">Click title to see full post content.</p>
                             @foreach (var tag in post.BlogTags)
                             {
 
