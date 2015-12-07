@@ -16,7 +16,16 @@
         <div class="dropdown">
             <label>Category</label>
             <div>
-                @Html.DropDownList("CategoryID", Model.Categories, new {@class = "form-control input-sm", @id = "inputCategoryID", @name = "Categories"})
+                <select name="Categories" class="form-control input-sm" id="inputCategoryID">                   
+                </select>
+            </div>
+            <div>
+                <button class="btn btn-primary" id="btnShowAddCategoryInput">Add Category</button>
+                <div id="addCategoryInputDiv">
+                    <input id="addCategoryInput" type="text"/>
+                    <button id="btnSaveNewCategory">Add</button>
+                    <button id="btnHideAddCategoryDiv">Cancel</button>
+                </div>
             </div>
         </div>
         <div class="form-group" id="blog">
@@ -43,4 +52,5 @@
     <script src="~/Scripts/app/tag-It.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/app/postValidation.js"></script>
+    <script src="~/Scripts/app/manageCategories.js"></script>
 }

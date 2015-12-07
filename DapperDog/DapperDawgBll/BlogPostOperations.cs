@@ -157,6 +157,11 @@ namespace DapperDawgBll
             }
         }
 
+        public void AddCategory(Category newCategory)
+        {
+            _repo.AddNewCategory(newCategory);
+        }
+
         public List<BlogPost> GetPostsByCategoryID(int id)
         {
             var posts = _repo.GetBlogPostsByCategory(id);
