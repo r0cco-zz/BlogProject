@@ -31,4 +31,8 @@ $(document).ready(function () {
     });
 });
 
+$('#submitbutton').click(function() {
+    tinyMCE.triggerSave();
+});
+
 

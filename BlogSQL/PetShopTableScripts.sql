@@ -359,3 +359,12 @@ select c.CategoryName from Categories c
 	inner join Posts p on p.CategoryID = c.CategoryID
 where p.PostID = @postId
 end
+
+go
+
+create procedure [dbo].[AddNewCategory] (@categoryName nvarchar(50))
+as
+begin
+insert into Categories
+values (@categoryName)
+end

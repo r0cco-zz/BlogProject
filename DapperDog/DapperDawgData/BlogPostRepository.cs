@@ -215,6 +215,13 @@ namespace DapperDawgData
             p.Get<int>("StaticPageID");
         }
 
+        public void AddNewCategory(Category newCategory)
+        {
+            var p = new DynamicParameters();
+            p.Add("categoryName", newCategory.CategoryName);
+
+            _cn.Execute("AddNewCategory", p, commandType: CommandType.StoredProcedure);
+        }
 
     }
 }
