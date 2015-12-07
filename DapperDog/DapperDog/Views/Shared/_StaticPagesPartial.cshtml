@@ -1,0 +1,14 @@
+﻿@using DapperDawgData
+@model DapperDog.Models.HomeIndexViewModel
+  
+
+@{
+    var repo = new BlogPostRepository();
+    var staticPages = repo.GetAllStaticPages();
+    foreach (var page in staticPages)
+    {
+        <ul class="nav navbar-nav navbar">
+            <li>@Html.ActionLink(page.StaticPageTitle, "DisplayStaticPage", "Home", routeValues: null, htmlAttributes: new { id = "staticPageLink" })</li>
+        </ul>
+    }
+}

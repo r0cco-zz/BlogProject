@@ -7,7 +7,7 @@
 }
 
 <div class="container-fluid bg-1 text-center">
-    <h2>Welcome to our Blog!</h2>
+    <h2>Welcome to the Dapper Dawg Blog!</h2>
     <div class="row">
         <div class="col-sm-8">
             <div class="column1">
@@ -49,15 +49,7 @@
                         <br/>
                     }
                 </div>
-                <div class="StaticPages">
-                    @foreach (var page in Model.StaticPages)
-                    {
-                        @Html.ActionLink(page.StaticPageTitle, "DisplayStaticPage", new {id = page.StaticPageID}, new {@class = "alink"})
-                        <br/>
-                    }
-                </div>
             </div>
-
         </div>
     </div>
 </div>

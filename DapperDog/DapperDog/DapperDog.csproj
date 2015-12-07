@@ -470,6 +470,7 @@
     <Content Include="Views\Blogs\DisplayPostsWithStatus0.cshtml" />
     <Content Include="Views\Home\DisplayStaticPage.cshtml" />
     <Content Include="Views\Blogs\EditPost.cshtml" />
+    <Content Include="Views\Shared\_StaticPagesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
