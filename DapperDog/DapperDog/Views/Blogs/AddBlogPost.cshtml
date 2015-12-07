@@ -15,16 +15,16 @@
         <input class="hidden" name="Author" value="@User.Identity.Name"/>
         <div class="radiobutton">
             <label for="Special">Current Special:</label>
-            <input id="Special" type="radio" name="special"/>Is Current Special
-            <input id="Special" type="radio" name="special"/>Is Not Current Special
+            <input id="Special" type="radio" name="special" />Is Current Special
+            <input id="Special" type="radio" name="special" />Is Not Current Special
         </div>
-        <div class="dropdown">
+           <div class="dropdown">
             <label>Category:</label>
             <div>
                 @Html.DropDownList("CategoryID", Model.Categories, new {@class = "form-control input-sm", @id = "inputCategoryID", @name = "Categories"})
             </div>
         </div>
-        <div class="form-group" id="blog">
+       <div class="form-group" id="blog">
             <textarea id="TinyMCEBox" name="PostContent"></textarea>
         </div>
         <div>
