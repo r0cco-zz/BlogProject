@@ -94,10 +94,14 @@ textarea {
     text-align: center;
 }
 
-.blogtitle {
+.blogtitle, .categorytitle {
     text-align: center;
     padding-top: 10px;
     color: #000099;
+}
+
+.categorytitle {
+    font-weight: bold;
 }
 
 #footer {
@@ -127,3 +131,7 @@ textarea {
     padding: 10px;
 }
 
+#toseemore {
+    /*color: yellow;*/
+    font-style: oblique;
+}

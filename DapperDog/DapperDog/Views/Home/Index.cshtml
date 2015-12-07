@@ -7,7 +7,7 @@
 }
 
 <div class="container-fluid bg-1 text-center">
-    <h2>Welcome to our Blog!</h2>
+    <h2>Welcome to the Dapper Dawg Blog!</h2>
     <div class="row">
         <div class="col-sm-8">
             <div class="column1">
@@ -21,7 +21,8 @@
                             <span class="line" id="author">@post.Author</span>
                             
                         
-                            @Html.Raw(post.PostContent)
+                            @Html.Raw(post.PostContent.Substring(0, 50) + "...")
+                            <p id ="toseemore">Click title to see full post content.</p>
                             @foreach (var tag in post.BlogTags)
                             {
 
@@ -49,21 +50,14 @@
         <div class="col-sm-4">
             <div class="column3">
                 <div class="categories">
+                    <h2 class="categorytitle">Categories:</h2>
                     @foreach (var category in Model.Categories)
                     {
                         @Html.ActionLink(category.CategoryName, "ListPostsByCategory", new {id = category.CategoryID}, new {@class = "alink"})
                         <br/>
                     }
                 </div>
-                <div class="StaticPages">
-                    @foreach (var page in Model.StaticPages)
-                    {
-                        @Html.ActionLink(page.StaticPageTitle, "DisplayStaticPage", new {id = page.StaticPageID}, new {@class = "alink"})
-                        <br/>
-                    }
-                </div>
             </div>
-
         </div>
     </div>
 </div>
