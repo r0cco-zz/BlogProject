@@ -1,5 +1,5 @@
-﻿@using DapperDawgData
-@model DapperDog.Models.HomeIndexViewModel
+﻿
+@using DapperDawgData
   
 
 @{
@@ -8,7 +8,7 @@
     foreach (var page in staticPages)
     {
         <ul class="nav navbar-nav navbar">
-            <li>@Html.ActionLink(page.StaticPageTitle, "DisplayStaticPage", "Home", routeValues: null, htmlAttributes: new { id = "staticPageLink" })</li>
+            <li>@Html.ActionLink(page.StaticPageTitle, "DisplayStaticPage", "Home", routeValues: new {Id = page.StaticPageID}, htmlAttributes: new { id = "staticPageLink" })</li>
         </ul>
     }
 }
