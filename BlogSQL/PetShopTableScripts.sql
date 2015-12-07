@@ -72,8 +72,23 @@ begin
 	values ('dogs'),('cats'),('ferrets'),('food'),('toys'),('health'),('fun'),('knowledge'),('happy'),('smiley'),('turtles'),('snakes')
 
 	insert into StaticPages
-	values ('2015-12-01','Title1','<p>Lorem ipsum dolor sit amet fleas purr pet food water dog mouse. Meow groom run purr speak collar throw dog swimming smooshy puppy carrier commands bark chirp carrier roll over chirp lick smooshy.</p>'),
-	('2015-12-02','Title2','<p>Lorem ipsum dolor sit amet furry meow foot speak biscuit feathers stay field water dog groom chew mittens harness bed. Fleas whiskers shake grooming gimme five run turtle furry. Bark barky Spike sit cage litter box dog treats tuxedo grooming warm furry. House Train bird food cat Buddy small animals litter box pet gate.</p>')
+	values ('2015-12-01','About','<div class="column1"><p>Dapper Dawg opened its doors in 2015. </p>
+<p>We know that your pets are more than just animals, they are family!  We want to be your #1 resource for ALL your pets'' needs.</p>
+    </div>'),
+	('2015-12-01','Contact','<div class="column1">
+    <address>
+        526 South Main Street<br/>
+        Akron, OH 44311 <br/>
+        <abbr title="Phone">Phone:</abbr>
+        425.555.0100
+    </address>
+</div>
+<div class="column2">
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@dapperdawg.com</a><br/>
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@dapperdawg.com</a>
+</address>
+</div>')
 
 	insert into PostsTags
 	values (1,1),
