@@ -9,12 +9,17 @@
 <form class="form-horizontal" action="@Url.Action("AddBlogPost")" method="POST" id="addBlogPostForm">
     <fieldset>
         <div class="inputboxes">
-            <label for="AddBlogPostTitle">Title</label>
+            <label for="AddBlogPostTitle">Title:</label>
             <input name="PostTitle" id="AddBlogPostTitle" type="text"/>
         </div>
         <input class="hidden" name="Author" value="@User.Identity.Name"/>
-        <div class="dropdown">
-            <label>Category</label>
+        <div class="radiobutton">
+            <label for="Special">Current Special:</label>
+            <input id="Special" type="radio" name="special" />Is Current Special
+            <input id="Special" type="radio" name="special" />Is Not Current Special
+        </div>
+           <div class="dropdown">
+            <label>Category:</label>
             <div>
                 <select name="Categories" class="form-control input-sm" id="inputCategoryID">                   
                 </select>
@@ -28,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group" id="blog">
+       <div class="form-group" id="blog">
             <textarea id="TinyMCEBox" name="PostContent"></textarea>
         </div>
         <div>
@@ -37,7 +42,7 @@
         </div>
         <div>
             @Html.ActionLink("Cancel", "Index", "Home", null, new {@class = "btn btn-primary"})
-            <button class="btn btn-primary">Submit</button>
+            <button id ="submitbutton" class="btn btn-primary">Submit</button>
         </div>
     </fieldset>
 </form>
