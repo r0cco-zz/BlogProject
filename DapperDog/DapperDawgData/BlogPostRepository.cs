@@ -37,6 +37,13 @@ namespace DapperDawgData
             return blogPosts;
         }
 
+        public List<BlogPost> GetDeletedBlogPosts()
+        {
+            var blogPosts = _cn.Query<BlogPost>("GetDeletedPosts", commandType: CommandType.StoredProcedure).ToList();
+
+            return blogPosts;
+        } 
+
         public List<BlogPost> GetBlogPostsByTag(int tagID)
         {
             var p = new DynamicParameters();
@@ -223,5 +230,12 @@ namespace DapperDawgData
             _cn.Execute("AddNewCategory", p, commandType: CommandType.StoredProcedure);
         }
 
+        public void DeleteBlogPost(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("postId", id);
+
+            _cn.Execute("SetPostStatusTo2", p, commandType: CommandType.StoredProcedure);
+        }
     }
 }

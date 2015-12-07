@@ -17,7 +17,7 @@
                         <div id="blog">
                             <h2 class="blogtitle">@Html.ActionLink(post.PostTitle, "ListSinglePost", new {id = post.PostID}, new {@class = "alink"})</h2>
                             <span class="line" id="date">@post.PostDate.ToShortDateString()</span>
-                            <span class="line" id ="category">@post.CategoryName</span>
+                            <span class="line" id="category">@post.CategoryName</span>
                             <span class="line" id="author">@post.Author</span>
                             @Html.Raw(post.PostContent)
                                 <p id="toseemore">Click title to see full post content.</p>
@@ -31,6 +31,12 @@
                             {
                                 <br/>
                                 @Html.ActionLink("Edit Post", "EditPost", "Blogs", new {id = post.PostID}, new {@class = "btn btn-primary", id = post.PostID})
+                                <button class="btn btn-danger btnShowConfirmDelete" id="btnShowConfirmDelete" style="float: right">Delete Post</button>
+                                <div class="ConfirmDelete" style="float: right; display: none;">
+                                    <p>Are you sure you want to delete this post?</p>
+                                    <button class="btn btn-primary btnCancelConfirmDelete" id="btnCancelConfirmDelete">Cancel</button>
+                                    @Html.ActionLink("Confirm Delete", "DeletePost", "Blogs", new {id = post.PostID}, new {@class = "btn btn-danger", id = post.PostID, style = "float: right"})
+                                </div>
                             }
                         </div>
                     }
@@ -42,6 +48,7 @@
         <div class="col-sm-4">
             <div class="column3">
                 <div class="categories">
+                    <h2 class="categorytitle">Categories:</h2>
                     @foreach (var category in Model.Categories)
                     {
                         @Html.ActionLink(category.CategoryName, "ListPostsByCategory", new {id = category.CategoryID}, new {@class = "alink"})
@@ -52,3 +59,7 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+    <script src="~/Scripts/app/deletePost.js"></script>
+}

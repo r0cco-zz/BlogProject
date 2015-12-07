@@ -240,6 +240,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\dotdotdot.js" />
+    <Content Include="Scripts\app\deletePost.js" />
     <Content Include="Scripts\app\manageCategories.js" />
     <Content Include="Scripts\app\postValidation.js" />
     <Content Include="Scripts\app\tag-It.js" />
@@ -471,6 +472,7 @@
     <Content Include="Views\Blogs\DisplayPostsWithStatus0.cshtml" />
     <Content Include="Views\Home\DisplayStaticPage.cshtml" />
     <Content Include="Views\Blogs\EditPost.cshtml" />
+    <Content Include="Views\Blogs\DisplayPostsWithStatus2.cshtml" />
     <Content Include="Views\Shared\_StaticPagesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -57,6 +57,26 @@ namespace DapperDawgBll
             return posts;
         }
 
+        public List<BlogPost> GetPostsWithStatus2()
+        {
+            var posts = _repo.GetDeletedBlogPosts();
+
+            foreach (var post in posts)
+            {
+                post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
+                post.BlogTags = new List<Tag>();
+                var tagList = _repo.GetTagsByPostID(post.PostID);
+                if (tagList != null)
+                {
+                    foreach (var tag in tagList)
+                    {
+                        post.BlogTags.Add(tag);
+                    }
+                }
+            }
+            return posts;
+        } 
+
         public List<Category> GetAllCategories()
         {
             return _repo.GetAllCategories();
@@ -265,9 +285,14 @@ namespace DapperDawgBll
             }
         }
 
-        public void ApprovePost(int postId)
+        public void SetPostTo1(int postId)
         {
             _repo.ApproveBlogPost(postId);
+        }
+
+        public void DeletePost(int id)
+        {
+            _repo.DeleteBlogPost(id);
         }
     }
 }
