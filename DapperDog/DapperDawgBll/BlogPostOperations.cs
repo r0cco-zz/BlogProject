@@ -24,20 +24,23 @@ namespace DapperDawgBll
             foreach (var post in posts)
             {
                 post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
-                post.BlogTags = new List<Tag>();
                 // checks to see if PublishDate is after today, or if ExpirationDate is before today 
-                if (post.PublishDate != null && DateTime.Compare(DateTime.Parse(post.PublishDate.ToString()), DateTime.Now) > 0)
+                if (post.PublishDate.HasValue && DateTime.Compare(post.PublishDate.Value, DateTime.Now) > 0)
                 {
                     posts.Remove(post);
                     break;
                 }
-                if (post.ExpirationDate != null && DateTime.Compare(DateTime.Parse(post.ExpirationDate.ToString()), DateTime.Now) < 0)
+                if (post.ExpirationDate.HasValue && DateTime.Compare(post.ExpirationDate.Value, DateTime.Now) < 0)
                 {
                     posts.Remove(post);
                     break;
                 }
-
+            }
+            foreach (var post in posts)
+            {
+                post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
                 var tagList = _repo.GetTagsByPostID(post.PostID);
+                post.BlogTags = new List<Tag>();
                 if (tagList != null)
                 {
                     foreach (var tag in tagList)
