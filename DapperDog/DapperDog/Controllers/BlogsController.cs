@@ -149,16 +149,24 @@ namespace DapperDog.Controllers
             return View(vm); 
         }
 
-        [Authorize(Roles = "Admin,Pr")]
+        [Authorize(Roles = "Admin,PR")]
+        public ActionResult EditSingleStaticPage(int id)
+        {
+            var ops = new BlogPostOperations();
+           StaticPage newStaticPage = ops.GetStaticPageByID(id);
+
+            return View("EditSingleStaticPage", newStaticPage);
+        }
+
+        [Authorize(Roles = "Admin,PR")]
         [HttpPost]
         public ActionResult EditStaticPage(StaticPage editedStaticPage)
         {
             var ops = new BlogPostOperations();
             ops.EditStaticPage(editedStaticPage);
             //what view should be returned?
-            return RedirectToAction("EditStaticPage", "Blogs");
+            return RedirectToAction("Index", "Blogs");
         }
-
-
+        
     }
 }

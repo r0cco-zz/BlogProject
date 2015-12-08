@@ -1,0 +1,30 @@
+﻿@model DapperDawgModels.StaticPage
+@{
+    ViewBag.Title = "EditSingleStaticPage";
+}
+
+<h2>Edit Static Page</h2>
+
+<form class="form-horizontal" action="@Url.Action("EditStaticPage")" method="POST">
+
+    <fieldset>
+        <div class="inputboxes">
+            <label for="AddStaticPageTitle">Title</label>
+            <input name="StaticPageTitle" id="AddStaticPageTitle" type="text" value="@Model.StaticPageTitle"/>
+ <input class="hidden" name="StaticpageID" value="@Model.StaticPageID"/>
+        <input class="hidden" name="StaticPageDate" value="@Model.StaticPageDate"/>
+ </div>
+                   <div class="form-group" id="staticpage">
+            <textarea id="TinyMCEBox" name="StaticPageContent">@Model.StaticPageContent</textarea>
+        </div>
+        <div>
+            @Html.ActionLink("Cancel", "EditStaticPage", "Blogs", null, new {@class="btn btn-primary"})
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </fieldset>
+</form>
+
+@section scripts {
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/app/tinyMCEBox.js"></script>
+}

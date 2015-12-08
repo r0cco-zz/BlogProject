@@ -152,18 +152,9 @@ namespace DapperDawgData
             //different stored procedure for updating each field in order to retainn same StaticPageId
             var p = new DynamicParameters();
             p.Add("StaticPageId", editedStaticPage.StaticPageID);
-            p.Add("newStaticPageDate", editedStaticPage.StaticPageDate);
-            _cn.Execute("UpdateStaticPageDate", p, commandType: CommandType.StoredProcedure);
-
-            var p2 = new DynamicParameters();
-            p.Add("StaticPageId", editedStaticPage.StaticPageID);
             p.Add("newStaticPageTitle", editedStaticPage.StaticPageTitle);
-            _cn.Execute("UpdateStaticPageDate", p2, commandType: CommandType.StoredProcedure);
-
-            var p3 = new DynamicParameters();
-            p.Add("StaticPageId", editedStaticPage.StaticPageID);
             p.Add("newStaticPageContent", editedStaticPage.StaticPageContent);
-            _cn.Execute("UpdateStaticPageContent", p3, commandType: CommandType.StoredProcedure);
+            _cn.Execute("UpdateStaticPage", p, commandType: CommandType.StoredProcedure);
 
         }
 
