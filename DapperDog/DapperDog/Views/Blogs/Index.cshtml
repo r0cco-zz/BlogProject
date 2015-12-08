@@ -15,15 +15,17 @@
             <br/>
         </div>
         <div id="button">
-        @if (User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("View Unapproved Posts", "DisplayPostsWithStatus0", null, new { @class="btn btn-primary"} )
-            <br/>
-            @Html.ActionLink("View Deleted Posts", "DisplayPostsWithStatus2", null, new { @class = "btn btn-primary" })
-            <br />
-        }
-            </div>
+            @Html.ActionLink("Edit Static Page", "EditStaticPage", "/Blogs/EditStaticPage", new {@class= "btn btn-primary"} )
+        </div>
+                <div id="button">
+                    @Html.ActionLink("View Unapproved Posts", "DisplayPostsWithStatus0", null, new {@class = "btn btn-primary"})
+                    <br/>
+                </div>
+                <div id="button">
+                    @Html.ActionLink("View Deleted Posts", "DisplayPostsWithStatus2", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
     </div>
-</div>
+
 
 

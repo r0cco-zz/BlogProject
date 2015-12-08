@@ -26,9 +26,12 @@
 
                                 <span class="tags">#@tag.TagName</span>
                             }
-                            <br />
-                            @Html.ActionLink("Restore Post", "RestorePost", "Blogs", new { id = post.PostID }, new { @class = "btn btn-primary" })
-                            @*@Html.ActionLink("Edit", "Index", "Home", null, new { @class = "btn btn-primary" })
+                            <br/>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Restore Post", "RestorePost", "Blogs", new {id = post.PostID}, new {@class = "btn btn-primary"})
+                            }
+                                @*@Html.ActionLink("Edit", "Index", "Home", null, new { @class = "btn btn-primary" })
                                 @Html.ActionLink("Delete", "Index", "Home", null, new { @class = "btn btn-primary" })*@
                         </div>
                     }
@@ -46,9 +49,7 @@
                         <br />
                     }
                 </div>
-                <div class="StaticPages">
-
-                </div>
+               
             </div>
 
         </div>

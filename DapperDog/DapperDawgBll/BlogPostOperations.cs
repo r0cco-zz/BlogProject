@@ -263,6 +263,11 @@ namespace DapperDawgBll
             return postListCarrier;
         }
 
+        public void EditStaticPage(StaticPage pageToEdit)
+        {
+            _repo.EditStaticPage(pageToEdit);
+        }
+
         public void EditPost(BlogPost postToEdit)
         {
             _repo.EditBlogPost(postToEdit);

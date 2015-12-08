@@ -68,7 +68,7 @@ namespace DapperDog.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,PR")]
         public ActionResult DisplayPostsWithStatus0()
         {
             var ops = new BlogPostOperations();
@@ -80,7 +80,7 @@ namespace DapperDog.Controllers
             return View(vm);
         }
 
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin,PR")]
         public ActionResult DisplayPostsWithStatus2()
         {
             var ops = new BlogPostOperations();
@@ -109,7 +109,7 @@ namespace DapperDog.Controllers
             return RedirectToAction("DisplayPostsWithStatus2");
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,PR")]
         public ActionResult EditPost(int id)
         {
             var ops = new BlogPostOperations();
@@ -119,7 +119,7 @@ namespace DapperDog.Controllers
             return View(vm);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,PR")]
         [HttpPost]
         public ActionResult EditPost(BlogPost editedPost)
         {
@@ -137,5 +137,28 @@ namespace DapperDog.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [Authorize(Roles = "Admin,PR")]
+        public ActionResult EditStaticPage()
+        {
+            //need a list of static pages
+            var ops = new BlogPostOperations();
+            var vm = new HomeIndexViewModel();
+            vm.StaticPages = ops.GetAllStaticPages();
+
+            return View(vm); 
+        }
+
+        [Authorize(Roles = "Admin,Pr")]
+        [HttpPost]
+        public ActionResult EditStaticPage(StaticPage editedStaticPage)
+        {
+            var ops = new BlogPostOperations();
+            ops.EditStaticPage(editedStaticPage);
+            //what view should be returned?
+            return RedirectToAction("EditStaticPage", "Blogs");
+        }
+
+
     }
 }

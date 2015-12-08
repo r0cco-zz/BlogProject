@@ -37,8 +37,7 @@ namespace DapperDog.Controllers
         {
             var ops = new BlogPostOperations();
             var vm = new HomeIndexViewModel();
-            StaticPage newStaticPage = ops.GetStaticPageByID(id);
-
+           var newStaticPage = ops.GetStaticPageByID(id);
 
             return View(newStaticPage);
         }
