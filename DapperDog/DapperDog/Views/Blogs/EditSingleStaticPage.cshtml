@@ -5,26 +5,31 @@
 
 <h2>Edit Static Page</h2>
 
-<form class="form-horizontal" action="@Url.Action("EditStaticPage")" method="POST">
+<form class="form-horizontal" action="@Url.Action("EditStaticPage")" method="POST" id="addStaticPageForm">
 
     <fieldset>
-        <div class="inputboxes">
+        <div class="form-group">
             <label for="AddStaticPageTitle">Title</label>
             <input name="StaticPageTitle" id="AddStaticPageTitle" type="text" value="@Model.StaticPageTitle"/>
- <input class="hidden" name="StaticpageID" value="@Model.StaticPageID"/>
-        <input class="hidden" name="StaticPageDate" value="@Model.StaticPageDate"/>
- </div>
-                   <div class="form-group" id="staticpage">
+            <input class="hidden" name="StaticpageID" value="@Model.StaticPageID"/>
+            <input class="hidden" name="StaticPageDate" value="@Model.StaticPageDate"/>
+        </div>
+        <div class="form-group" id="staticpage">
             <textarea id="TinyMCEBox" name="StaticPageContent">@Model.StaticPageContent</textarea>
         </div>
         <div>
-            @Html.ActionLink("Cancel", "EditStaticPage", "Blogs", null, new {@class="btn btn-primary"})
-            <button class="btn btn-primary">Submit</button>
+            @Html.ActionLink("Cancel", "EditStaticPage", "Blogs", null, new {@class = "btn btn-primary"})
+            <button id="submitbutton" class="btn btn-primary">Submit</button>
         </div>
     </fieldset>
 </form>
 
+
 @section scripts {
     <script src="~/Scripts/tinymce/tinymce.min.js"></script>
     <script src="~/Scripts/app/tinyMCEBox.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css">
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/app/staticPageValidation.js"></script>
 }

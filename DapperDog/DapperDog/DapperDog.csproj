@@ -244,6 +244,7 @@
     <Content Include="Scripts\app\deletePost.js" />
     <Content Include="Scripts\app\manageCategories.js" />
     <Content Include="Scripts\app\postValidation.js" />
+    <Content Include="Scripts\app\staticPageValidation.js" />
     <Content Include="Scripts\app\tag-It.js" />
     <Content Include="Scripts\app\tinyMCEBox.js" />
     <Content Include="Scripts\bootstrap.js" />

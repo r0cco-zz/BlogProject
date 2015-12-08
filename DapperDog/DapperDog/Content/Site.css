@@ -149,6 +149,15 @@ textarea {
     font-style: oblique;
 }
 
+.help-block {
+    color: red;
+}
+
+.field-validation-error {
+    color: red;
+    font-weight: bold;
+}
+
 .ConfirmDelete {
     float: right;
 }
