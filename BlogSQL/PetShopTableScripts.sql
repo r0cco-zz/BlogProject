@@ -30,6 +30,15 @@ create table Posts (
 )
 go
 
+create table UserComments (
+	UserCommentID int identity (1,1) primary key not null,
+	PostID int foreign key references Posts (PostID) not null,
+	UserCommentUserName nvarchar(50),
+	UserCommentContent text,
+	UserCommentDate date
+)
+go
+
 create table Tags (
 	TagID int identity (1, 1) primary key not null,
 	TagName nvarchar(50)
@@ -411,6 +420,28 @@ as
 begin
 select * from Posts
 Where PostStatus = 2
+end
+
+go
+
+create procedure [dbo].[AddNewUserComment]
+(@UserCommentUserName nvarchar(50), @UserCommentContent text, @UserCommentDate date, @UserCommentID int output)
+as
+begin
+insert into UserComments (UserCommentUserName, UserCommentContent, UserCommentDate)
+values (@UserCommentUserName, @UserCommentContent, @UserCommentDate)
+set @UserCommentID = SCOPE_IDENTITY()
+end
+
+go
+
+create procedure [dbo].[GetUserCommentsByPostID] (@PostID int)
+as
+begin
+select * from posts
+join UserComments on
+UserComments.PostID = @PostID
+order by UserCommentDate desc
 end
 
 go
