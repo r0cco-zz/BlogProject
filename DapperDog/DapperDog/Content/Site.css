@@ -160,6 +160,7 @@ textarea {
 
 .ConfirmDelete {
     float: right;
+    position: relative;
 }
 
 .btnShowConfirmDelete {

@@ -36,7 +36,7 @@
                             {
                                 <br/>
                                 @Html.ActionLink("Edit Post", "EditPost", "Blogs", new {id = post.PostID}, new {@class = "btn btn-primary", id = post.PostID})
-                                <button class="btn btn-danger btnShowConfirmDelete" value="@post.PostID" id="btnShowConfirmDelete @post.PostID">Delete Post</button>
+                                <button class="btn btn-danger btnShowConfirmDelete" value="@post.PostID" id="btnShowConfirmDelete @post.PostID">Delete Post</button><br/>
                                 <div class="ConfirmDelete" value="@post.PostID" id="ConfirmDeleteDiv_@post.PostID" style="display: none;">
                                     <p>Are you sure you want to delete this post?</p>
                                     <button class="btn btn-primary btnCancelConfirmDelete" value="@post.PostID" id="btnCancelConfirmDelete_@post.PostID">Cancel</button>

@@ -13,10 +13,19 @@ namespace DapperDog
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-           
-
             routes.MapRoute(
                 name: "Default",
+                url: "",
+                defaults: new
+                {
+                    controller = "Home",
+                    action = "Index",
+                    id = "0"
+                }
+                );
+
+            routes.MapRoute(
+                name: "SomethingOtherThanDefault",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );

@@ -12,13 +12,17 @@ namespace DapperDog.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             var ops = new BlogPostOperations();
             var vm = new HomeIndexViewModel();
-            vm.BlogPosts = ops.GetBlogPosts();
+            //vm.BlogPosts = ops.GetBlogPosts();
             vm.Categories = ops.GetAllCategories();
             vm.StaticPages = ops.GetAllStaticPages();
+            // paging
+            var posts = ops.GetBlogPosts();
+            vm.BlogPosts = posts.Skip(id*5).Take(5).ToList();
+
             return View(vm);
         }
 

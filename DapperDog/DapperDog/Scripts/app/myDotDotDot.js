@@ -8,7 +8,7 @@ $(document).ready(function () {
     $(".ellipsis").dotdotdot({
         after: "a.more",
         watch: "window",
-        height: 100,
+        height: 200,
         callback: dotdotdotCallback
     });
     $("div.ellipsis").on('click', 'a', function () {
@@ -20,7 +20,7 @@ $(document).ready(function () {
         }
         else {
             $(this).hide();
-            $(this).closest('div.ellipsis').css("max-height", "100px").dotdotdot({ after: "a.more", callback: dotdotdotCallback });
+            $(this).closest('div.ellipsis').css("max-height", "200px").dotdotdot({ after: "a.more", callback: dotdotdotCallback });
         }
     });
 });
