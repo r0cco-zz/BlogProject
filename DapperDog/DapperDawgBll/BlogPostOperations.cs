@@ -25,6 +25,18 @@ namespace DapperDawgBll
             {
                 post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
                 post.BlogTags = new List<Tag>();
+                // checks to see if PublishDate is after today, or if ExpirationDate is before today 
+                if (post.PublishDate != null && DateTime.Compare(DateTime.Parse(post.PublishDate.ToString()), DateTime.Now) > 0)
+                {
+                    posts.Remove(post);
+                    break;
+                }
+                if (post.ExpirationDate != null && DateTime.Compare(DateTime.Parse(post.ExpirationDate.ToString()), DateTime.Now) < 0)
+                {
+                    posts.Remove(post);
+                    break;
+                }
+
                 var tagList = _repo.GetTagsByPostID(post.PostID);
                 if (tagList != null)
                 {
@@ -101,6 +113,10 @@ namespace DapperDawgBll
         {
             newBlogPost.PostDate = DateTime.Now;
             newBlogPost.PostStatus = 1;
+            if (newBlogPost.PublishDate == null)
+            {
+                newBlogPost.PublishDate = DateTime.Now;
+            }
             var postId = _repo.AddNewBlogPost(newBlogPost);
             var tagList = _repo.GetAllTags();
 
@@ -141,6 +157,10 @@ namespace DapperDawgBll
         {
             newBlogPost.PostDate = DateTime.Now;
             newBlogPost.PostStatus = 0;
+            if (newBlogPost.PublishDate == null)
+            {
+                newBlogPost.PublishDate = DateTime.Now;
+            }
             var postId = _repo.AddNewBlogPost(newBlogPost);
             var tagList = _repo.GetAllTags();
 

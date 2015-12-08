@@ -22,5 +22,7 @@ namespace DapperDawgModels
         public int PostStatus { get; set; }
         public List<Tag> BlogTags { get; set; }
         public List<string> tags { get; set; } 
+        public DateTime? PublishDate { get; set; }
+        public DateTime? ExpirationDate { get; set; }
     }
 }

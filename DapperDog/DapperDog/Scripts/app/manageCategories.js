@@ -27,7 +27,7 @@ function loadCategories() {
 }
 
 function createCategoryOption(category) {
-    return '<option value="' + category.CategoryID + '">' + category.CategoryName + '</option>'; // html to add to the drop down
+    return '<option value="' + category.CategoryID + '" name="CategoryID">' + category.CategoryName + '</option>'; // html to add to the drop down
 }
 
 function postNewCategory() {
