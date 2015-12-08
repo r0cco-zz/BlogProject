@@ -190,12 +190,12 @@ namespace DapperDawgData
             var p6 = new DynamicParameters();
             p6.Add("postId", editedPost.PostID);
             p6.Add("newPublishDate", editedPost.PublishDate);
-            _cn.Execute("UpdatePublishDate", p, commandType: CommandType.StoredProcedure);
+            _cn.Execute("UpdatePublishDate", p6, commandType: CommandType.StoredProcedure);
 
             var p7 = new DynamicParameters();
             p7.Add("postId", editedPost.PostID);
             p7.Add("newExpirationDate", editedPost.ExpirationDate);
-            _cn.Execute("UpdateExpirationDate", p, commandType: CommandType.StoredProcedure);
+            _cn.Execute("UpdateExpirationDate", p7, commandType: CommandType.StoredProcedure);
         }
 
         public void AddNewPostTag(int TagId, int PostId)
