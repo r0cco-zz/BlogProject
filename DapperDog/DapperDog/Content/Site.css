@@ -166,6 +166,28 @@ textarea {
     float: right;
 }
 
+h2:first-of-type {
+    font-family: Pacifico;
+}
+
+.navbar-nav > .open {
+    background-color: #000099;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #999999;
+    background-color: #000099;
+}
+
+.dropdown-menu > li > a:hover {
+    color: #999999;
+    text-decoration: none;
+    background-color: #000099;
+}
+
+.dropdown-menu {
+    background-color:  #000099;
+}
 .more:hover, .less:hover {
     background-color: #000099;
     cursor: pointer;

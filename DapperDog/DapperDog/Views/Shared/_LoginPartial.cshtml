@@ -1,19 +1,29 @@
 ﻿@using Microsoft.AspNet.Identity
+<div class="container">
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("Admin", "Index", "Blogs", null, new {title = "Admin"})
-            </li>
-            <li>
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
+                <li>
+                    <a href="#" class="navbar-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="False">Admin</a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Add New Post", "AddBlogPost", "Blogs", new {area = ""}, new {@class = "navbar-brand"})</li>
+                        <li>@Html.ActionLink("Add New Static Page", "AddStaticPages", "Blogs", new {area = ""}, new {@class = "navbar-brand"})</li>
+                        <li>@Html.ActionLink("Edit Static Page", "EditStaticPage", "Blogs", new {area = ""}, new {@class = "navbar-brand"})</li>
+                        <li>@Html.ActionLink("View Unapproved Posts", "DisplayPostsWithStatus0", "Blogs", new {area = ""}, new {@class = "navbar-brand"})</li>
+                        <li>@Html.ActionLink("View Deleted Posts", "DisplayPostsWithStatus2", "Blogs", new {area = ""}, new {@class = "navbar-brand"})</li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+            </div>
     }
 }
 else
@@ -23,3 +33,4 @@ else
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+    </div>

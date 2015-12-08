@@ -17,7 +17,8 @@
             <textarea id="TinyMCEBox" name="StaticPageContent"></textarea>
         </div>
        <div>
-            <button id="submitbutton" class="btn btn-primary">Submit</button>
+           @Html.ActionLink("Cancel", "Index", "Blogs", null, new { @class = "btn btn-primary" })
+           <button id="submitbutton" class="btn btn-primary">Submit</button>
         </div>
 
     </form>
