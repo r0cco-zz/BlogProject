@@ -8,7 +8,7 @@
 <div class="row">
     <h2>Add Static Page</h2>
     
-    <form class="form-horizontal" action="@Url.Action("AddStaticPages")" method="POST">
+    <form class="form-horizontal" action="@Url.Action("AddStaticPages")" method="POST" id="addStaticPageForm">
         <div class="inputboxes">
             <label for="AddStaticPageTitle">Title</label>
             <input name="StaticPageTitle" id="AddStaticPageTitle" type="text"/>
@@ -17,7 +17,7 @@
             <textarea id="TinyMCEBox" name="StaticPageContent"></textarea>
         </div>
        <div>
-            <button class="btn btn-primary">Submit</button>
+            <button id="submitbutton" class="btn btn-primary">Submit</button>
         </div>
 
     </form>
@@ -30,4 +30,6 @@
     <script src="~/Scripts/app/tinyMCEBox.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css">
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/app/staticPageValidation.js"></script>
  }

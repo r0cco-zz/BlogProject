@@ -142,3 +142,12 @@ textarea {
     /*color: yellow;*/
     font-style: oblique;
 }
+
+.help-block {
+    color: red;
+}
+
+.field-validation-error {
+    color: red;
+    font-weight: bold;
+}
