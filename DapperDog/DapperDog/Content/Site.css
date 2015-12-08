@@ -116,6 +116,7 @@ textarea {
     border-radius: 15px;
     padding: 15px;
     margin-bottom: 20px;
+    overflow-y: auto;
 }
 
 #button {
@@ -151,3 +152,12 @@ textarea {
     color: red;
     font-weight: bold;
 }
+
+.ConfirmDelete {
+    float: right;
+}
+
+.btnShowConfirmDelete {
+    float: right;
+}
+
