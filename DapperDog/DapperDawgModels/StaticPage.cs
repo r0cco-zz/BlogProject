@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace DapperDawgModels
 {
@@ -11,6 +12,7 @@ namespace DapperDawgModels
         public int StaticPageID { get; set; }
         public DateTime StaticPageDate { get; set; }
         public string StaticPageTitle { get; set; }
+        [AllowHtml]
         public string StaticPageContent { get; set; }
     }
 }
