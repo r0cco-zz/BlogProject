@@ -193,4 +193,8 @@ h2:first-of-type {
     cursor: pointer;
 }
 
+.btnConfirmDelete {
+    float: right;
+}
+
 

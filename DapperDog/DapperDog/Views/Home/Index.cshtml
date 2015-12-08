@@ -40,7 +40,7 @@
                                 <div class="ConfirmDelete" value="@post.PostID" id="ConfirmDeleteDiv_@post.PostID" style="display: none;">
                                     <p>Are you sure you want to delete this post?</p>
                                     <button class="btn btn-primary btnCancelConfirmDelete" value="@post.PostID" id="btnCancelConfirmDelete_@post.PostID">Cancel</button>
-                                    @Html.ActionLink("Confirm Delete", "DeletePost", "Blogs", new {id = post.PostID}, new {@class = "btn btn-danger", id = post.PostID, style = "float: right"})
+                                    @Html.ActionLink("Confirm Delete", "DeletePost", "Blogs", new {id = post.PostID}, new {@class = "btn btn-danger btnConfirmDelete", id = post.PostID})
                                 </div>
                             }
                         </div>
