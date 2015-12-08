@@ -383,3 +383,14 @@ begin
 insert into Categories
 values (@categoryName)
 end
+
+go
+
+create procedure [dbo].[GetDeletedPosts] 
+as
+begin
+select * from Posts
+Where PostStatus = 2
+end
+
+go

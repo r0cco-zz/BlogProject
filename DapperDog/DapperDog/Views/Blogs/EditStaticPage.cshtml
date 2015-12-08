@@ -1,0 +1,29 @@
+﻿@model DapperDog.Models.HomeIndexViewModel
+@{
+    ViewBag.Title = "EditStaticPage";
+}
+
+<h2>Edit Static Page</h2>
+
+<div class="row">
+    <h2>Choose Static Page to Edit</h2>
+
+    @foreach (var page in Model.StaticPages)
+    {
+        <form class="form-horizontal" action="@Url.Action("EditStaticPage")" method="POST">
+            <div class="inputboxes">
+                <label for="AddStaticPageTitle">Title</label>
+                <input name="StaticPageTitle" id="AddStaticPageTitle" type="text" value="@page.StaticPageTitle"/>
+                <input class="hidden" name="StaticPageID" value="@page.StaticPageID"/>
+                <input class="hidden" name="StaticpageDate" value="@page.StaticPageDate"/>
+            </div>
+            <div class="form-group" id="StaticPageContent">
+                <textarea id="TinyMCEBox" name="StaticPageContent">@page.StaticPageContent</textarea>
+            </div>
+            <div>
+                @Html.ActionLink("Cancel", "Index", "Home", null, new {@class = "btn btn-primary"})
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    }
+</div>

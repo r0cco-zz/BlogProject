@@ -68,7 +68,7 @@ namespace DapperDog.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,PR")]
         public ActionResult DisplayPostsWithStatus0()
         {
             var ops = new BlogPostOperations();
@@ -80,7 +80,7 @@ namespace DapperDog.Controllers
             return View(vm);
         }
 
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin,PR")]
         public ActionResult DisplayPostsWithStatus2()
         {
             var ops = new BlogPostOperations();
@@ -109,7 +109,7 @@ namespace DapperDog.Controllers
             return RedirectToAction("DisplayPostsWithStatus2");
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,PR")]
         public ActionResult EditPost(int id)
         {
             var ops = new BlogPostOperations();
@@ -119,7 +119,7 @@ namespace DapperDog.Controllers
             return View(vm);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,PR")]
         [HttpPost]
         public ActionResult EditPost(BlogPost editedPost)
         {
@@ -137,5 +137,20 @@ namespace DapperDog.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [Authorize(Roles = "Admin,PR")]
+        public ActionResult EditStaticPage()
+        {
+            var repo = new BlogPostRepository();
+           repo.GetAllStaticPages();
+           
+            return View();
+        }
+
+        //[Authorize(Roles = "Admin,Pr")]
+        //public ActionResult EditStaticPage(StaticPage editedStaticPage)
+        //{
+        //    var repo = new BlogPostRepository();
+        //}
     }
 }
