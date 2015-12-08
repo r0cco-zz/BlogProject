@@ -64,7 +64,7 @@ textarea {
     color:#000099
 }
 
-.main h3 {
+.main h3, .staticpagetitle {
     text-align: center;
     padding: 10px;
 }

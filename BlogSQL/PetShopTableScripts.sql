@@ -75,8 +75,8 @@ begin
 	values ('dogs'),('cats'),('ferrets'),('food'),('toys'),('health'),('fun'),('knowledge'),('happy'),('smiley'),('turtles'),('snakes')
 
 	insert into StaticPages
-	values ('2015-12-01','About','<div class="column1"><p>Dapper Dawg opened its doors in 2015. </p><p>We know that your pets are more than just animals, they are family!  We want to be your #1 resource for ALL your pets'' needs.</p></div>'),
-	('2015-12-01','Contact','<div class="column1"><address>526 South Main Street<br/>Akron, OH 44311 <br/><abbr title="Phone">Phone:</abbr>425.555.0100</address></div><div class="column2"><address><strong>Support:</strong> <a href="mailto:Support@example.com">Support@dapperdawg.com</a><br/><strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@dapperdawg.com</a></address></div>')
+	values ('2015-12-01','About','<div class="column1"><p>Dapper Dawg opened its doors in 2015. </p><p>We know that your pets are more than just animals,<p>they are family!?</p><p>We want to be your #1 resource for ALL your pets'' needs.</p></div>'),
+	('2015-12-01','Contact','<div class="column1"><address>526 South Main Street<br/>Akron, OH 44311 <br/><abbr title="Phone">Phone:</abbr>425.555.0100</address><address><strong>Support:</strong> <a href="mailto:Support@example.com">Support@dapperdawg.com</a><br/><strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@dapperdawg.com</a></address></div>')
 
 	insert into PostsTags
 	values (1,1),
@@ -236,6 +236,36 @@ as
 begin
 select *
 from Tags
+end
+
+go
+
+create procedure [dbo].[UpdateStaticPageDate] (@StaticPageId int, @newStaticPageDate date)
+as
+begin
+update StaticPages
+set StaticPages.StaticPageDate = @newStaticPageDate
+where StaticPages.StaticPageID = @StaticPageId
+end
+
+go
+
+create procedure [dbo].[UpdateStaticPageTitle] (@StaticPageId int, @newStaticPageTitle nvarchar(50))
+as
+begin
+update StaticPages
+set Staticpages.StaticPageTitle = @newStaticPageTitle
+where StaticPages.StaticPageID = @StaticPageId
+end
+
+go
+
+create procedure [dbo].[UpdateStaticPageContent] (@StaticPageId int, @newStaticPageContent text)
+as
+begin
+update StaticPages
+set StaticPages.StaticPageContent = @newStaticPageContent
+where StaticPages.StaticPageID = @StaticPageId
 end
 
 go

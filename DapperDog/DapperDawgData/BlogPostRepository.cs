@@ -118,7 +118,7 @@ namespace DapperDawgData
             }
         }
 
-        public string GetCategoryByPostID(int id)
+       public string GetCategoryByPostID(int id)
         {
             var p = new DynamicParameters();
             p.Add("postId", id);
@@ -145,6 +145,26 @@ namespace DapperDawgData
 
             _cn.Execute("AddNewPost", p, commandType: CommandType.StoredProcedure);
             return p.Get<int>("PostID");
+        }
+
+        public void EditStaticPage(StaticPage editedStaticPage)
+        {
+            //different stored procedure for updating each field in order to retainn same StaticPageId
+            var p = new DynamicParameters();
+            p.Add("StaticPageId", editedStaticPage.StaticPageID);
+            p.Add("newStaticPageDate", editedStaticPage.StaticPageDate);
+            _cn.Execute("UpdateStaticPageDate", p, commandType: CommandType.StoredProcedure);
+
+            var p2 = new DynamicParameters();
+            p.Add("StaticPageId", editedStaticPage.StaticPageID);
+            p.Add("newStaticPageTitle", editedStaticPage.StaticPageTitle);
+            _cn.Execute("UpdateStaticPageDate", p2, commandType: CommandType.StoredProcedure);
+
+            var p3 = new DynamicParameters();
+            p.Add("StaticPageId", editedStaticPage.StaticPageID);
+            p.Add("newStaticPageContent", editedStaticPage.StaticPageContent);
+            _cn.Execute("UpdateStaticPageContent", p3, commandType: CommandType.StoredProcedure);
+
         }
 
         public void EditBlogPost(BlogPost editedPost)

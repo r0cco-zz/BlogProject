@@ -141,16 +141,24 @@ namespace DapperDog.Controllers
         [Authorize(Roles = "Admin,PR")]
         public ActionResult EditStaticPage()
         {
-            var repo = new BlogPostRepository();
-           repo.GetAllStaticPages();
-           
-            return View();
+            //need a list of static pages
+            var ops = new BlogPostOperations();
+            var vm = new HomeIndexViewModel();
+            vm.StaticPages = ops.GetAllStaticPages();
+
+            return View(vm); 
         }
 
-        //[Authorize(Roles = "Admin,Pr")]
-        //public ActionResult EditStaticPage(StaticPage editedStaticPage)
-        //{
-        //    var repo = new BlogPostRepository();
-        //}
+        [Authorize(Roles = "Admin,Pr")]
+        [HttpPost]
+        public ActionResult EditStaticPage(StaticPage editedStaticPage)
+        {
+            var ops = new BlogPostOperations();
+            ops.EditStaticPage(editedStaticPage);
+            //what view should be returned?
+            return RedirectToAction("EditStaticPage", "Blogs");
+        }
+
+
     }
 }
