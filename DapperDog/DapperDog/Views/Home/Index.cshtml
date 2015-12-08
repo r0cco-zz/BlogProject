@@ -19,12 +19,8 @@
                             <span class="line" id="date">@post.PostDate.ToShortDateString()</span>
                             <span class="line" id="category">@post.CategoryName</span>
                             <span class="line" id="author">@post.Author</span>
-                                    
-                            @Html.Raw(post.PostContent)
-                                
-                            <p id="toseemore">Click title to see full post content.</p>
-                                               
-                            <div class="ellipsis">
+                           <div class="ellipsis">
+
                                 @Html.Raw(post.PostContent)
                                 <a class='more' >More</a>
                                 <a class='less' >Less</a>
