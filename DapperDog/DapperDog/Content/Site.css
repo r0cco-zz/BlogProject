@@ -90,8 +90,13 @@ textarea {
 .tags {
     font-style: italic;
     font-weight: bold;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
     text-align: center;
+}
+
+.tags a {
+    color: #000099;
 }
 
 .blogtitle, .categorytitle {
@@ -151,4 +156,10 @@ textarea {
 .btnShowConfirmDelete {
     float: right;
 }
+
+.more:hover, .less:hover {
+    background-color: #000099;
+    cursor: pointer;
+}
+
 
