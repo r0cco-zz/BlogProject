@@ -202,4 +202,12 @@ h2:first-of-type {
     font-family: Arial;
 }
 
+#PageButtons {
+    text-align: center;
+}
+
+.btnPageButton {
+    display: inline-block;
+}
+
 

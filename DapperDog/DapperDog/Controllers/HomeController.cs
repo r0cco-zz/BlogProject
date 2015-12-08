@@ -21,6 +21,8 @@ namespace DapperDog.Controllers
             vm.StaticPages = ops.GetAllStaticPages();
             // paging
             var posts = ops.GetBlogPosts();
+            vm.PostTotal = posts.Count;
+            vm.RouteID = id;
             vm.BlogPosts = posts.Skip(id*5).Take(5).ToList();
 
             return View(vm);
