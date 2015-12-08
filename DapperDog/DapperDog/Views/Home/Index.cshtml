@@ -20,11 +20,20 @@
                             <span class="line" id="category">@post.CategoryName</span>
                             <span class="line" id="author">@post.Author</span>
                 
+<<<<<<< HEAD
                                     
                             @Html.Raw(post.PostContent)
                                 
                              
                             <p id="toseemore">Click title to see full post content.</p>
+=======
+                                                 
+                            <div class="ellipsis">
+                                @Html.Raw(post.PostContent)
+                                <a class='more' >More</a>
+                                <a class='less' >Less</a>
+                            </div>
+>>>>>>> 99b68cd145b6140ba13fb39df460c0dd49db1a21
                                 @foreach (var tag in post.BlogTags)
                                 {
 
@@ -67,4 +76,6 @@
 
 @section scripts{
     <script src="~/Scripts/app/deletePost.js"></script>
+    <script src="~/Scripts/jquery.dotdotdot.min.js"></script>
+    <script src="~/Scripts/app/myDotDotDot.js"></script>
 }

@@ -182,7 +182,7 @@ go
 create procedure [dbo].[GetAllPostsOrderedByDate] 
 as
 begin
-select top (10) postid,PostTitle,Author, PostDate,CategoryID, substring(postcontent,1,100) as PostContent, PostStatus, IsStickyPost
+select *
 from Posts
 where PostStatus = 1
 order by IsStickyPost desc, PostDate desc, PostID desc
