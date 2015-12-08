@@ -198,4 +198,8 @@ h2:first-of-type {
     float: right;
 }
 
+.ellipsis>h2 {
+    font-family: Arial;
+}
+
 
