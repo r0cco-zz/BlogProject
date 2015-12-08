@@ -16,10 +16,10 @@
                         <h2 class="staticpagetitle">@page.StaticPageTitle</h2>
                         <input class="hidden" name="StaticPageID value=@page.StaticPageID"/>
                         @Html.Raw(page.StaticPageContent)
+
+
+                        @Html.ActionLink("Edit Page", "EditSingleStaticPage", "Blogs", new {id = page.StaticPageID}, new {@class = "btn btn-primary", id = page.StaticPageID})
                     </div>
-
-                    @Html.ActionLink("Edit Page", "EditStaticPage", "Blogs", new {id = page.StaticPageID}, new {@class = "btn btn-primary", id = page.StaticPageID})
-
                 }
                     </div>
             </div>
