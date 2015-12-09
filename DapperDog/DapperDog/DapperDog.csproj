@@ -239,11 +239,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\addStaticPageDate.js" />
     <Content Include="Scripts\app\datePicker.js" />
     <Content Include="Scripts\app\myDotDotDot.js" />
     <Content Include="Scripts\app\deletePost.js" />
     <Content Include="Scripts\app\manageCategories.js" />
     <Content Include="Scripts\app\postValidation.js" />
+    <Content Include="Scripts\app\setSpecial.js" />
     <Content Include="Scripts\app\staticPageValidation.js" />
     <Content Include="Scripts\app\tag-It.js" />
     <Content Include="Scripts\app\tinyMCEBox.js" />

@@ -47,6 +47,10 @@ textarea {
     background-color: #000099;
 }
 
+.navbar-inverse .navbar-brand {
+    color: #02020c;
+}
+
 .categories, .StaticPages {
     padding: 10px;
     padding-bottom: 30px;

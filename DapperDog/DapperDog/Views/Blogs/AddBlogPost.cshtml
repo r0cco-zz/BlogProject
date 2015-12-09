@@ -13,11 +13,7 @@
             <input name="PostTitle" id="AddBlogPostTitle" type="text"/>
         </div>
         <input class="hidden" name="Author" value="@User.Identity.Name"/>
-        <div class="radiobutton">
-            <label for="Special">Current Special:</label>
-            <input id="Special" type="radio" name="special"/>Is Current Special
-            <input id="Special" type="radio" name="special" checked/>Is Not Current Special
-        </div>
+       
         <div>
             <label for="PublishDate">Publish Date:</label>
             <input id="PublishDate" type="text" name="PublishDate"/>
@@ -32,14 +28,19 @@
                 <select name="CategoryID" class="form-control input-sm" id="inputCategoryID">                   
                 </select>
             </div>
-            <div>
-                <button class="btn btn-primary" type="button" id="btnShowAddCategoryInput">Add Category</button>
-                <div id="addCategoryInputDiv" style="display: none;">
-                    <input id="addCategoryInput" type="text"/>
-                    <button id="btnSaveNewCategory" type="button">Add</button>
-                    <button id="btnHideAddCategoryDiv" type="button">Cancel</button>
-                </div>
-            </div>
+               <div>
+                   <button class="btn btn-primary" type="button" id="btnShowAddCategoryInput">Add Category</button>
+                   <div id="addCategoryInputDiv" style="display: none;">
+                       <input id="addCategoryInput" type="text"/>
+                       <button id="btnSaveNewCategory" type="button">Add</button>
+                       <button id="btnHideAddCategoryDiv" type="button">Cancel</button>
+                   </div>
+               </div>
+               <div class="radiobutton">
+                   <label for="Special">Current Special:</label>
+                   <input id="Special" type="radio" name="special" />Is Current Special
+                   <input id="Special" type="radio" name="special" checked />Is Not Current Special
+               </div>
         </div>
        <div class="form-group" id="blog">
             <textarea id="TinyMCEBox" name="PostContent"></textarea>
@@ -67,4 +68,5 @@
     <script src="~/Scripts/app/postValidation.js"></script>
     <script src="~/Scripts/app/manageCategories.js"></script>
     <script src="~/Scripts/app/datePicker.js"></script>
+    <script src ="~/Scripts/app/setSpecial.js"></script>
 }

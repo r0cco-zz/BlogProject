@@ -12,7 +12,7 @@ namespace DapperDog.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(int id)
+        public ActionResult Index(int id = 0)
         {
             var ops = new BlogPostOperations();
             var vm = new HomeIndexViewModel();
