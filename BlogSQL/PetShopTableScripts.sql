@@ -433,6 +433,7 @@ as
 begin
 insert into UserComments (PostID, UserCommentUserName, UserCommentContent, UserCommentDate)
 values (@PostID, @UserCommentUserName, @UserCommentContent, @UserCommentDate)
+
 set @UserCommentID = SCOPE_IDENTITY()
 end
 
