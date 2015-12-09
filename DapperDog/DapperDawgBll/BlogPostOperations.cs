@@ -284,6 +284,9 @@ namespace DapperDawgBll
             var post = _repo.GetBlogPostByID(id);
             post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
             post.BlogTags = new List<Tag>();
+            post.UserComments = new List<UserComment>();
+            var comments = _repo.GetUserCommentsByPostID(post.PostID);
+
             var tagList = _repo.GetTagsByPostID(post.PostID);
             if (tagList != null)
             {
@@ -293,6 +296,13 @@ namespace DapperDawgBll
                 }
             }
 
+            if (comments != null)
+            {
+                foreach (var comment in comments)
+                {
+                    post.UserComments.Add(comment);
+                }
+            }
             var postListCarrier = new List<BlogPost>();
             postListCarrier.Add(post);
             return postListCarrier;
@@ -359,5 +369,6 @@ namespace DapperDawgBll
         {
             _repo.AddUserComment(newUserComment, postID);
         }
+
     }
 }

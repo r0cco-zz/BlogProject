@@ -236,4 +236,26 @@ h2:first-of-type {
     display: inline-block;
 }
 
+#commenttextarea {
+    height: 200px;
+    width: 300px;
+}
 
+#commentbutton {
+    margin-bottom: 10px;
+}
+
+#comments {
+    border: 2px solid rgb(15, 26, 103);  
+    border-radius: 15px;
+    padding: 15px;
+    margin: 20px;
+}
+#viewcommentslink {
+    margin: 10px;
+}
+
+#commentauthor {
+    font-weight: bold;
+    font-size: 20px;
+}
