@@ -78,12 +78,16 @@
                                 <button class=" btn btn-danger " id="btnHideCommentDiv" type="button">Cancel</button>
                             </div>
                             <div class="viewcomments">
+                                @if (!Model.BlogPost.UserComments.Any())
+                                {
+                                    <p style="text-align: center;"><i>No Comments</i></p>
+                                }
                                 @foreach (var comment in Model.BlogPost.UserComments)
                                 {
-                                   <div id="comments">
-                                       <p id="commentauthor">@comment.UserCommentUserName</p>
-                                       <p>@comment.UserCommentContent</p>
-                                       </div>
+                                    <div id="comments">
+                                        <p id="commentauthor">@comment.UserCommentUserName</p>
+                                        <p>@comment.UserCommentContent</p>
+                                    </div>
                                 }
                             </div>
                         </div>
