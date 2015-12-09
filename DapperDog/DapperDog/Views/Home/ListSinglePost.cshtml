@@ -58,11 +58,13 @@
                         <div class="comments">
                             <button class="btn btn-primary" type="button" id="btnShowAddUserComment">Add Comment</button>
                             <div id="addCommentDiv" style="display: none">
-                                <input id="addUsername" name="UserCommentUserName" type="text"/>
-                                <input id="addUserComment" name="UserCommentContent" type="text"/>
-                                <input name="UserCommentDate" type="hidden" value="@DateTime.Now.ToShortTimeString()"/>
-                                <input name="postID" type="hidden" value="@Model.BlogPost.PostID"/> 
-                                @Html.ActionLink("Add Comment", "AddUserComment", "Home", new {@class= "btn btn-primary", id="commentButton"} )
+                                <form action="@Url.Action("AddUserComment")" method="POST" id="addUserCommentForm">
+                                    <input id="addUsername" name="UserCommentUserName" type="text"/>
+                                    <input id="addUserComment" name="UserCommentContent" type="text"/>
+                                    <input name="UserCommentDate" type="hidden" value="@DateTime.Now.ToShortTimeString()"/>
+                                    <input name="postID" type="hidden" value="@Model.BlogPost.PostID"/>
+                                    <button class="btn btn-primary">Add Comment</button>
+                                </form>
                                 <button id="btnHideCommentDiv" type="button">Cancel</button>
                             </div>
                             @*<div class="viewcomments">

@@ -74,7 +74,7 @@ namespace DapperDog.Controllers
             return View(vm);
         }
 
-        //[HttpPost]
+        [HttpPost]
         public ActionResult AddUserComment(AddUserCommentViewModel vm)
         {
             var ops= new BlogPostOperations();
