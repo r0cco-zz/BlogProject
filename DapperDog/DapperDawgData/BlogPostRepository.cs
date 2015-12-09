@@ -90,6 +90,14 @@ namespace DapperDawgData
             return tags;
         }
 
+        public List<UserComment> GetUserCommentsByPostID(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("PostID", id);
+
+            var comments = _cn.Query<UserComment>("GetUserCommentsByPostID", p, commandType: CommandType.StoredProcedure).ToList();
+            return comments;
+        } 
 
         public List<Category> GetAllCategories()
         {

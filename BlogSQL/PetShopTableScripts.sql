@@ -442,8 +442,8 @@ go
 create procedure [dbo].[GetUserCommentsByPostID] (@PostID int)
 as
 begin
-select * from usercomments
-where postid = @PostID
+select * from UserComments
+where PostID = @PostID
 order by UserCommentDate desc
 end
 

@@ -59,17 +59,30 @@
                             <button class="btn btn-primary" type="button" id="btnShowAddUserComment">Add Comment</button>
                             <div id="addCommentDiv" style="display: none">
                                 <form action="@Url.Action("AddUserComment")" method="POST" id="addUserCommentForm">
+                                    <div class="inputboxes">
+                                    <label>Author:</label>
                                     <input id="addUsername" name="UserCommentUserName" type="text"/>
-                                    <input id="addUserComment" name="UserCommentContent" type="text"/>
+                                    </div>
+                                        <div class="inputboxes">
+                                            <label>Comment:</label>
+                                            <textarea name="UserCommentContent" id="commenttextarea"></textarea>
+                                            @*<input id="addUserComment" name="UserCommentContent" type="text"/>*@
+                                    </div>
                                     <input name="UserCommentDate" type="hidden" value="@DateTime.Now.ToShortTimeString()"/>
                                     <input name="postID" type="hidden" value="@Model.BlogPost.PostID"/>
-                                    <button class="btn btn-primary">Add Comment</button>
+                                    <button class="btn btn-primary" id="commentbutton">Submit Comment</button>
                                 </form>
-                                <button id="btnHideCommentDiv" type="button">Cancel</button>
+                                <button class=" btn btn-danger " id="btnHideCommentDiv" type="button">Cancel</button>
                             </div>
-                            @*<div class="viewcomments">
-                                @foreach ()
-                            </div>*@
+                            <div class="viewcomments">
+                                @foreach (var comment in Model.BlogPost.UserComments)
+                                {
+                                   <div id="comments">
+                                       <p id="commentauthor">@comment.UserCommentUserName</p>
+                                       <p>@comment.UserCommentContent</p>
+                                       </div>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

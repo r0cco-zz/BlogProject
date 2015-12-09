@@ -30,12 +30,8 @@
                                 <span class="tags">@Html.ActionLink("#" + tag.TagName, "ListPostsByTag", new {id = tag.TagID})</span>
                             }
 
-                            @*@foreach (var comment in post.UserComments)
-                            {
-                                <p class="comment">@comment</p>
-                            }*@
 
-                            @Html.ActionLink("View Comments", "ListSinglePost", "Home", new { id = post.PostID }, new {@class ="alink"})
+                            <p id="viewcommentslink"> @Html.ActionLink("View Comments", "ListSinglePost", "Home", new { id = post.PostID }, new {@class ="alink"})</p>
                            
                             @if (User.IsInRole("Admin"))
                             {
