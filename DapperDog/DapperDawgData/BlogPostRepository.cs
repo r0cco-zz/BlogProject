@@ -236,6 +236,8 @@ namespace DapperDawgData
         public void AddNewStaticPage(StaticPage newStaticPage)
         {
             var p = new DynamicParameters();
+            newStaticPage.StaticPageDate = DateTime.Today;
+
             p.Add("StaticPageDate", newStaticPage.StaticPageDate);
             p.Add("StaticPageTitle", newStaticPage.StaticPageTitle);
             p.Add("StaticPageContent", newStaticPage.StaticPageContent);
