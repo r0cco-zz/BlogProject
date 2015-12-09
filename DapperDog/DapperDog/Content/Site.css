@@ -283,3 +283,11 @@ h2:first-of-type {
 #btnapprove, #btnedit, #btndelete {
     margin-right: 10px;
 }
+
+#inputcategoryid {
+    width: 300px;
+}
+
+.form-control {
+    width: auto;
+}
