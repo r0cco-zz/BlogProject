@@ -43,10 +43,11 @@
         <div class="col-sm-4">
             <div class="column3">
                 <div class="categories">
+                    <h2 class="categorytitle">Categories:</h2>
                     @foreach (var category in Model.Categories)
                     {
-                        @Html.ActionLink(category.CategoryName, "ListPostsByCategory", "Home", new { id = category.CategoryID }, new { @class = "alink" })
-                        <br />
+                        @Html.ActionLink(category.CategoryName, "ListPostsByCategory", "Home", new {id = category.CategoryID}, new {@class = "alink"})
+                        <br/>
                     }
                 </div>
                

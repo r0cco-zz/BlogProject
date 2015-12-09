@@ -165,7 +165,7 @@ namespace DapperDog.Controllers
             var ops = new BlogPostOperations();
             ops.EditStaticPage(editedStaticPage);
             //what view should be returned?
-            return RedirectToAction("Index", "Blogs");
+            return RedirectToAction("Index", "Home");
         }
         
     }

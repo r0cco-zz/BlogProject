@@ -252,6 +252,7 @@
     <Content Include="Scripts\app\staticPageValidation.js" />
     <Content Include="Scripts\app\tag-It.js" />
     <Content Include="Scripts\app\tinyMCEBox.js" />
+    <Content Include="Scripts\app\userCommentValidation.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

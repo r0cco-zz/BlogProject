@@ -55,19 +55,22 @@
                                 @Html.ActionLink("Confirm Delete", "DeletePost", "Blogs", new {id = Model.BlogPost.PostID}, new {@class = "btn btn-danger btnConfirmDelete", id = Model.BlogPost.PostID})
                             </div>
                         }
+                        
                         <div class="comments">
                             <button class="btn btn-primary" type="button" id="btnShowAddUserComment">Add Comment</button>
                             <div id="addCommentDiv" style="display: none">
                                 <form action="@Url.Action("AddUserComment")" method="POST" id="addUserCommentForm">
                                     <div class="inputboxes">
-                                    <label>Author:</label>
-                                    <input id="addUsername" name="UserCommentUserName" type="text"/>
+                                        <label>Author:</label>
+                                        <input id="addUsername" name="UserCommentUserName" type="text"/>
                                     </div>
-                                        <div class="inputboxes">
-                                            <label>Comment:</label>
-                                            <textarea name="UserCommentContent" id="commenttextarea"></textarea>
-                                            @*<input id="addUserComment" name="UserCommentContent" type="text"/>*@
+                                    <div class="form-group">
+                                    <div class="inputboxes">
+                                        <label>Comment:</label>
+                                        <textarea name="UserCommentContent" id="commenttextarea"></textarea>
+                                        @*<input id="addUserComment" name="UserCommentContent" type="text"/>*@
                                     </div>
+                                        </div>
                                     <input name="UserCommentDate" type="hidden" value="@DateTime.Now.ToShortTimeString()"/>
                                     <input name="postID" type="hidden" value="@Model.BlogPost.PostID"/>
                                     <button class="btn btn-primary" id="commentbutton">Submit Comment</button>
@@ -110,4 +113,6 @@
 @section scripts{
     <script src="~/Scripts/app/deletePost.js"></script>
     <script src="~/Scripts/app/AddComment.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/app/userCommentValidation.js"></script>
 }

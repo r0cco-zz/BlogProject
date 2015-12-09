@@ -9,7 +9,7 @@
 
     <fieldset>
         <div class="form-group">
-            <label for="AddStaticPageTitle">Title</label>
+            <label for="AddStaticPageTitle">Title:</label>
             <input name="StaticPageTitle" id="AddStaticPageTitle" type="text" value="@Model.StaticPageTitle"/>
             <input class="hidden" name="StaticpageID" value="@Model.StaticPageID"/>
             <input class="hidden" name="StaticPageDate" value="@Model.StaticPageDate"/>
@@ -18,7 +18,7 @@
             <textarea id="TinyMCEBox" name="StaticPageContent">@Model.StaticPageContent</textarea>
         </div>
         <div>
-            @Html.ActionLink("Cancel", "EditStaticPage", "Blogs", null, new {@class = "btn btn-primary"})
+            @Html.ActionLink("Cancel", "EditStaticPage", "Blogs", null, new {@class = "btn btn-danger", id="cancelbutton1"})
             <button id="submitbutton" class="btn btn-primary">Submit</button>
         </div>
     </fieldset>

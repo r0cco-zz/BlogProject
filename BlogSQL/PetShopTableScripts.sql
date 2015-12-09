@@ -84,8 +84,8 @@ begin
 	values ('dogs'),('cats'),('ferrets'),('food'),('toys'),('health'),('fun'),('knowledge'),('happy'),('smiley'),('turtles'),('snakes')
 
 	insert into StaticPages
-	values ('2015-12-01','About Us','<p>Dapper Dawg opened its doors in 2013. In 2015 we extended our products to include cats, reptiles amd other small pets.  We know that your pets are more than just animals, they are family!</p><p>We want to be your #1 resource for ALL your pets'' needs.</p>'),
-	('2015-12-01','Contact Us','<address>526 South Main Street<br/>Akron, OH 44311 <br/><abbr title="Phone">Phone:</abbr>425.555.0100</address><address><strong>Support:</strong> <a href="mailto:Support@example.com">Support@dapperdawg.com</a><br/><strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@dapperdawg.com</a></address>')
+	values ('2015-12-01','About Us','<p>Dapper Dawg opened its doors in 2013. In 2015 we extended our products to include cats, reptiles amd other small pets.  We know that your pets are more than just animals, they are family!</p><p>We want to be your #1 resource for ALL your pets'' needs.</p> <p style="text-align: center;"><img src="http://weknowyourdreams.com/images/dog/dog-07.jpg" alt="" width="400" height="437"></p>'),
+	('2015-12-01','Contact Us','<address>526 South Main Street<br/>Akron, OH 44311 <br/><abbr title="Phone">Phone:</abbr>425.555.0100</address><address><strong>Support:</strong> <a id="email" href="mailto:Support@example.com">Support@dapperdawg.com</a><br/><strong>Marketing:</strong> <a id="email" href="mailto:Marketing@example.com">Marketing@dapperdawg.com</a></address>')
 
 	insert into PostsTags
 	values (1,1),
