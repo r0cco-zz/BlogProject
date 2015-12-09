@@ -428,11 +428,12 @@ end
 go
 
 create procedure [dbo].[AddNewUserComment]
-(@UserCommentUserName nvarchar(50), @UserCommentContent text, @UserCommentDate date, @UserCommentID int output)
+(@PostID int, @UserCommentUserName nvarchar(50), @UserCommentContent text, @UserCommentDate date, @UserCommentID int output)
 as
 begin
-insert into UserComments (UserCommentUserName, UserCommentContent, UserCommentDate)
-values (@UserCommentUserName, @UserCommentContent, @UserCommentDate)
+insert into UserComments (PostID, UserCommentUserName, UserCommentContent, UserCommentDate)
+values (@PostID, @UserCommentUserName, @UserCommentContent, @UserCommentDate)
+
 set @UserCommentID = SCOPE_IDENTITY()
 end
 
@@ -441,9 +442,8 @@ go
 create procedure [dbo].[GetUserCommentsByPostID] (@PostID int)
 as
 begin
-select * from posts
-join UserComments on
-UserComments.PostID = @PostID
+select * from usercomments
+where postid = @PostID
 order by UserCommentDate desc
 end
 
