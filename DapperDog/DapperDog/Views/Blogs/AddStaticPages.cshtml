@@ -14,8 +14,7 @@
             <label for="AddStaticPageTitle">Title:</label>
             <input name="StaticPageTitle" id="AddStaticPageTitle" type="text"/>
             <div class="inputboxes">
-                <label for="AddStaticPageDate">Date:</label>
-                <input name="StaticPageDate" id="AddStaticPageDate" type="date"/>
+                <input name="StaticPageDate" id="AddStaticPageDate" type="hidden" value="@DateTime.Now.ToShortDateString()"/>
             </div>
         </div>
         <div class="form-group" id="StaticPageContent">
@@ -32,7 +31,7 @@
 
 
 @section scripts {
-    <script src="~/Scripts/app/addStaticPageDate.js"></script>
+    
     <script src="~/Scripts/tinymce/tinymce.min.js"></script>
     <script src="~/Scripts/app/tinyMCEBox.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
