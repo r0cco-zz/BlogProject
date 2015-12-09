@@ -167,7 +167,7 @@ end
 go
 
 create procedure [dbo].[AddNewStaticPage](
-@StaticPageID int,
+@StaticPageID int output,
 @StaticPageDate date,
 @StaticPageTitle nvarchar(50),
 @StaticPageContent text
