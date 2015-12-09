@@ -21,7 +21,7 @@
                             <span class="line" id="author">@post.Author</span>
                             <div class="ellipsis">
                                 @Html.Raw(post.PostContent)
-                                <a class='more'>More</a>
+                                <a class='more'>Read More</a>
                                 <a class='less'>Less</a>
                             </div>
                             @foreach (var tag in post.BlogTags)
@@ -88,7 +88,7 @@
             @Html.ActionLink("Previous Page", "Index", new {id = @Model.RouteID - 1}, new {@class = "btn btn-primary"})
         </div>
     }
-    @if ((@Model.PostTotal/5) > Model.RouteID)
+    @if ((@Model.PostTotal/5) > Model.RouteID + 1)
     {
         <div class="NextPage btnPageButton">
             @Html.ActionLink("Next Page", "Index", new {id = @Model.RouteID + 1}, new {@class = "btn btn-primary"})

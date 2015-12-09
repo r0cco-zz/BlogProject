@@ -215,6 +215,12 @@ h2:first-of-type {
 .dropdown-menu {
     background-color:  #000099;
 }
+
+.more, .less {
+    font-weight: bold;
+    color: firebrick;
+}
+
 .more:hover, .less:hover {
     background-color: #000099;
     cursor: pointer;

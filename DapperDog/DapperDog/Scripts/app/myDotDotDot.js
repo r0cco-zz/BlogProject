@@ -12,7 +12,7 @@ $(document).ready(function () {
         callback: dotdotdotCallback
     });
     $("div.ellipsis").on('click', 'a', function () {
-        if ($(this).text() === "More") {
+        if ($(this).text() === "Read More") {
             var div = $(this).closest('div.ellipsis');
             div.trigger('destroy').find('a.more').hide();
             div.css('max-height', '');
