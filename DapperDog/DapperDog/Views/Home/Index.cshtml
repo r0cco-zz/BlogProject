@@ -32,6 +32,23 @@
 
                             @if (User.IsInRole("Admin"))
                             {
+                                <div>
+                                    @if (post.PublishDate.HasValue)
+                                    {
+                                    <p><i>Post will be seen after : @post.PublishDate.Value.ToShortDateString()</i>
+                                    </p>
+                                    }
+                                    @if (post.ExpirationDate.HasValue)
+                                    {
+                                    <p><i>Expiration Date : @post.ExpirationDate.Value.ToShortDateString()</i>
+                                    </p>
+                                    }
+                                    else
+                                    {
+                                    <p><i>Post has no expiration date</i>
+                                    </p>
+                                    }
+                                </div>
                                 <br/>
                                 @Html.ActionLink("Edit Post", "EditPost", "Blogs", new {id = post.PostID}, new {@class = "btn btn-primary", id = post.PostID})
                                 <button class="btn btn-danger btnShowConfirmDelete" value="@post.PostID" id="btnShowConfirmDelete @post.PostID">Delete Post</button><br/>

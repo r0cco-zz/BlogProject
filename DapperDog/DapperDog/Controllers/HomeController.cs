@@ -61,13 +61,17 @@ namespace DapperDog.Controllers
 
         public ActionResult ListSinglePost(int id)
         {
+            // Added a new view in order to view the whole post without the truncation from dotdotdot.
+            // Also for viewing comments
             var ops = new BlogPostOperations();
-            var vm = new HomeIndexViewModel();
-            vm.BlogPosts = ops.GetPostByID(id);
+            //var vm = new HomeIndexViewModel();
+            var vm = new ListSinglePostViewModel();
+            vm.BlogPost = ops.GetPostByID(id).FirstOrDefault();
             vm.Categories = ops.GetAllCategories();
             vm.StaticPages = ops.GetAllStaticPages();
+            //vm.RouteID = ; can we use this to go back to the right routed page on the home index?
 
-            return View("Index", vm);
+            return View(vm);
         }
 
     }

@@ -191,6 +191,7 @@
     <Compile Include="Models\EditPostViewModel.cs" />
     <Compile Include="Models\HomeIndexViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ListSinglePostViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -480,6 +481,7 @@
     <Content Include="Views\Shared\_StaticPagesPartial.cshtml" />
     <Content Include="Views\Blogs\EditStaticPage.cshtml" />
     <Content Include="Views\Blogs\EditSingleStaticPage.cshtml" />
+    <Content Include="Views\Home\ListSinglePost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

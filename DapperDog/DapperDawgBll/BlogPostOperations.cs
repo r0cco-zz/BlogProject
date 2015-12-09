@@ -222,6 +222,22 @@ namespace DapperDawgBll
                     }
                 }
             }
+            // copied loop to remove timed out posts
+            foreach (var post in posts)
+            {
+                post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
+                // checks to see if PublishDate is after today, or if ExpirationDate is before today 
+                if (post.PublishDate.HasValue && DateTime.Compare(post.PublishDate.Value, DateTime.Now) > 0)
+                {
+                    posts.Remove(post);
+                    break;
+                }
+                if (post.ExpirationDate.HasValue && DateTime.Compare(post.ExpirationDate.Value, DateTime.Now) < 0)
+                {
+                    posts.Remove(post);
+                    break;
+                }
+            }
 
             return posts;
         }
@@ -241,6 +257,22 @@ namespace DapperDawgBll
                     {
                         post.BlogTags.Add(tag);
                     }
+                }
+            }
+            // copied loop to remove timed out posts
+            foreach (var post in posts)
+            {
+                post.CategoryName = _repo.GetCategoryByPostID(post.PostID);
+                // checks to see if PublishDate is after today, or if ExpirationDate is before today 
+                if (post.PublishDate.HasValue && DateTime.Compare(post.PublishDate.Value, DateTime.Now) > 0)
+                {
+                    posts.Remove(post);
+                    break;
+                }
+                if (post.ExpirationDate.HasValue && DateTime.Compare(post.ExpirationDate.Value, DateTime.Now) < 0)
+                {
+                    posts.Remove(post);
+                    break;
                 }
             }
 
