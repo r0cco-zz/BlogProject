@@ -79,6 +79,26 @@ textarea {
 
 .inputboxes {
     padding: 10px;
+    clear: both;
+}
+
+.inputboxes label {
+    float: left;
+    width: 150px;
+}
+
+.inputboxes input {
+    float: left;
+}
+#btnShowAddCategoryInput {
+    clear: both;
+    padding: 10px;
+    margin-left: 150px;
+}
+
+#addCategoryInputDiv {
+    margin-left: 150px;
+    padding: 10px;
 }
 
 .line {
@@ -141,11 +161,17 @@ textarea {
     border-radius: 15px;
     padding: 15px;
     margin-bottom: 20px;
-    }
+    float: left;
+    clear: both;
+}
 
 .radiobutton #special {
     font-style: inherit;
     padding: 10px;
+}
+
+.radiobutton input {
+    padding: 20px;
 }
 
 #toseemore {
