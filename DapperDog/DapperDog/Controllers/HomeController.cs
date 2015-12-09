@@ -86,7 +86,7 @@ namespace DapperDog.Controllers
 
             ops.AddNewUserComment(userComment, vm.PostID);
             
-            return RedirectToAction("ListSinglePost", vm.PostID);
+            return RedirectToAction("ListSinglePost", new {id= vm.PostID});
         }
     }
 }
