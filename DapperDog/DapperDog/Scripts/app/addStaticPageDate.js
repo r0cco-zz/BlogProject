@@ -1,2 +1,2 @@
-﻿$(document).getElementbyId("AddStaticPageDate").value = date();
+﻿$(document).getElementbyId("AddStaticPageDate").value = new Date().toUTCString();
 
