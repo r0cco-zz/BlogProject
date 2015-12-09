@@ -74,9 +74,19 @@ namespace DapperDog.Controllers
             return View(vm);
         }
 
-        public ActionResult AddUserComment()
+        //[HttpPost]
+        public ActionResult AddUserComment(AddUserCommentViewModel vm)
         {
+            var ops= new BlogPostOperations();
+            var userComment = new UserComment();
+            userComment.UserCommentContent = vm.UserCommentContent;
+            userComment.UserCommentDate = DateTime.Parse(vm.UserCommentDate);
+            userComment.UserCommentUserName = vm.UserCommentUserName;
             
+
+            ops.AddNewUserComment(userComment, vm.PostID);
+            
+            return RedirectToAction("ListSinglePost", vm.PostID);
         }
     }
 }
