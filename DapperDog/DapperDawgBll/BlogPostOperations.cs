@@ -322,5 +322,10 @@ namespace DapperDawgBll
         {
             _repo.DeleteBlogPost(id);
         }
+
+        public void AddNewUserComment(UserComment newUserComment, int postID)
+        {
+            _repo.AddUserComment(newUserComment, postID);
+        }
     }
 }

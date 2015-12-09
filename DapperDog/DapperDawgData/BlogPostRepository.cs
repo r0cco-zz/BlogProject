@@ -260,5 +260,18 @@ namespace DapperDawgData
 
             _cn.Execute("SetPostStatusTo2", p, commandType: CommandType.StoredProcedure);
         }
+
+        public void AddUserComment(UserComment newUserComment, int postID)
+        {
+            var p = new DynamicParameters();
+            p.Add("PostID", postID);
+            p.Add("UserCommentUserName", newUserComment.UserCommentUserName);
+            p.Add("UserCommentContent", newUserComment.UserCommentContent);
+            p.Add("UserCommentDate", newUserComment.UserCommentDate);
+
+            _cn.Execute("AddNewUserComment", p, commandType: CommandType.StoredProcedure);
+            p.Get<int>("UserCommentID");
+        }
+
     }
 }

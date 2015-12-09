@@ -30,6 +30,17 @@
                                 <span class="tags">@Html.ActionLink("#" + tag.TagName, "ListPostsByTag", new {id = tag.TagID})</span>
                             }
 
+                            @foreach (var comment in post.UserComments)
+                            {
+                                <p class="comment">@comment</p>
+                            }
+
+                            @Html.ActionLink("Add Comment", "AddUserComment", "Home", new { id = post.PostID }, new { @class = "btn btn-primary", id = post.PostID })
+                            @*<div class="Usercomment" style="display: none">
+                                <input id="addCommentInput" type="text"/>
+                                <button id="btnSaveNewcomment">Add</button>
+                                <button id="btnHideAddCommentDiv" type="button">Cancel</button>
+                            </div>*@
                             @if (User.IsInRole("Admin"))
                             {
                                 <br/>

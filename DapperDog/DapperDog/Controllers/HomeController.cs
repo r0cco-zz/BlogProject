@@ -70,5 +70,9 @@ namespace DapperDog.Controllers
             return View("Index", vm);
         }
 
+        public ActionResult AddUserComment()
+        {
+            
+        }
     }
 }
