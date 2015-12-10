@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,8 @@ using DapperDawgData;
 using DapperDawgData.Config;
 using DapperDawgModels;
 using NUnit.Framework;
+using Microsoft.SqlServer.Management.Common;
+using Microsoft.SqlServer.Management.Smo;
 
 namespace DapperDawgTests
 {
@@ -16,89 +20,87 @@ namespace DapperDawgTests
     public class OrderOperationsTests
     {
 
-        private SqlConnection _cn;
+        public string TestSetupConnectionString;
+
+        public string TestConnectionString =
+            @"Server=MS-STDN-012\SQL2014;User=sa;Password=sqlserver;Database=TestPetShopBlog;";
+
+        public BlogPostRepository repo = new BlogPostRepository();
 
         [TestFixtureSetUp]
-        public void Setup()
+        public void Init()
         {
-            _cn = new SqlConnection(Settings.ConnectionString);
-            _cn.Open();
-        }
+            //TestConnectionString = @"Server=MS-STDN-012\SQL2014;User=sa;Password=sqlserver;Database=TestPetShopBlog;";
 
-        [TestFixtureTearDown]
-        public void TearDown()
-        {
-            _cn.Dispose();
-        }
+            TestSetupConnectionString = ConfigurationManager.ConnectionStrings["Setup"].ConnectionString;
 
-        [Test]
-        public void AddnewBlogPost_ShouldReturnNewPostId()
-        {
-            int expected;
-      
-        
 
-            BlogPost newBlogPost = new BlogPost()
+            using (SqlConnection cn = new SqlConnection(TestSetupConnectionString))
             {
-                CategoryID = 2,
-                CategoryName = "Pet Health",
-                PostTitle = "Teeth",
-                PostDate = DateTime.Parse("3-12-2015"),
-                PostContent = "teeth",
-                Author = "Joe Schmoe",
-                PostStatus = 0,
-                BlogTags = new List<Tag>
-                {
-                    new Tag {TagID = 1, TagName = "Dogs"}
-                }
 
-            };
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "select max(PostID) from posts";
-            cmd.Connection = _cn;
+                string scriptLoc = @"C:\_repos\BlogProject\DapperDog\DapperDawgTests\SqlTests\dbsetup.sql";
 
-            expected = int.Parse(cmd.ExecuteScalar().ToString()) + 1;
+                string script = File.ReadAllText(scriptLoc);
 
-            BlogPostOperations bpo = new BlogPostOperations();
-            bpo.AddNewBlogPost(newBlogPost);
+                Server server = new Server(new ServerConnection(cn));
 
-            Assert.AreEqual(expected, newBlogPost.PostID);
+                server.ConnectionContext.ExecuteNonQuery(script);
+
+            }
         }
+        //if you run all unit tests it will run them in alphabetical order NOT in the order they are listed here.So this may affect a count
 
-        [Test]
-        public void CheckNewTagID()
+        [TestCase(3,2)]
+        public void GetBlogPostsByTag(int tagID, int expected)
         {
-            BlogPostRepository repo = new BlogPostRepository();
-            int expected = RetrieveLastTagId() + 1;
-            int id = repo.AddNewTag("loopy");
-            Assert.AreEqual(expected, id);
+            var result = repo.GetBlogPostsByTag(tagID).Count;
+
+            Assert.AreEqual(result, expected);
+
         }
 
-        [Test]
-        public void CheckGetAllCategories()
+        [TestCase(2, 3)]
+        public void GetBlogPostsByCategory(int categoryID, int expected)
         {
-            BlogPostRepository repo = new BlogPostRepository();
-            int expected = 0;
-            int result = 0;
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "select max(categoryid) from categories";
-            cmd.Connection = _cn;
-            expected = int.Parse(cmd.ExecuteScalar().ToString());
-            result = repo.GetAllCategories().Count;
-            Assert.AreEqual(expected,result);
+            var result = repo.GetBlogPostsByCategory(categoryID).Count;
 
+            Assert.AreEqual(result, expected);
         }
 
-        public int RetrieveLastTagId()
+        [TestCase(4, "Another Title")]
+        public void GetBlogPostByID_ShouldReturnPostTitle(int postID, string expected)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "Select Max(TagId) From tags";
-            cmd.Connection = _cn;
+            var result = repo.GetBlogPostByID(postID).PostTitle;
 
-            int id = int.Parse(cmd.ExecuteScalar().ToString());
-            return id;
+            Assert.AreEqual(result, expected);
         }
 
-       
+        [TestCase(5, "toys")]
+        public void GetTagsByPostID_ShouldReturnFirstTag(int postID, string expected)
+        {
+            var result = repo.GetTagsByPostID(postID).FirstOrDefault().TagName;
+
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestCase(2, "Contact Us")]
+        public void GetStaticPageById_ShouldReturnPageTitle(int staticPageID, string expected)
+        {
+            var result = repo.GetStaticPageByID(staticPageID).StaticPageTitle;
+
+            Assert.AreEqual(result, expected);
+        }
+
+        //Adding a new tag to table returns a tagID which should be 1 higher than last one
+        [TestCase("altoids", 17)]
+        public void AddNewTagToTable(string tagName, int expected)
+        { 
+            var result = repo.AddNewTag(tagName);
+
+            Assert.AreEqual(result, expected);
+        }
+
     }
+
+
 }

@@ -49,7 +49,7 @@ namespace DapperDog.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize(Roles = "Admin,PR")]
+        [Authorize(Roles = "Admin")]
         //[Authorize(Roles = "PR")]
         public ActionResult AddStaticPages()
         {
@@ -57,7 +57,7 @@ namespace DapperDog.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin,PR")]
+        [Authorize(Roles = "Admin")]
         //[Authorize(Roles = "PR")]
         [HttpPost]
         public ActionResult AddStaticPages(StaticPage newStaticPage)
@@ -138,7 +138,7 @@ namespace DapperDog.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize(Roles = "Admin,PR")]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditStaticPage()
         {
             //need a list of static pages
@@ -149,7 +149,7 @@ namespace DapperDog.Controllers
             return View(vm); 
         }
 
-        [Authorize(Roles = "Admin,PR")]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditSingleStaticPage(int id)
         {
             var ops = new BlogPostOperations();
@@ -158,7 +158,7 @@ namespace DapperDog.Controllers
             return View("EditSingleStaticPage", newStaticPage);
         }
 
-        [Authorize(Roles = "Admin,PR")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditStaticPage(StaticPage editedStaticPage)
         {
