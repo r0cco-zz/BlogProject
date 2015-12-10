@@ -7,7 +7,7 @@
 
 <h2>Edit Post</h2>
 
-<form class="form-horizontal" action="@Url.Action("EditPost")" method="POST">
+<form class="form-horizontal" action="@Url.Action("EditPost")" method="POST" id="addBlogPostForm">
     <fieldset>
         <div class="inputboxes">
             <label for="AddBlogPostTitle">Title</label>
@@ -16,7 +16,7 @@
         <input class="hidden" name="PostID" value="@Model.BlogPost.PostID"/>
         <input class="hidden" name="Author" value="@Model.BlogPost.Author"/>
         <input class="hidden" name="PostDate" value="@Model.BlogPost.PostDate"/>
-        <div>
+        <div class="inputboxes">
             <label for="PublishDate">Publish Date:</label>
             @if (@Model.BlogPost.PublishDate.HasValue)
             {
@@ -24,10 +24,10 @@
             }
             else
             {
-                <input id="PublishDate" type="text" name="PublishDate" />
+                <input id="PublishDate" type="text" name="PublishDate"/>
             }
         </div>
-        <div>
+        <div class="inputboxes">
             <label for="ExpirationDate">Expiration Date:</label>
             @if (@Model.BlogPost.ExpirationDate.HasValue)
             {
@@ -38,25 +38,29 @@
                 <input id="ExpirationDate" type="text" name="ExpirationDate" />
             }
         </div>
-        <div class="radiobutton">
-            <label for="Special">Current Special:</label>
-            <input id="Special" type="radio" name="special" />Is Current Special
-            <input id="Special" type="radio" name="special" checked/>Is Not Current Special
-        </div>
-        <div class="dropdown">
+
+        <div class="inputboxes">
             <label for="inputCategoryID">Category</label>
             <div>
                 <select name="CategoryID" class="form-control input-sm" id="inputCategoryID"></select>
             </div>
-            <div>
+            </div>
+            <div class="inputboxes">
                 <button class="btn btn-primary" type="button" id="btnShowAddCategoryInput">Add Category</button>
                 <div id="addCategoryInputDiv" style="display: none;">
-                    <input id="addCategoryInput" type="text" />
+                    <input id="addCategoryInput" type="text"/>
                     <button id="btnSaveNewCategory" type="button">Add</button>
                     <button id="btnHideAddCategoryDiv" type="button">Cancel</button>
                 </div>
             </div>
+        
+
+        <div class="radiobutton">
+            <label for="Special">Current Special:</label>
+            <input id="Special" type="radio" name="special" />Is Current Special
+            <input id="Special" type="radio" name="special" checked />Is Not Current Special
         </div>
+
         <div class="form-group" id="blog">
             <textarea id="TinyMCEBox" name="PostContent">@Model.BlogPost.PostContent</textarea>
         </div>
@@ -70,8 +74,8 @@
             </ul>
         </div>
         <div>
-            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-primary" })
-            <button class="btn btn-primary">Submit</button>
+            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-danger", id="cancelbutton1"})
+            <button id="submitbutton" class="btn btn-primary">Submit</button>
         </div>
     </fieldset>
 </form>
